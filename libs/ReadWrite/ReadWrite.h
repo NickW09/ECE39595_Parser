@@ -6,7 +6,7 @@
 class ReadWrite {
 
 public:
-    static ReadWrite* getInstance(char* inputfile, char* outputfile); //DONE
+    static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
     ~ReadWrite(); //DONE
     char* readLine(); 
     char* readWord(char* curLine); 
@@ -20,7 +20,7 @@ public:
     bool getValidInputFile(); 
 
 private:
-    ReadWrite(char* inputfile, char* outputfile); //DONE
+    ReadWrite(const char* inputfile, const char* outputfile); //DONE
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE

@@ -17,7 +17,7 @@ int main() {
     SymbolTable* symTable = SymbolTable::getInstance();
     StringBuffer* strBuf = StringBuffer::getInstance();
     //to do table
-    //Parser parse(instrBuf, symTable, strBuf, filename);
+    Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
     
     //parse.beginParser(filename);
 

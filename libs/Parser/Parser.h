@@ -10,18 +10,18 @@
 class Parser {
 
 public:
-    static Parser* getInstance(char* inputFileName, char* outputFileName, InstructionBuffer& instrBuf, SymbolTable& symTable, StringBuffer& strBuf); //gets single instance of parser
+    static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //gets single instance of parser
     void beginParser(char* txtfile);
     //void setError();
     //bool getError();
 
 private:
-    Parser(char* inputFileName, char* outputFileName, InstructionBuffer& instrBuf, SymbolTable& symTable, StringBuffer& strBuf); //private parser constructor used by getInstance
+    Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //private parser constructor used by getInstance
     static Parser* parser;  //unique instantiation of parser
     void createStmt(char* instruction);
-    InstructionBuffer instrBuf;
-    SymbolTable symTable;
-    StringBuffer strBuf;
+    InstructionBuffer* instrBuf;
+    SymbolTable* symTable;
+    StringBuffer* strBuf;
     ReadWrite* readWrite;
     bool error;
 };

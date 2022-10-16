@@ -4,7 +4,7 @@
 
 // ------------------ Public ------------------
 
-ReadWrite* ReadWrite::getInstance(char* inputfile, char* outputfile){
+ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile){
     if(readwrite == nullptr){
         readwrite = new ReadWrite(inputfile, outputfile);
     }
@@ -51,7 +51,7 @@ bool ReadWrite::getValidInputFile(){
 
 static ReadWrite* readwrite = nullptr;
 
-ReadWrite::ReadWrite(char* inputfile, char* outputfile){
+ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     readFile.open(inputfile); //Open input file
     writeFile.open(outputfile); //Open output file
     validInputFile = true;

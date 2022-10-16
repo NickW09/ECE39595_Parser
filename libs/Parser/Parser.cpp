@@ -5,7 +5,7 @@ Parser* Parser::parser = nullptr;
 //TEST2
 
 //Constructor
-Parser::Parser(char* inputFileName, char* outputFileName, InstructionBuffer& _instrBuf, SymbolTable& _symTable, StringBuffer& _strBuf) {
+Parser::Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf) {
     instrBuf = _instrBuf; //Set instructionBuffer
     symTable = _symTable; //Set symbolTable
     strBuf = _strBuf; //Set stringBuffer
@@ -13,7 +13,7 @@ Parser::Parser(char* inputFileName, char* outputFileName, InstructionBuffer& _in
     error = 0;
 }
 
-Parser* Parser::getInstance(char* inputFileName, char* outputFileName, InstructionBuffer& _instrBuf, SymbolTable& _symTable, StringBuffer& _strBuf){
+Parser* Parser::getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf){
     if(parser == nullptr) {
         parser = new Parser(inputFileName, outputFileName, _instrBuf, _symTable, _strBuf); // makes unique instantiation
     }
