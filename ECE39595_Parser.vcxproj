@@ -17,7 +17,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -53,27 +52,24 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -130,8 +126,76 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="libs\InstructionBuffer\InstructionBuffer.cpp" />
+    <ClCompile Include="libs\Parser\Parser.cpp" />
+    <ClCompile Include="libs\ReadWrite\ReadWrite.cpp" />
+    <ClCompile Include="libs\Stmt\Add.cpp" />
+    <ClCompile Include="libs\Stmt\Declarr.cpp" />
+    <ClCompile Include="libs\Stmt\Declscal.cpp" />
+    <ClCompile Include="libs\Stmt\Div.cpp" />
+    <ClCompile Include="libs\Stmt\Dup.cpp" />
+    <ClCompile Include="libs\Stmt\End.cpp" />
+    <ClCompile Include="libs\Stmt\Exit.cpp" />
+    <ClCompile Include="libs\Stmt\GoSub.cpp" />
+    <ClCompile Include="libs\Stmt\GoSubLabel.cpp" />
+    <ClCompile Include="libs\Stmt\Jump.cpp" />
+    <ClCompile Include="libs\Stmt\JumpZero.cpp" />
+    <ClCompile Include="libs\Stmt\Label.cpp" />
+    <ClCompile Include="libs\Stmt\Mul.cpp" />
+    <ClCompile Include="libs\Stmt\Negate.cpp" />
+    <ClCompile Include="libs\Stmt\Pop.cpp" />
+    <ClCompile Include="libs\Stmt\Poparr.cpp" />
+    <ClCompile Include="libs\Stmt\Popscal.cpp" />
+    <ClCompile Include="libs\Stmt\Prints.cpp" />
+    <ClCompile Include="libs\Stmt\Printtos.cpp" />
+    <ClCompile Include="libs\Stmt\Pusharr.cpp" />
+    <ClCompile Include="libs\Stmt\Pushi.cpp" />
+    <ClCompile Include="libs\Stmt\Pushscal.cpp" />
+    <ClCompile Include="libs\Stmt\Return.cpp" />
+    <ClCompile Include="libs\Stmt\Start.cpp" />
+    <ClCompile Include="libs\Stmt\Stmt.cpp" />
+    <ClCompile Include="libs\Stmt\Swap.cpp" />
+    <ClCompile Include="libs\StringBuffer\StringBuffer.cpp" />
+    <ClCompile Include="libs\SymbolTable\SymbolTable.cpp" />
+    <ClCompile Include="libs\ToDoBuffer\ToDoBuffer.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libs\InstructionBuffer\InstructionBuffer.h" />
+    <ClInclude Include="libs\Parser\Parser.h" />
+    <ClInclude Include="libs\ReadWrite\ReadWrite.h" />
+    <ClInclude Include="libs\Stmt\Add.h" />
+    <ClInclude Include="libs\Stmt\Declarr.h" />
+    <ClInclude Include="libs\Stmt\Declscal.h" />
+    <ClInclude Include="libs\Stmt\Div.h" />
+    <ClInclude Include="libs\Stmt\Dup.h" />
+    <ClInclude Include="libs\Stmt\End.h" />
+    <ClInclude Include="libs\Stmt\Exit.h" />
+    <ClInclude Include="libs\Stmt\GoSub.h" />
+    <ClInclude Include="libs\Stmt\GoSubLabel.h" />
+    <ClInclude Include="libs\Stmt\Jump.h" />
+    <ClInclude Include="libs\Stmt\JumpNZero.h" />
+    <ClInclude Include="libs\Stmt\JumpZero.h" />
+    <ClInclude Include="libs\Stmt\Label.h" />
+    <ClInclude Include="libs\Stmt\Mul.h" />
+    <ClInclude Include="libs\Stmt\Negate.h" />
+    <ClInclude Include="libs\Stmt\Pop.h" />
+    <ClInclude Include="libs\Stmt\Poparr.h" />
+    <ClInclude Include="libs\Stmt\Popscal.h" />
+    <ClInclude Include="libs\Stmt\Prints.h" />
+    <ClInclude Include="libs\Stmt\Printtos.h" />
+    <ClInclude Include="libs\Stmt\Pusharr.h" />
+    <ClInclude Include="libs\Stmt\Pushi.h" />
+    <ClInclude Include="libs\Stmt\Pushscal.h" />
+    <ClInclude Include="libs\Stmt\Return.h" />
+    <ClInclude Include="libs\Stmt\Start.h" />
+    <ClInclude Include="libs\Stmt\Stmt.h" />
+    <ClInclude Include="libs\Stmt\Swap.h" />
+    <ClInclude Include="libs\StringBuffer\StringBuffer.h" />
+    <ClInclude Include="libs\SymbolTable\SymbolTable.h" />
+    <ClInclude Include="libs\ToDoBuffer\ToDoBuffer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

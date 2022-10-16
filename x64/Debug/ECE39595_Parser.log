@@ -1,1 +1,35 @@
-﻿
+﻿  InstructionBuffer.cpp
+  Parser.cpp
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(13,28): error C4596: 'push': illegal qualified name in member declaration
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'InstructionBuffer::InstructionBuffer': cannot access private member declared in class 'InstructionBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(18): message : see declaration of 'InstructionBuffer::InstructionBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(9): message : see declaration of 'InstructionBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'SymbolTable::SymbolTable': cannot access private member declared in class 'SymbolTable'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(17): message : see declaration of 'SymbolTable::SymbolTable'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(9): message : see declaration of 'SymbolTable'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'StringBuffer::StringBuffer': cannot access private member declared in class 'StringBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(18): message : see declaration of 'StringBuffer::StringBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(8): message : see declaration of 'StringBuffer'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(41,28): error C2440: '=': cannot convert from 'const char [6]' to 'char *'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(41,21): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(44,31): error C2440: '=': cannot convert from 'const char [9]' to 'char *'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(44,21): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+  ReadWrite.cpp
+  Popscal.cpp
+  StringBuffer.cpp
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(13,28): error C4596: 'push': illegal qualified name in member declaration
+  SymbolTable.cpp
+  main.cpp
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(13,28): error C4596: 'push': illegal qualified name in member declaration
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\src\main.cpp(13,30): error C2440: 'initializing': cannot convert from 'const char [10]' to 'char *'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\src\main.cpp(13,17): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\src\main.cpp(14,32): error C2440: 'initializing': cannot convert from 'const char [11]' to 'char *'
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\src\main.cpp(14,18): message : Conversion from string literal loses const qualifier (see /Zc:strictStrings)
+  Generating Code...
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\SymbolTable\SymbolTable.cpp(25): warning C4715: 'SymbolTable::getData': not all control paths return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(21): error C4716: 'ReadWrite::readLine': must return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(36): error C4716: 'ReadWrite::getInputFile': must return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(27): error C4716: 'ReadWrite::readInt': must return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(24): error C4716: 'ReadWrite::readWord': must return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(42): error C4716: 'ReadWrite::getOutputFile': must return a value
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(48): error C4716: 'ReadWrite::getValidInputFile': must return a value
