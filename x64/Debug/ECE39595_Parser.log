@@ -1,20 +1,21 @@
 ﻿  InstructionBuffer.cpp
   Parser.cpp
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'InstructionBuffer::InstructionBuffer': cannot access private member declared in class 'InstructionBuffer'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(18): message : see declaration of 'InstructionBuffer::InstructionBuffer'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(9): message : see declaration of 'InstructionBuffer'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'SymbolTable::SymbolTable': cannot access private member declared in class 'SymbolTable'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(17): message : see declaration of 'SymbolTable::SymbolTable'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(9): message : see declaration of 'SymbolTable'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\Parser\Parser.cpp(6,136): error C2248: 'StringBuffer::StringBuffer': cannot access private member declared in class 'StringBuffer'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(17): message : see declaration of 'StringBuffer::StringBuffer'
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(8): message : see declaration of 'StringBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\Parser\Parser.cpp(8,136): error C2248: 'InstructionBuffer::InstructionBuffer': cannot access private member declared in class 'InstructionBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(18): message : see declaration of 'InstructionBuffer::InstructionBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\InstructionBuffer\InstructionBuffer.h(9): message : see declaration of 'InstructionBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\Parser\Parser.cpp(8,136): error C2248: 'SymbolTable::SymbolTable': cannot access private member declared in class 'SymbolTable'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(17): message : see declaration of 'SymbolTable::SymbolTable'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\SymbolTable\SymbolTable.h(9): message : see declaration of 'SymbolTable'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\Parser\Parser.cpp(8,136): error C2248: 'StringBuffer::StringBuffer': cannot access private member declared in class 'StringBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(17): message : see declaration of 'StringBuffer::StringBuffer'
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\StringBuffer\StringBuffer.h(8): message : see declaration of 'StringBuffer'
   ReadWrite.cpp
+  Popscal.cpp
   main.cpp
   Generating Code...
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(24): error C4716: 'ReadWrite::readWord': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(36): error C4716: 'ReadWrite::getInputFile': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(27): error C4716: 'ReadWrite::readInt': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(21): error C4716: 'ReadWrite::readLine': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(42): error C4716: 'ReadWrite::getOutputFile': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(48): error C4716: 'ReadWrite::getValidInputFile': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(24): error C4716: 'ReadWrite::readWord': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(21): error C4716: 'ReadWrite::readLine': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(27): error C4716: 'ReadWrite::readInt': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(42): error C4716: 'ReadWrite::getOutputFile': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(36): error C4716: 'ReadWrite::getInputFile': must return a value
+C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(48): error C4716: 'ReadWrite::getValidInputFile': must return a value

@@ -2,6 +2,8 @@
 
 Parser* Parser::parser = nullptr;
 
+//TEST2
+
 //Constructor
 Parser::Parser(char* inputFileName, char* outputFileName, InstructionBuffer& _instrBuf, SymbolTable& _symTable, StringBuffer& _strBuf) {
     instrBuf = _instrBuf; //Set instructionBuffer
