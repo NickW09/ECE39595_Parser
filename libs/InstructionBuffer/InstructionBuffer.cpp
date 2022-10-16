@@ -1,9 +1,9 @@
 #include "InstructionBuffer.h"
 
 // ------------ Public ------------
-InstructionBuffer::~InstructionBuffer(){
+//InstructionBuffer::~InstructionBuffer(){
 
-}
+//}
 
 InstructionBuffer* InstructionBuffer::getInstance(){
     if(instrBuf == nullptr) {

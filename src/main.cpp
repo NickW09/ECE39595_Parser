@@ -10,8 +10,8 @@ int main() {
 
     std::cout << "hi" << std::endl;
 
-    char* input = "input.txt";
-    char* output = "output.txt";
+    const char* input = "input.txt";
+    const char* output = "output.txt";
 
     InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
     SymbolTable* symTable = SymbolTable::getInstance();

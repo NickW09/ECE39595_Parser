@@ -12,8 +12,8 @@ class Parser {
 public:
     static Parser* getInstance(char* inputFileName, char* outputFileName, InstructionBuffer& instrBuf, SymbolTable& symTable, StringBuffer& strBuf); //gets single instance of parser
     void beginParser(char* txtfile);
-    void setError();
-    bool getError();
+    //void setError();
+    //bool getError();
 
 private:
     Parser(char* inputFileName, char* outputFileName, InstructionBuffer& instrBuf, SymbolTable& symTable, StringBuffer& strBuf); //private parser constructor used by getInstance

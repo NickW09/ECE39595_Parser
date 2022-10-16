@@ -8,9 +8,8 @@
 class StringBuffer {
 
 public:
-    ~StringBuffer(); //DONE
     static StringBuffer* getInstance(); //DONE
-    void StringBuffer::push(std::string str); //DONE maybe
+    void push(std::string str); //DONE maybe
     std::string get(int i); //DONE maybe
 
 

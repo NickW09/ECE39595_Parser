@@ -9,7 +9,7 @@
 class InstructionBuffer {
 
 public:
-    ~InstructionBuffer(); //DONE
+    //~InstructionBuffer(); //DONE
     static InstructionBuffer* getInstance(); //DONE
     void AddToBuf(Stmt*); //DONE
 

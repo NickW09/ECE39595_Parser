@@ -38,10 +38,10 @@ void Parser::createStmt(char* instr){
     if(instr == "needs param"){
       
     }
-    else if(instr = "to do"){
+    else if(instr == "to do"){
 
     }
-    else if(instr = "no param"){
+    else if(instr == "no param"){
 
     }
     else{
