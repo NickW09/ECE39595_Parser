@@ -16,35 +16,39 @@ ReadWrite::~ReadWrite(){
     writeFile.close();
 }
     
+//MUST BE FREED
 char* ReadWrite::readLine(){
-    
+    char* line = new char[30];
+    readFile.getline(line, 30, '\n');
+    return line;
 }
+
 char* ReadWrite::readWord(char* curLine){
     
 }
+
 int ReadWrite::readInt(){
     
 }
+
 void ReadWrite::writeLine(){
 
 }
-void ReadWrite::setInputFile(char* txtFile){
-    
-}
+
 std::ifstream ReadWrite::getInputFile(){
     
 }
-void ReadWrite::setOutputFile(char* txtFile){
-    
-}
+
 std::ofstream ReadWrite::getOutputFile(){
     
 }
-void ReadWrite::setValidInputFile(){
-    
+
+void ReadWrite::setValidInputFile(bool _error){
+    validInputFile = _error;
 }
+
 bool ReadWrite::getValidInputFile(){
-    
+    return validInputFile;
 }
 
 // ------------------ Private ------------------

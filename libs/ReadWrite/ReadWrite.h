@@ -12,11 +12,9 @@ public:
     char* readWord(char* curLine); 
     int readInt(); 
     void writeLine();
-    void setInputFile(char* txtFile); 
-    std::ifstream getInputFile(); 
-    void setOutputFile(char* txtFile); 
+    std::ifstream getInputFile();  
     std::ofstream getOutputFile();  
-    void setValidInputFile(); 
+    void setValidInputFile(bool _error); 
     bool getValidInputFile(); 
 
 private:
