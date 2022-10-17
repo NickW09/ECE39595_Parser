@@ -1,9 +1,11 @@
-﻿  ReadWrite.cpp
+﻿  InstructionBuffer.cpp
+  Parser.cpp
+  Pop.cpp
+  Pushscal.cpp
+  Stmt.cpp
+  StmtNone.cpp
+  StmtVar.cpp
+  ToDoBuffer.cpp
   main.cpp
   Generating Code...
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(36): error C4716: 'ReadWrite::getInputFile': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(24): error C4716: 'ReadWrite::readWord': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(27): error C4716: 'ReadWrite::readInt': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(21): error C4716: 'ReadWrite::readLine': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(42): error C4716: 'ReadWrite::getOutputFile': must return a value
-C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\libs\ReadWrite\ReadWrite.cpp(48): error C4716: 'ReadWrite::getValidInputFile': must return a value
+  ECE39595_Parser.vcxproj -> C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\x64\Debug\ECE39595_Parser.exe

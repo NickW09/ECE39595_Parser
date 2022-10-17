@@ -155,6 +155,8 @@
     <ClCompile Include="libs\Stmt\Return.cpp" />
     <ClCompile Include="libs\Stmt\Start.cpp" />
     <ClCompile Include="libs\Stmt\Stmt.cpp" />
+    <ClCompile Include="libs\Stmt\StmtNone.cpp" />
+    <ClCompile Include="libs\Stmt\StmtVar.cpp" />
     <ClCompile Include="libs\Stmt\Swap.cpp" />
     <ClCompile Include="libs\StringBuffer\StringBuffer.cpp" />
     <ClCompile Include="libs\SymbolTable\SymbolTable.cpp" />
@@ -191,6 +193,8 @@
     <ClInclude Include="libs\Stmt\Return.h" />
     <ClInclude Include="libs\Stmt\Start.h" />
     <ClInclude Include="libs\Stmt\Stmt.h" />
+    <ClInclude Include="libs\Stmt\StmtNone.h" />
+    <ClInclude Include="libs\Stmt\StmtVar.h" />
     <ClInclude Include="libs\Stmt\Swap.h" />
     <ClInclude Include="libs\StringBuffer\StringBuffer.h" />
     <ClInclude Include="libs\SymbolTable\SymbolTable.h" />

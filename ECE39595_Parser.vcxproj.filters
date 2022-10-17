@@ -114,6 +114,12 @@
     <ClCompile Include="libs\Stmt\Swap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libs\Stmt\StmtVar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\Stmt\StmtNone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\Stmt\Add.h">
@@ -213,6 +219,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\ToDoBuffer\ToDoBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\Stmt\StmtNone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\Stmt\StmtVar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

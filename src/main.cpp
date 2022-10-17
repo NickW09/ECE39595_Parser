@@ -5,6 +5,8 @@
 #include "..\libs\Stmt\Stmt.h"
 #include "..\libs\StringBuffer\StringBuffer.h"
 #include "..\libs\SymbolTable\SymbolTable.h"
+#include "..\libs\Stmt\Pop.h" //DELETEME
+#include "..\libs\Stmt\Pushscal.h" //DELETEME
 
 int main() {
 
@@ -21,6 +23,17 @@ int main() {
     
     //parse.beginParser(filename);
 
+
+    //TEST//
+    Stmt* stmt1;
+    Stmt* stmt2;
+
+    stmt1 = new Pop();
+    stmt2 = new Pushscal("x");
+    
+    stmt1->print();
+    stmt2->print();
+    //ENDTEST//
     //Virtual machine code goes here
 
 }
