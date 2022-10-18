@@ -36,12 +36,12 @@ void ReadWrite::writeLine(){
 }
 
 std::ifstream ReadWrite::getInputFile(){
-    std::ifstream stream;
+    std::ifstream stream; //temp
     return stream;  //temp
 }
 
 std::ofstream ReadWrite::getOutputFile(){
-    std::ofstream stream;
+    std::ofstream stream; //temp
     return stream;  //temp
 }
 

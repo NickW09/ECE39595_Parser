@@ -3,10 +3,12 @@
 #include <iostream>
 #include "Stmt.h"
 
+//WHOLE THING DONT NEED! (I think)
+
 class StmtVarLen : public Stmt {
 public:
 	StmtVarLen();
-	void print();
+	virtual std::string toPrint();
 protected:
 	std::string var;
 	int len;

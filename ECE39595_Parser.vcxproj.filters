@@ -123,6 +123,12 @@
     <ClCompile Include="libs\Stmt\StmtVarLen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libs\Stmt\StmtInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\Stmt\StmtLab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\Stmt\Add.h">
@@ -231,6 +237,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\StmtVarLen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\Stmt\StmtInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\Stmt\StmtLab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

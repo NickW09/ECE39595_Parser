@@ -5,7 +5,7 @@ StmtVar::StmtVar() {
 	instr = "Var";
 }
 
-//prints out instruction, may be overrided if needed
-void StmtVar::print() {
-	std::cout << instr << " " << var << ", (" << "#" << ")" << std::endl;
+//toPrints out instruction, may be overrided if needed
+std::string StmtVar::toPrint() {
+	return instr + " " + var + ", (" + "#" + ")";
 }

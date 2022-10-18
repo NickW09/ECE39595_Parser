@@ -4,7 +4,6 @@
 #include "StmtVar.h"
 
 class Pushscal : public StmtVar {
-	//using StmtNone::print;
 public:
 	Pushscal(std::string var);
 	virtual void action();

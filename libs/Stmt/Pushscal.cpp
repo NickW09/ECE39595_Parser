@@ -2,7 +2,7 @@
 
 
 Pushscal::Pushscal(std::string _var) {
-	instr = "Pushscal";
+	instr = "PushScalar";
 	opcode = 0x00000020;
 	var = _var;
 }

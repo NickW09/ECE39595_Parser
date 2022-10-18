@@ -6,7 +6,7 @@
 class StmtNone : public Stmt {
 public:
 	StmtNone();
-	void print();
+	virtual std::string toPrint();
 };
 
 #endif /* STMTNONE_H_ */
