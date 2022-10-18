@@ -22,6 +22,8 @@ int SymbolTable::getData(std::string key) {
             return e.second;
         }
     }
+
+    return 0; //TEMP
 }
 
 /*

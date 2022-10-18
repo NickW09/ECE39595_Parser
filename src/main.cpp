@@ -13,22 +13,22 @@
 
 int main() {
 
-    std::cout << "hi" << std::endl;
+    std::cout << "Running." << std::endl;
 
     const char* input = "input.txt";
     const char* output = "output.txt";
 
-    InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
-    SymbolTable* symTable = SymbolTable::getInstance();
-    StringBuffer* strBuf = StringBuffer::getInstance();
+    //InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
+    //SymbolTable* symTable = SymbolTable::getInstance();
+    //StringBuffer* strBuf = StringBuffer::getInstance();
     //to do table
-    Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
+    //Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
     
     //parse.beginParser(filename);
 
 
     //TEST//
-    Stmt* stmt1;
+    /*Stmt* stmt1;
     Stmt* stmt2;
     Stmt* stmt3;
     Stmt* stmt4;
@@ -45,8 +45,17 @@ int main() {
     stmt3->print();
     stmt4->print();
     stmt5->print();
+    //ENDTEST//*/
+
+    //INVALID TEST - NEEDS .txt FILES TO WORK//
+    ReadWrite* readTest = ReadWrite::getInstance(input, output);
+    char* word = readTest->readInstruction();
+    std::cout << word << std::endl;
+    delete word;
     //ENDTEST//
-    
+
+
+   
     //Virtual machine code goes here
 
 }

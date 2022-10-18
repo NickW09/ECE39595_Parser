@@ -1,1 +1,2 @@
 C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\x64\Debug\ECE39595_Parser.exe
+C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\x64\Debug\ECE39595_Parser.exe

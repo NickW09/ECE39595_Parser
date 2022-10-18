@@ -8,8 +8,7 @@ class ReadWrite {
 public:
     static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
     ~ReadWrite(); //DONE
-    char* readLine(); 
-    char* readWord(char* curLine); 
+    char* readInstruction(); //DONE
     int readInt(); 
     void writeLine();
     std::ifstream getInputFile();  
@@ -19,6 +18,10 @@ public:
 
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE
+    char* readLine(); //DONE
+    char* readWord(const char* curLine); //DONE
+    void wordSize(const char* str); //DONE
+    int wordLen;
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE
