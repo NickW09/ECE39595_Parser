@@ -11,7 +11,7 @@ class Parser {
 
 public:
     static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //gets single instance of parser
-    void beginParser(char* txtfile);
+    void beginParser();
     //void setError();
     //bool getError();
 

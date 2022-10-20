@@ -8,11 +8,14 @@ class ReadWrite {
 public:
     static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
     ~ReadWrite(); //DONE
-    char* readInstruction(); //DONE
+    char* readInstruction(); 
     int charToInt(); 
     void writeLine();  
     void setValidInputFile(bool _error); 
-    bool getValidInputFile(); //DONE
+    bool getValidInputFile(); 
+    int getInt();
+    char* getVariable();
+    char* getLabel();
 
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE

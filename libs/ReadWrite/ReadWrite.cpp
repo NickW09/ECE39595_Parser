@@ -80,10 +80,13 @@ char* ReadWrite::readLine(const char* curLine) {
 
     lineSize(curLine); //Finds word size
     char* line = new char[lineLen + 1];
-    for (int i = 0; i < lineLen; i++) {
+    for (int i = 0; i < lineLen /*and curLine[i] != space or newline*/; i++) {
         //std::cout << i << std::endl;
         line[i] = curLine[i];
     }
+    //for (int i = /*past i*/; i < lineLen; i++) {
+        //store new thing
+    //}
     line[lineLen] = '\0';
     std::cout << line << std::endl;
 

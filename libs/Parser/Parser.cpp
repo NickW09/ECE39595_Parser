@@ -20,31 +20,38 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
     return parser; // return singleton
 }
 
-void Parser::beginParser(char* txtfile){
+void Parser::beginParser(){
     printf("Parser Running...");
     //instrbuff must be defined
     //to do must be define
     //string table must be defined
     //symbol table must be defined
-    
-    /*while(!endline){
-        string = ReadWrite.readLine(){}
-        createStmt(string); //creates obj on instruction buff
+    char* instr = readWrite->readInstruction();
 
-    }*/
+    while(instr != nullptr){ //checking if end of file reached
+        instr = readWrite->readInstruction();
+        createStmt(instr); //creates obj on instruction buff
+
+    }
 }
 
 void Parser::createStmt(char* instr){
     //lots of cases
 
-    if(instr == "needs param"){
-      
+    if(instr == "needs int param"){
+        //int _int = readWrite->getInt();
+    }
+    else if (instr == "needs variable param") {
+        //char* var = readWrite->getVariable();
+    }
+    else if (instr == "needs label param") {
+        //char* label = readWrite->getLabel();
     }
     else if(instr == "to do"){
-
+        //add to the to-do list
     }
     else if(instr == "no param"){
-
+        //
     }
     else{
         //setError to 1
