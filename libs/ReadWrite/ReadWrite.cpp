@@ -16,29 +16,23 @@ ReadWrite::~ReadWrite(){
     writeFile.close();
 }
     
+//Returns nullptr when nothing left to read
 char* ReadWrite::readInstruction() {
-    char* line = readLine();
-    char* instr = readWord(line);
-    delete line;
+    char* line = grabLine();
+    char* instr = nullptr;
+    if (line != nullptr) { //If not at end of file
+        instr = readLine(line);
+        delete line;
+    }
     return instr;
 }
 
-int ReadWrite::readInt(){
+int ReadWrite::charToInt(){
     return 0; //temp
 }
 
 void ReadWrite::writeLine(){
 
-}
-
-std::ifstream ReadWrite::getInputFile(){
-    std::ifstream stream; //temp
-    return stream;  //temp
-}
-
-std::ofstream ReadWrite::getOutputFile(){
-    std::ofstream stream; //temp
-    return stream;  //temp
 }
 
 void ReadWrite::setValidInputFile(bool _error){
@@ -53,45 +47,57 @@ bool ReadWrite::getValidInputFile(){
 
 ReadWrite* ReadWrite::readwrite = nullptr;
 
+//Constructor
 ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     readFile.open(inputfile); //Open input file
     writeFile.open(outputfile); //Open output file
-    validInputFile = true;
-    wordLen = 0;
+    if (!readFile) { //Check if input file opened properly
+        std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
+        validInputFile = false;
+    }
+    else {
+        validInputFile = true;
+    }
+    lineLen = 0; //Initializing word length
 }
 
 //MUST BE FREED
-char* ReadWrite::readLine() {
-    char* line = new char[100];
-    readFile.getline(line, 100, '\n');
+char* ReadWrite::grabLine() {
+    char* line = nullptr;
+    if (!readFile.eof()) { //Check if end of file
+        line = new char[100];
+        readFile.getline(line, 100, '\n');
+    }
+    else {
+        std::cout << "End of File (EOF)." << std::endl;
+    }
     return line;
 }
 
 //MUST BE FREED
-char* ReadWrite::readWord(const char* curLine) {
-    std::cout << "Word search." << std::endl;
+char* ReadWrite::readLine(const char* curLine) {
+    std::cout << "Line read: ";
 
-    wordSize(curLine); //Finds word size
-    char* word = new char[wordLen + 1];
-    for (int i = 0; i < wordLen; i++) {
-        std::cout << i << std::endl;
-        word[i] = curLine[i];
+    lineSize(curLine); //Finds word size
+    char* line = new char[lineLen + 1];
+    for (int i = 0; i < lineLen; i++) {
+        //std::cout << i << std::endl;
+        line[i] = curLine[i];
     }
-    word[wordLen] = '\0';
+    line[lineLen] = '\0';
+    std::cout << line << std::endl;
 
-    return word; //temp
+    return line; 
 }
 
-void ReadWrite::wordSize(const char* str) {
-    std::cout << "Word size = ";
+void ReadWrite::lineSize(const char* str) {
     char ch = str[0];
     int size = 0;
-    for (size = 0; ch != 32; size++) {
+    for (size = 0; (ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 32; size++) { //this checks for a valid character input
         ch = str[size];
     }
-
-    wordLen = size - 1; //temp
-    std::cout << wordLen << std::endl;
+    std::cout << size << std::endl;
+    lineLen = size == 0 ? 0 : (size - 1); //temp
 }
 
 

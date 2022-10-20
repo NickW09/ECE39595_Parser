@@ -9,19 +9,17 @@ public:
     static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
     ~ReadWrite(); //DONE
     char* readInstruction(); //DONE
-    int readInt(); 
-    void writeLine();
-    std::ifstream getInputFile();  
-    std::ofstream getOutputFile();  
+    int charToInt(); 
+    void writeLine();  
     void setValidInputFile(bool _error); 
-    bool getValidInputFile(); 
+    bool getValidInputFile(); //DONE
 
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE
-    char* readLine(); //DONE
-    char* readWord(const char* curLine); //DONE
-    void wordSize(const char* str); //DONE
-    int wordLen;
+    char* grabLine(); //DONE
+    char* readLine(const char* curLine); //DONE
+    void lineSize(const char* str); //DONE
+    int lineLen;
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE

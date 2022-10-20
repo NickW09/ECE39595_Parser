@@ -12,11 +12,15 @@
 #include "..\libs\Stmt\GoSubLabel.h" //DELETEME
 
 int main() {
+    
+    // --------------------------- Set-up ---------------------------
 
     std::cout << "Running." << std::endl;
 
     const char* input = "input.txt";
     const char* output = "output.txt";
+
+    // ------------------------- Parser Code -------------------------
 
     //InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
     //SymbolTable* symTable = SymbolTable::getInstance();
@@ -26,6 +30,9 @@ int main() {
     
     //parse.beginParser(filename);
 
+    // ------------------- Virtual Machine Code ----------------------
+
+    // -------------------------- Testing ----------------------------
 
     //TEST//
     /*Stmt* stmt1;
@@ -47,15 +54,16 @@ int main() {
     stmt5->print();
     //ENDTEST//*/
 
-    //INVALID TEST - NEEDS .txt FILES TO WORK//
+    /*//TEST - NEEDS .txt FILES TO WORK//
     ReadWrite* readTest = ReadWrite::getInstance(input, output);
-    char* word = readTest->readInstruction();
-    std::cout << word << std::endl;
-    delete word;
-    //ENDTEST//
-
-
-   
-    //Virtual machine code goes here
+    char* word0 = readTest->readInstruction();
+    delete word0;
+    char* word1 = readTest->readInstruction();
+    delete word1;
+    char* word2 = readTest->readInstruction();
+    delete word2;
+    char* word3 = readTest->readInstruction();
+    delete word3;
+    //ENDTEST//*/
 
 }
