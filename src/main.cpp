@@ -80,7 +80,10 @@ int main() {
         //entering into subroutine
         symTable->setSubLv(symTable->getSubLv() + 1);
         symTable->push("myVar", TableEntry(100, 101));
+        symTable->push("Z", TableEntry(6, 7));
+        symTable->push("Apple", TableEntry(8, 9));
         std::cout << symTable->getEntry("myVar").getLength() << std::endl;
+
         //exiting subrouting
         symTable->setSubLv(symTable->getSubLv() - 1);
         std::cout << symTable->getEntry("myVar").getLength() << std::endl;
