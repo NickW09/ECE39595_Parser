@@ -12,14 +12,15 @@ class SymbolTable {
 public:
 
     ~SymbolTable(); 
-    static SymbolTable* getInstance(); //DONE
-    int getData(std::string key);
-    TableEntry getEntry(std::string key);
-    void push(std::string str, TableEntry te);
-    int getSubLv();
-    void setSubLv(int lv);
+    static SymbolTable* getInstance();          //DONE
+    int getData(std::string key);               //DONE
+    TableEntry getEntry(std::string key);       //DONE
+    void push(std::string str, TableEntry te);  //DONE
+    void exitSubroutine();                      //DONE
+    int getSubLv();                             //DONE
+    void setSubLv(int lv);                      //DONE
 private:
-    SymbolTable();
+    SymbolTable();                              //DONE
     static SymbolTable* symTab; 
     std::map<std::pair<int, std::string>, TableEntry> map;
     int idx;

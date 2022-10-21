@@ -28,22 +28,36 @@ void SymbolTable::push(std::string str, TableEntry te) {
 
 //returns table entry at last key match
 TableEntry SymbolTable::getEntry(std::string key) {
-    TableEntry ret = TableEntry(-99, -99);
-    for (int i = 0; i <= subLv; i++) {
-        for (auto const& e : map) {
-            if (e.first == std::pair<int, std::string>(i, key)) {
-                ret = e.second;
-            }
+    std::map<std::pair<int, std::string>, TableEntry>::iterator it;
+    for (int i = subLv; i >= 0; i--) {
+        it = map.find(std::pair<int, std::string>(i, key));
+        if (it != map.end()) {
+            return it->second;
         }
     }
-    
-    return ret; 
+    return TableEntry(-99, -99);
 }
 
+void SymbolTable::exitSubroutine() {
+    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
+    while (it != map.end()) {
+        if ((*it).first.first == subLv) {
+            break;
+        }
+        it++;
+    }
+    map.erase(it, map.end());
+ 
+    subLv--;
+}
+
+
+//return the current subroutine level
 int SymbolTable::getSubLv() { 
     return subLv;
 }
 
+//set the current subroutine level
 void SymbolTable::setSubLv(int lv) {
     subLv = lv;
 }
