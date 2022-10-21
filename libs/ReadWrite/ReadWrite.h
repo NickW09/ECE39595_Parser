@@ -20,9 +20,10 @@ public:
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE
     char* grabLine(); //DONE
-    char* readLine(const char* curLine); //DONE
+    char* readLine(const char* curLine); 
     void lineSize(const char* str); //DONE
-    int lineLen;
+    int instrLen;
+    int paramLen;
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE

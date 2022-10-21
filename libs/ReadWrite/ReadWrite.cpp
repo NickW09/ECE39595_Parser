@@ -4,6 +4,8 @@
 
 // ------------------ Public ------------------
 
+// Checks if ReadWrite object has been defined or not, if not, it
+// gets defined.
 ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile){
     if(readwrite == nullptr){
         readwrite = new ReadWrite(inputfile, outputfile);
@@ -11,12 +13,15 @@ ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile)
     return readwrite;
 }
 
+// Deconstructor
 ReadWrite::~ReadWrite(){
     readFile.close();
     writeFile.close();
 }
+
     
-//Returns nullptr when nothing left to read
+// Returns the next instruction read from readWrite.
+// Returns nullptr when end of file is reached.
 char* ReadWrite::readInstruction() {
     char* line = grabLine();
     char* instr = nullptr;
@@ -27,17 +32,21 @@ char* ReadWrite::readInstruction() {
     return instr;
 }
 
+
 int ReadWrite::charToInt(){
     return 0; //temp
 }
+
 
 void ReadWrite::writeLine(){
 
 }
 
+
 void ReadWrite::setValidInputFile(bool _error){
     validInputFile = _error;
 }
+
 
 bool ReadWrite::getValidInputFile(){
     return validInputFile;
@@ -46,6 +55,7 @@ bool ReadWrite::getValidInputFile(){
 // ------------------ Private ------------------
 
 ReadWrite* ReadWrite::readwrite = nullptr;
+
 
 //Constructor
 ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
@@ -58,10 +68,13 @@ ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     else {
         validInputFile = true;
     }
-    lineLen = 0; //Initializing word length
+    instrLen = 0; //Initializing instr length
+    paramLen = 0; //Initializing param length
 }
 
-//MUST BE FREED
+
+// Grabs the next line to read from readFile, and returns the line.
+// The returned char* must be freed after use.
 char* ReadWrite::grabLine() {
     char* line = nullptr;
     if (!readFile.eof()) { //Check if end of file
@@ -76,31 +89,57 @@ char* ReadWrite::grabLine() {
 
 //MUST BE FREED
 char* ReadWrite::readLine(const char* curLine) {
-    std::cout << "Line read: ";
+    std::cout << "Line read:" << std::endl;
 
     lineSize(curLine); //Finds word size
-    char* line = new char[lineLen + 1];
-    for (int i = 0; i < lineLen /*and curLine[i] != space or newline*/; i++) {
-        //std::cout << i << std::endl;
-        line[i] = curLine[i];
-    }
-    //for (int i = /*past i*/; i < lineLen; i++) {
-        //store new thing
-    //}
-    line[lineLen] = '\0';
-    std::cout << line << std::endl;
+    char* instr = new char[instrLen + 1];
+    char* param;
 
-    return line; 
+    int count = 0;
+    for (count; (count < instrLen); count++) { //Storing instruction
+        instr[count] = curLine[count];
+    }
+    count++;
+
+    instr[instrLen] = '\0';
+    std::cout << "instr: " << instr << std::endl;
+
+    if (paramLen > 0) { //Check if param is available
+        param = new char[paramLen + 1];
+        for (count; count <= (instrLen + paramLen); count++) { //Storing param
+            param[count - instrLen - 1] = curLine[count];
+        }
+        param[paramLen] = '\0';
+        std::cout << "param: " << param << std::endl;
+    }
+
+    //set param as int, variable, label
+
+    return instr;
 }
 
 void ReadWrite::lineSize(const char* str) {
     char ch = str[0];
-    int size = 0;
-    for (size = 0; (ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 32; size++) { //this checks for a valid character input
-        ch = str[size];
+    int count = 0;
+
+    for (count; (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'); count++) { //this checks for a valid character input
+        ch = str[count];
     }
-    std::cout << size << std::endl;
-    lineLen = size == 0 ? 0 : (size - 1); //temp
+    count--;
+    instrLen = count;
+
+    if (str[count] == 32 /*space*/) {
+        count++;
+        ch = str[count];
+        for (count; (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9'); count++) {
+            ch = str[count];
+        }
+    }
+   
+    paramLen = count - instrLen - 2;
+
+    //std::cout << "instrLen: " << instrLen << std::endl;
+    //std::cout << "paramLen: " << paramLen << std::endl;
 }
 
 

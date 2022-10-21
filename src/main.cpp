@@ -54,7 +54,7 @@ int main() {
     stmt5->print();
     //ENDTEST//*/
 
-    /*//TEST - NEEDS .txt FILES TO WORK//
+    //TEST - NEEDS .txt FILES TO WORK//
     ReadWrite* readTest = ReadWrite::getInstance(input, output);
     char* word0 = readTest->readInstruction();
     delete word0;
@@ -64,6 +64,6 @@ int main() {
     delete word2;
     char* word3 = readTest->readInstruction();
     delete word3;
-    //ENDTEST//*/
+    //ENDTEST//
 
 }
