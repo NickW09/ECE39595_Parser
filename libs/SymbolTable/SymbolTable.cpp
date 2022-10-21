@@ -8,9 +8,9 @@ SymbolTable::SymbolTable(){
     idx = 0;
     
     subLv = 0; //depth into subroutines, 0 for main and 1 for subroutine
+    subLength = 0; //not supported for nested subroutines
 
-    //need a way to mark subroutines - David 
-    //(look at parser example)
+
     //parserActions.pdf pg 2 : "we do not have nested subroutines or functions"
 }
 
@@ -23,6 +23,10 @@ SymbolTable* SymbolTable::getInstance(){
 }
 
 void SymbolTable::push(std::string str, TableEntry te) {
+    if (subLv == 1) {
+        subLength += te.getLength();
+    }
+    
     map.insert(std::pair<std::pair<int, std::string>, TableEntry>(std::pair<int, std::string>(subLv, str), te));
 }
 
@@ -38,6 +42,7 @@ TableEntry SymbolTable::getEntry(std::string key) {
     return TableEntry(-99, -99);
 }
 
+//erases subroutine symbols and decrements the subLv
 void SymbolTable::exitSubroutine() {
     std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
     while (it != map.end()) {
@@ -49,6 +54,7 @@ void SymbolTable::exitSubroutine() {
     map.erase(it, map.end());
  
     subLv--;
+    subLength = 0; //BE CAREFUL THAT YOU DONT ERASE IT BEFORE YOU NEED IT
 }
 
 
@@ -60,4 +66,12 @@ int SymbolTable::getSubLv() {
 //set the current subroutine level
 void SymbolTable::setSubLv(int lv) {
     subLv = lv;
+}
+
+int SymbolTable::getNumEntries() {
+    return map.size();
+}
+
+int SymbolTable::getSubLength() {
+    return subLength;
 }

@@ -9,8 +9,11 @@ class StringBuffer {
 
 public:
     static StringBuffer* getInstance(); //DONE
-    void push(std::string str); //DONE maybe
-    std::string get(int i); //DONE maybe
+    void push(std::string str);         //DONE
+    std::string get(int i);             //DONE
+    void pop();                         //DONE
+    void remove(int i);                 //DONE
+    int getSize();                      //DONE
 
 
 private:
