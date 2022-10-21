@@ -163,6 +163,7 @@
     <ClCompile Include="libs\Stmt\Swap.cpp" />
     <ClCompile Include="libs\StringBuffer\StringBuffer.cpp" />
     <ClCompile Include="libs\SymbolTable\SymbolTable.cpp" />
+    <ClCompile Include="libs\TableEntry\TableEntry.cpp" />
     <ClCompile Include="libs\ToDoBuffer\ToDoBuffer.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -204,6 +205,7 @@
     <ClInclude Include="libs\Stmt\Swap.h" />
     <ClInclude Include="libs\StringBuffer\StringBuffer.h" />
     <ClInclude Include="libs\SymbolTable\SymbolTable.h" />
+    <ClInclude Include="libs\TableEntry\TableEntry.h" />
     <ClInclude Include="libs\ToDoBuffer\ToDoBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

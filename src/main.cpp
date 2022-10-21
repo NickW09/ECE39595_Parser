@@ -10,6 +10,7 @@
 #include "..\libs\Stmt\Pushi.h" //DELETEME
 #include "..\libs\Stmt\GoSub.h" //DELETEME
 #include "..\libs\Stmt\GoSubLabel.h" //DELETEME
+#include "..\libs\TableEntry\TableEntry.h" //DELETEME
 
 int main() {
     
@@ -22,8 +23,8 @@ int main() {
 
     // ------------------------- Parser Code -------------------------
 
-    //InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
-    //SymbolTable* symTable = SymbolTable::getInstance();
+    InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
+    SymbolTable* symTable = SymbolTable::getInstance();
     //StringBuffer* strBuf = StringBuffer::getInstance();
     //to do table
     //Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
@@ -34,7 +35,7 @@ int main() {
 
     // -------------------------- Testing ----------------------------
 
-    //TEST//
+    //TEST - abstract stmt classes//
     /*Stmt* stmt1;
     Stmt* stmt2;
     Stmt* stmt3;
@@ -54,7 +55,7 @@ int main() {
     stmt5->print();
     //ENDTEST//*/
 
-    //TEST - NEEDS .txt FILES TO WORK//
+    /*//TEST - NEEDS .txt FILES TO WORK//
     ReadWrite* readTest = ReadWrite::getInstance(input, output);
     char* word0 = readTest->readInstruction();
     delete word0;
@@ -64,6 +65,21 @@ int main() {
     delete word2;
     char* word3 = readTest->readInstruction();
     delete word3;
-    //ENDTEST//
+    //ENDTEST//*/
 
+    //TEST - Table Entry / Symbol Table//
+    TableEntry* te = new TableEntry(3, 5);
+    std::cout << te->getLength() << std::endl;
+    std::cout << te->getLocation() << std::endl;
+    te->setLength(2);
+    std::cout << te->getLength() << std::endl;
+    
+    symTable->push("myVar", *te);
+    symTable->push("Z", TableEntry(8, 22));
+    std::cout << symTable->getEntry("Z").getLocation() << std::endl;
+    symTable->push("myVar", TableEntry(100, 101));
+    std::cout << symTable->getEntry("myVar").getLength() << std::endl;
+
+
+    //ENDTEST//
 }
