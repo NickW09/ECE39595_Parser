@@ -25,7 +25,7 @@ int main() {
 
     InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
     SymbolTable* symTable = SymbolTable::getInstance();
-    //StringBuffer* strBuf = StringBuffer::getInstance();
+    StringBuffer* strBuf = StringBuffer::getInstance();
     //to do table
     //Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
     
@@ -67,7 +67,7 @@ int main() {
     delete word3;
     //ENDTEST//*/
 
-    //TEST - Table Entry / Symbol Table//
+    /*//TEST - Table Entry / Symbol Table//
         TableEntry* te = new TableEntry(3, 5);
         std::cout << te->getLength() << std::endl;
         std::cout << te->getLocation() << std::endl;
@@ -90,5 +90,20 @@ int main() {
         symTable->exitSubroutine();
         std::cout << symTable->getEntry("myVar").getLength() << std::endl;
         std::cout << "Size at after subroutine: " << symTable->getNumEntries() << std::endl;
+    *///ENDTEST//
+
+    //TEST - String Buffer//
+    strBuf->push("Hello");
+    strBuf->push(" World");
+    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+    strBuf->push(" World1");
+    strBuf->push(" World2");
+    strBuf->push(" World3");
+    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+    strBuf->remove(1);
+    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+    strBuf->pop();
+    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
     //ENDTEST//
+
 }
