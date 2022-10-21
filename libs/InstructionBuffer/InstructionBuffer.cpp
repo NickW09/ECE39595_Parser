@@ -12,8 +12,23 @@ InstructionBuffer* InstructionBuffer::getInstance(){
     return instrBuf;
 }
 
-void InstructionBuffer::AddToBuf(Stmt* statement){
+void InstructionBuffer::push(Stmt* statement){
     vec.push_back(statement);
+}
+
+//return number of statements in buffer
+int InstructionBuffer::getBufSize() {
+    return vec.size();
+}
+
+//return statement at specified index
+Stmt* InstructionBuffer::getStmt(int i) {
+    return vec[i];
+}
+
+//remove instruction at specified index
+void InstructionBuffer::remove(int i) {
+    vec.erase(vec.begin() + i);
 }
 
 //------------ Private ------------

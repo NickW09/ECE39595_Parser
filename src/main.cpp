@@ -35,8 +35,8 @@ int main() {
 
     // -------------------------- Testing ----------------------------
 
-    //TEST - abstract stmt classes//
-        /*Stmt* stmt1;
+    /*//TEST - abstract stmt classes//
+        Stmt* stmt1;
         Stmt* stmt2;
         Stmt* stmt3;
         Stmt* stmt4;
@@ -92,18 +92,32 @@ int main() {
         std::cout << "Size at after subroutine: " << symTable->getNumEntries() << std::endl;
     *///ENDTEST//
 
-    //TEST - String Buffer//
-    strBuf->push("Hello");
-    strBuf->push(" World");
-    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-    strBuf->push(" World1");
-    strBuf->push(" World2");
-    strBuf->push(" World3");
-    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-    strBuf->remove(1);
-    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-    strBuf->pop();
-    std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-    //ENDTEST//
+    /*//TEST - String Buffer//
+        strBuf->push("Hello");
+        strBuf->push(" World");
+        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+        strBuf->push(" World1");
+        strBuf->push(" World2");
+        strBuf->push(" World3");
+        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+        strBuf->remove(1);
+        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+        strBuf->pop();
+        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
+    *///ENDTEST//
+
+    /*//TEST - Instruction Buffer//
+    instrBuf->push(new Pushscal("x"));
+    instrBuf->push(new Pop());
+    instrBuf->push(new Pushi(5));
+    for (int i = 0; i < instrBuf->getBufSize(); i++) {
+        std::cout << instrBuf->getStmt(i)->toPrint() << std::endl;
+    }
+    instrBuf->remove(1);
+    std::cout << std::endl;
+    for (int i = 0; i < instrBuf->getBufSize(); i++) {
+        std::cout << instrBuf->getStmt(i)->toPrint() << std::endl;
+    }
+    *///ENDTEST
 
 }

@@ -9,14 +9,17 @@
 class InstructionBuffer {
 
 public:
-    //~InstructionBuffer(); //DONE
-    static InstructionBuffer* getInstance(); //DONE
-    void AddToBuf(Stmt*); //DONE
+    //~InstructionBuffer();                     //DONE
+    static InstructionBuffer* getInstance();    //DONE
+    void push(Stmt*);                           //DONE
+    int getBufSize();                           //DONE
+    Stmt* getStmt(int idx);                     //DONE
+    void remove(int idx);                       //DONE
 
 private:
-    static InstructionBuffer* instrBuf; //DONE
-    InstructionBuffer(); //DONE
-    std::vector<Stmt*> vec; //DONE
+    static InstructionBuffer* instrBuf;         //DONE
+    InstructionBuffer();                        //DONE
+    std::vector<Stmt*> vec;                     //DONE
 
 };
 
