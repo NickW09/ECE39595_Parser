@@ -19,12 +19,15 @@ public:
     void exitSubroutine();                      //DONE
     int getSubLv();                             //DONE
     void setSubLv(int lv);                      //DONE
+    int getNumEntries();                        //DONE
+    int getSubLength();                         //DONE
 private:
     SymbolTable();                              //DONE
     static SymbolTable* symTab; 
     std::map<std::pair<int, std::string>, TableEntry> map;
     int idx;
     int subLv;
+    int subLength;
 };
 
 #endif /* SYMBOLTABLE_H_ */

@@ -77,15 +77,18 @@ int main() {
         symTable->push("myVar", *te);
         symTable->push("Z", TableEntry(8, 22));
         std::cout << symTable->getEntry("Z").getLocation() << std::endl;
+        std::cout << "Size bf subroutine: " << symTable->getNumEntries() << std::endl;
         //entering into subroutine
         symTable->setSubLv(symTable->getSubLv() + 1);
         symTable->push("myVar", TableEntry(100, 101));
         symTable->push("Z", TableEntry(6, 7));
-        symTable->push("Apple", TableEntry(8, 9));
+        symTable->push("Apple", TableEntry(20, 21));
         std::cout << symTable->getEntry("myVar").getLength() << std::endl;
-
+        std::cout << "Size at end of subroutine: " << symTable->getNumEntries() << std::endl;
         //exiting subrouting
-        symTable->setSubLv(symTable->getSubLv() - 1);
+        std::cout << symTable->getSubLength() << std::endl;
+        symTable->exitSubroutine();
         std::cout << symTable->getEntry("myVar").getLength() << std::endl;
+        std::cout << "Size at after subroutine: " << symTable->getNumEntries() << std::endl;
     //ENDTEST//
 }
