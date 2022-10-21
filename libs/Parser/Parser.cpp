@@ -22,60 +22,65 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
 
 void Parser::beginParser(){
     printf("Parser Running...");
-    //instrbuff must be defined
-    //to do must be define
-    //string table must be defined
-    //symbol table must be defined
-    char* instr = readWrite->readInstruction();
 
+    char* instr = readWrite->readInstruction(); //Grab initial instruction
     while(instr != nullptr){ //checking if end of file reached
         instr = readWrite->readInstruction();
-        createStmt(instr); //creates obj on instruction buff
+        int type = determineType(instr);
 
     }
 }
 
 void Parser::createStmt(char* instr){
     //lots of cases
+    //convert char* to all lower case
 
-    if(instr == "needs int param"){
-        //int _int = readWrite->getInt();
+    
+}
+
+int Parser::determineType(char* instruction)
+{
+    readWrite->toLowerCase(instruction);
+    std::string instr(instruction);
+    int type; 
+
+    //needs int param
+    if (instr == "declarr" || instr == "pushi") {
+        type = INT_PARAM;
     }
-    else if (instr == "needs variable param") {
-        //char* var = readWrite->getVariable();
+    //needs variable param
+    else if (instr == "declscal" || instr == "pushscal" || instr == "pusharr" || instr == "popscal" || instr == "poparr") {
+        type = VAR_PARAM;
     }
-    else if (instr == "needs label param") {
-        //char* label = readWrite->getLabel();
+    //needs label param
+    else if (instr == "label" || instr == "gosublabel" || instr == "jump" || instr == "jumpzero" || instr == "jumpnzero" || instr == "gosub") {
+        type = LABEL_PARAM;
     }
-    else if(instr == "to do"){
+    //to do
+    //else if (instr == ) {
         //add to the to-do list
+        // type = TO_DO;
+    //}
+    //no param
+    else if (instr == "start" || instr == "exit" || instr == "return" || instr == "pop" || instr == "dup" || instr == "swap" 
+        || instr == "add" || instr == "negate" || instr == "mul" || instr == "div" || instr == "printtos" || instr == "prints") {
+        type = NO_PARAM;
     }
-    else if(instr == "no param"){
-        //
+    //end
+    else if (instr == "end") {
+        type = END;
     }
-    else{
+    else {
         //setError to 1
+        type = 0;
         printf("Unsupported Instruction. Parser terminated.");
     }
 
-    /*instr == needs param
-        stmt_imm_param* obj;
-        case 1:
-            obj = 
-        case 2:
-            obj = 
-        obj.param = num;
-        inst_BUFF.Push(obj)
-    elif instr == to do:
-        stmt_to_do_param* obj;
-        case 1:
-            //  maybe necessary instead of "stmt_to_do_param* obj" is "stmt_jump* obj";
-            obj =
-        case 2:
-            obj = 
-        todobuff.push(obj)
-        instrbuff.push(obj)
-    elif print:
-        stmt_no_param* obj;
-        stringbuff.push(something)*/
+    return type;
 }
+
+void Parser::determineAction(char* instr) {
+
+}
+
+

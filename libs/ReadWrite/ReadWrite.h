@@ -16,6 +16,7 @@ public:
     int getInt();
     char* getVariable();
     char* getLabel();
+    void toLowerCase(char* string);
 
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE

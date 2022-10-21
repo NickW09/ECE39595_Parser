@@ -121,6 +121,7 @@ char* ReadWrite::readLine(const char* curLine) {
     return instr;
 }
 
+//Filters and returns valid instruction and additional parameters
 void ReadWrite::lineSize(const char* str) {
     char ch = str[0];
     int count = 0;
@@ -143,6 +144,15 @@ void ReadWrite::lineSize(const char* str) {
 
     //std::cout << "instrLen: " << instrLen << std::endl;
     //std::cout << "paramLen: " << paramLen << std::endl;
+}
+
+//take in a filtered instruction
+void ReadWrite::toLowerCase(char* string) {
+    for (int i = 0; string[i] != '\n'; i++) {
+        if ((string[i] >= 'A') && (string[i] <= 'Z')) {
+            string[i] = string[i] + 32;
+        }
+    }
 }
 
 
