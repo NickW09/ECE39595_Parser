@@ -16,11 +16,14 @@ public:
     int getData(std::string key);
     TableEntry getEntry(std::string key);
     void push(std::string str, TableEntry te);
+    int getSubLv();
+    void setSubLv(int lv);
 private:
     SymbolTable();
     static SymbolTable* symTab; 
-    std::map<std::string, TableEntry> map;
+    std::map<std::pair<int, std::string>, TableEntry> map;
     int idx;
+    int subLv;
 };
 
 #endif /* SYMBOLTABLE_H_ */
