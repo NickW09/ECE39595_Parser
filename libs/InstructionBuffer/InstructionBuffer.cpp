@@ -17,8 +17,8 @@ void InstructionBuffer::push(Stmt* statement){
 }
 
 //return number of statements in buffer
-int InstructionBuffer::getBufSize() {
-    return vec.size();
+int InstructionBuffer::getSize() {
+    return (int) vec.size();
 }
 
 //return statement at specified index

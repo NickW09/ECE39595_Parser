@@ -1,9 +1,9 @@
 #include "ToDoBuffer.h"
 
 // ------------ Public ------------
-ToDoBuffer::~ToDoBuffer(){
+/*ToDoBuffer::~ToDoBuffer() {
 
-}
+}*/
 
 ToDoBuffer* ToDoBuffer::getInstance(){
     if(todoBuf == nullptr) {
@@ -12,10 +12,24 @@ ToDoBuffer* ToDoBuffer::getInstance(){
     return todoBuf;
 }
 
-void ToDoBuffer::AddToBuf(Stmt* statement){
+void ToDoBuffer::push(Stmt* statement) {
     vec.push_back(statement);
 }
 
+//return number of statements in buffer
+int ToDoBuffer::getSize() {
+    return (int) vec.size();
+}
+
+//return statement at specified index
+Stmt* ToDoBuffer::getStmt(int i) {
+    return vec[i];
+}
+
+//remove instruction at specified index
+void ToDoBuffer::remove(int i) {
+    vec.erase(vec.begin() + i);
+}
 //------------ Private ------------
 
 ToDoBuffer* ToDoBuffer::todoBuf = nullptr;

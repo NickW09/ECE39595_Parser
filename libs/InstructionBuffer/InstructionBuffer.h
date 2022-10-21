@@ -12,7 +12,7 @@ public:
     //~InstructionBuffer();                     //DONE
     static InstructionBuffer* getInstance();    //DONE
     void push(Stmt*);                           //DONE
-    int getBufSize();                           //DONE
+    int getSize();                              //DONE
     Stmt* getStmt(int idx);                     //DONE
     void remove(int idx);                       //DONE
 

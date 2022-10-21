@@ -7,14 +7,17 @@
 class ToDoBuffer{
 
 public:
-    ~ToDoBuffer(); //DONE
-    static ToDoBuffer* getInstance(); //DONE
-    void AddToBuf(Stmt*); //DONE
+    //~ToDoBuffer();                    //DONE
+    static ToDoBuffer* getInstance();   //DONE
+    void push(Stmt*);                   //DONE
+    int getSize();                      //DONE
+    Stmt* getStmt(int idx);             //DONE
+    void remove(int idx);               //DONE
 
 private:
-    static ToDoBuffer* todoBuf; //DONE
-    ToDoBuffer(); //DONE
-    std::vector<Stmt*> vec; //DONE
+    static ToDoBuffer* todoBuf;         //DONE
+    ToDoBuffer();                       //DONE
+    std::vector<Stmt*> vec;             //DONE
 
 };
 
