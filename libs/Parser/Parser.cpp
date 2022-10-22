@@ -39,44 +39,44 @@ void Parser::createStmt(char* instr){
     Stmt* stmt = nullptr;
     int errFlag = 0;
 
-    std::string inst()
+    std::string inst(instr);
 
     switch (type) {
         case (NO_PARAM): 
-            if (instr == "start") {
+            if (inst == "start") {
                 stmt = new Start();
             }
-            else if (instr == "exit") {
+            else if (inst == "exit") {
                 stmt = new Exit();
             }
-            else if (instr == "return") {
+            else if (inst == "return") {
                 stmt = new Return();
             }
-            else if (instr == "pop") {
+            else if (inst == "pop") {
                 stmt = new Pop();
             }
-            else if (instr == "dup") {
+            else if (inst == "dup") {
                 stmt = new Dup();
             }
-            else if (instr == "swap") {
+            else if (inst == "swap") {
                 stmt = new Swap();
             }
-            else if (instr == "add") {
+            else if (inst == "add") {
                 stmt = new Add();
             }
-            else if (instr == "negate") {
+            else if (inst == "negate") {
                 stmt = new Negate();
             }
-            else if (instr == "mul") {
+            else if (inst == "mul") {
                 stmt = new Mul();
             }
-            else if (instr == "div") {
+            else if (inst == "div") {
                 stmt = new Div();
             }
-            else if (instr == "printtos") {
+            else if (inst == "printtos") {
                 stmt = new Printtos();
             }
-            else if (instr == "prints") {
+            else if (inst == "prints") {
                 stmt = new Prints();
             }
             else {
@@ -86,22 +86,22 @@ void Parser::createStmt(char* instr){
             break;
         case (LABEL_PARAM):
             std::string label = ReadWrite.getLabel();
-            if (instr == "label") {
+            if (inst == "label") {
                 stmt = new Label(label);
             }
-            else if (instr == "gosublabel") {
+            else if (inst == "gosublabel") {
                 stmt = new GoSubLabel(label);
             }
-            else if (instr == "jump") {
+            else if (inst == "jump") {
                 stmt = new Jump(label);
             }
-            else if (instr == "jumpzero") {
+            else if (inst == "jumpzero") {
                 stmt = new JumpZero(label);
             }
-            else if (instr == "jumpnzero") {
+            else if (inst == "jumpnzero") {
                 stmt = new JumpNZero(label);
             }
-            else if (instr == "gosub") {
+            else if (inst == "gosub") {
                 stmt = new GoSub(label);
             }
             else {
