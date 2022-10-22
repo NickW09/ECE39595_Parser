@@ -8,27 +8,28 @@ class ReadWrite {
 public:
     static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
     ~ReadWrite(); //DONE
-    char* readInstruction(); 
-    int charToInt(); 
-    void writeLine();  
-    void setValidInputFile(bool _error); 
-    bool getValidInputFile(); 
-    int getInt();
-    char* getVariable();
-    char* getLabel();
-    void toLowerCase(char* string);
+    std::string getInstruction();
+    std::string getParam1();
+    std::string getParam2();
+    void updateInstruction(); 
+    void writeLine(std::string str);
+    //int charToInt(); 
+    //void writeLine();  
+    //int getInt();
+    //std::string getVariable();
+    //char* getLabel();
 
 private:
     ReadWrite(const char* inputfile, const char* outputfile); //DONE
-    char* grabLine(); //DONE
-    char* readLine(const char* curLine); 
-    void lineSize(const char* str); //DONE
-    int instrLen;
-    int paramLen;
+    std::string instruction;
+    std::string param1;
+    std::string param2;
+    std::string grabLine(); //DONE
+    void readLine(std::string curLine);
+    void toLowerCase(std::string& str);
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE
-    bool validInputFile; //DONE
 };
 
 #endif /* READWRITE_H_ */

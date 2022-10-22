@@ -55,17 +55,15 @@ int main() {
         stmt5->print();
     //ENDTEST//*/
 
-    /*//TEST - NEEDS .txt FILES TO WORK//
+    //TEST - NEEDS .txt FILES TO WORK//
     ReadWrite* readTest = ReadWrite::getInstance(input, output);
-    char* word0 = readTest->readInstruction();
-    delete word0;
-    char* word1 = readTest->readInstruction();
-    delete word1;
-    char* word2 = readTest->readInstruction();
-    delete word2;
-    char* word3 = readTest->readInstruction();
-    delete word3;
-    //ENDTEST//*/
+    readTest->updateInstruction();
+    std::cout << readTest->getInstruction() << std::endl;
+    std::cout << readTest->getParam1() << std::endl;
+    std::cout << readTest->getParam2() << std::endl;
+
+    
+    //ENDTEST//
 
     /*//TEST - Table Entry / Symbol Table//
         TableEntry* te = new TableEntry(3, 5);

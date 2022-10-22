@@ -2,9 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-//TEST HI DAVID
-//Test again
-
 // ------------------ Public ------------------
 
 // Checks if ReadWrite object has been defined or not, if not, it
@@ -16,44 +13,43 @@ ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile)
     return readwrite;
 }
 
+
 // Deconstructor
 ReadWrite::~ReadWrite(){
     readFile.close();
     writeFile.close();
 }
 
-    
-// Returns the next instruction read from readWrite.
-// Returns nullptr when end of file is reached.
-char* ReadWrite::readInstruction() {
-    char* line = grabLine();
-    char* instr = nullptr;
-    if (line != nullptr) { //If not at end of file
-        instr = readLine(line);
-        delete line;
+// Updates instruction and parameters in ReadWrite class both the cases and babymonoprop m boo love zoo butbuut not my very
+void ReadWrite::updateInstruction() {
+    std::string line = grabLine();
+    if (!line.empty()) { //If not at end of file
+        instruction.clear();
+        param1.clear();
+        param2.clear();
+        readLine(line);
     }
-    return instr;
+    else {
+        std::cout << "Invalid Input.txt" << std::endl;
+    }
 }
 
-
-int ReadWrite::charToInt(){
-    return 0; //temp
+void ReadWrite::writeLine(std::string str){
+    writeFile << str;
 }
 
-
-void ReadWrite::writeLine(){
-
+std::string ReadWrite::getInstruction() {
+    return instruction;
 }
 
-
-void ReadWrite::setValidInputFile(bool _error){
-    validInputFile = _error;
+std::string ReadWrite::getParam1() {
+    return param1;
 }
 
-
-bool ReadWrite::getValidInputFile(){
-    return validInputFile;
+std::string ReadWrite::getParam2() {
+    return param2;
 }
+
 
 // ------------------ Private ------------------
 
@@ -66,23 +62,18 @@ ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     writeFile.open(outputfile); //Open output file
     if (!readFile) { //Check if input file opened properly
         std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
-        validInputFile = false;
     }
-    else {
-        validInputFile = true;
-    }
-    instrLen = 0; //Initializing instr length
-    paramLen = 0; //Initializing param length
 }
 
 
 // Grabs the next line to read from readFile, and returns the line.
-// The returned char* must be freed after use.
-char* ReadWrite::grabLine() {
-    char* line = nullptr;
+std::string ReadWrite::grabLine() {
+    std::string line;
     if (!readFile.eof()) { //Check if end of file
-        line = new char[100];
-        readFile.getline(line, 100, '\n');
+        char* line_char = new char[100];
+        readFile.getline(line_char, 100, '\n');
+        line = line_char;
+        delete[] line_char;
     }
     else {
         std::cout << "End of File (EOF)." << std::endl;
@@ -90,67 +81,44 @@ char* ReadWrite::grabLine() {
     return line;
 }
 
-//MUST BE FREED
-char* ReadWrite::readLine(const char* curLine) {
+//Reads most recent line grabbed, and sets the instruction
+//and parameters from the line.
+void ReadWrite::readLine(std::string curLine) {
     std::cout << "Line read:" << std::endl;
 
-    lineSize(curLine); //Finds word size
-    char* instr = new char[instrLen + 1];
-    char* param;
+    std::string::iterator ch;
+    ch = curLine.begin();
 
-    int count = 0;
-    for (count; (count < instrLen); count++) { //Storing instruction
-        instr[count] = curLine[count];
+    for (int i = 0; ch != curLine.end() && *ch != 32; i++) {
+        instruction.append(sizeof(char), *ch);
+        ch++;
     }
-    count++;
+    
+    ch = (ch == curLine.end()) ? ch + 0 : ch + 1;
 
-    instr[instrLen] = '\0';
-    std::cout << "instr: " << instr << std::endl;
-
-    if (paramLen > 0) { //Check if param is available
-        param = new char[paramLen + 1];
-        for (count; count <= (instrLen + paramLen); count++) { //Storing param
-            param[count - instrLen - 1] = curLine[count];
-        }
-        param[paramLen] = '\0';
-        std::cout << "param: " << param << std::endl;
+    for (int i = 0; ch != curLine.end() && *ch != 32; i++) {
+        param1.append(sizeof(char), *ch);
+        ch++;
     }
 
-    //set param as int, variable, label
+    ch = (ch == curLine.end()) ? ch + 0 : ch + 1;
 
-    return instr;
+    for (int i = 0; ch != curLine.end() && *ch != 32; i++) {
+        param2.append(sizeof(char), *ch);
+        ch++;
+    }
+
+    toLowerCase(instruction);
 }
 
-//Filters and returns valid instruction and additional parameters
-void ReadWrite::lineSize(const char* str) {
-    char ch = str[0];
-    int count = 0;
+//Converts a string to all lower case
+void ReadWrite::toLowerCase(std::string& string) {
 
-    for (count; (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'); count++) { //this checks for a valid character input
-        ch = str[count];
-    }
-    count--;
-    instrLen = count;
+    std::string::iterator ch;
 
-    if (str[count] == 32 /*space*/) {
-        count++;
-        ch = str[count];
-        for (count; (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9'); count++) {
-            ch = str[count];
-        }
-    }
-   
-    paramLen = count - instrLen - 2;
-
-    //std::cout << "instrLen: " << instrLen << std::endl;
-    //std::cout << "paramLen: " << paramLen << std::endl;
-}
-
-//take in a filtered instruction
-void ReadWrite::toLowerCase(char* string) {
-    for (int i = 0; string[i] != '\n'; i++) {
-        if ((string[i] >= 'A') && (string[i] <= 'Z')) {
-            string[i] = string[i] + 32;
+    for (ch = string.begin(); ch != string.end(); ch++) {
+        if ((*ch >= 'A') && (*ch <= 'Z')) {
+            *ch = (*ch) + 32;
         }
     }
 }
