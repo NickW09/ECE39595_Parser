@@ -37,12 +37,77 @@ void Parser::createStmt(char* instr){
     readWrite->toLowerCase(instr);
     int type = determineType(instr);
     Stmt* stmt = nullptr;
+    int errFlag = 0;
+
+    std::string inst()
 
     switch (type) {
         case (NO_PARAM): 
-            if
-                break;
+            if (instr == "start") {
+                stmt = new Start();
+            }
+            else if (instr == "exit") {
+                stmt = new Exit();
+            }
+            else if (instr == "return") {
+                stmt = new Return();
+            }
+            else if (instr == "pop") {
+                stmt = new Pop();
+            }
+            else if (instr == "dup") {
+                stmt = new Dup();
+            }
+            else if (instr == "swap") {
+                stmt = new Swap();
+            }
+            else if (instr == "add") {
+                stmt = new Add();
+            }
+            else if (instr == "negate") {
+                stmt = new Negate();
+            }
+            else if (instr == "mul") {
+                stmt = new Mul();
+            }
+            else if (instr == "div") {
+                stmt = new Div();
+            }
+            else if (instr == "printtos") {
+                stmt = new Printtos();
+            }
+            else if (instr == "prints") {
+                stmt = new Prints();
+            }
+            else {
+                errFlag = 1;
+            }
 
+            break;
+        case (LABEL_PARAM):
+            std::string label = ReadWrite.getLabel();
+            if (instr == "label") {
+                stmt = new Label(label);
+            }
+            else if (instr == "gosublabel") {
+                stmt = new GoSubLabel(label);
+            }
+            else if (instr == "jump") {
+                stmt = new Jump(label);
+            }
+            else if (instr == "jumpzero") {
+                stmt = new JumpZero(label);
+            }
+            else if (instr == "jumpnzero") {
+                stmt = new JumpNZero(label);
+            }
+            else if (instr == "gosub") {
+                stmt = new GoSub(label);
+            }
+            else {
+                errFlag = 1;
+            }
+            break;
     }
 
     if (stmt != nullptr) {
@@ -57,7 +122,7 @@ int Parser::determineType(char* instruction)
     int type; 
 
     //needs int param
-    if (instr == "declarr" || instr == "pushi") {
+    if (/*instr == "declarr" || */instr == "pushi") {
         type = INT_PARAM;
     }
     //needs variable param
