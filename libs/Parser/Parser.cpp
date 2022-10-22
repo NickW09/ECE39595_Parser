@@ -34,8 +34,20 @@ void Parser::beginParser(){
 void Parser::createStmt(char* instr){
     //lots of cases
     //convert char* to all lower case
+    readWrite->toLowerCase(instr);
+    int type = determineType(instr);
+    Stmt* stmt = nullptr;
 
-    
+    switch (type) {
+        case (NO_PARAM): 
+            if
+                break;
+
+    }
+
+    if (stmt != nullptr) {
+        instrBuf.push(stmt);
+    }
 }
 
 int Parser::determineType(char* instruction)
