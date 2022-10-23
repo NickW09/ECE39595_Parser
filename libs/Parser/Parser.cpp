@@ -155,10 +155,10 @@ void Parser::createStmt(int type, std::string instr) {
             label = readWrite->getLabel();
             if (inst == "label") {            
                 //symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
-                symTable->push(label, TableEntry(symTable->getCurrLoc(), 0));
+                symTable->push(label, TableEntry(instrBuf->getSize() + 1, 0));
             }
             else if (inst == "gosublabel") {  
-                symTable->push(label, TableEntry(symTable->getCurrLoc(), 0));
+                symTable->push(label, TableEntry(instrBuf->getSize() + 1, 0));
                 stmt = new GoSubLabel(label);
                 symTable->enterSubroutine();
             }

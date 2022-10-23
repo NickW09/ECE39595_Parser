@@ -16,7 +16,6 @@ public:
 	virtual std::string toString3();
 protected:
 	std::string lab;
-	int loc;
 	int depth; //subroutine depth
 };
 
