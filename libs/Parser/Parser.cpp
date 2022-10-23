@@ -52,6 +52,8 @@ int Parser::beginParser(){
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
     
     std::cout << std::endl;
+    printStringBuf();
+    std::cout << std::endl;
     printInstrBuf();
     std::cout << std::endl;
     printSymTable();
@@ -242,6 +244,12 @@ void Parser::createStmt(int type, std::string instr) {
 
 void Parser::determineAction(std::string instr) {
 
+}
+
+void Parser::printStringBuf() {
+    for (int i = 0; i < strBuf->getSize(); i++) {
+        readWrite->writeLine(strBuf->get(i));
+    }
 }
 
 void Parser::printInstrBuf() {

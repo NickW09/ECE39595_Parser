@@ -55,6 +55,7 @@ private:
     void createStmt(int type, std::string str);
     int determineType(std::string str);
     void determineAction(std::string str);
+    void printStringBuf();
     void printInstrBuf();
     void printSymTable();
     InstructionBuffer* instrBuf;
