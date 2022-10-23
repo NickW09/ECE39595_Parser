@@ -6,19 +6,16 @@
 #include "..\ReadWrite\ReadWrite.h"
 #include "..\StringBuffer\StringBuffer.h"
 #include "..\SymbolTable\SymbolTable.h"
+#include "..\ToDoBuffer\ToDoBuffer.h"
 #include "..\Stmt\Add.h"
-#include "..\Stmt\Declarr.h"
-#include "..\Stmt\Declscal.h"
 #include "..\Stmt\Div.h"
 #include "..\Stmt\Dup.h"
-#include "..\Stmt\End.h"
 #include "..\Stmt\Exit.h"
 #include "..\Stmt\GoSub.h"
 #include "..\Stmt\GoSubLabel.h"
 #include "..\Stmt\Jump.h"
 #include "..\Stmt\JumpNZero.h"
 #include "..\Stmt\JumpZero.h"
-#include "..\Stmt\Label.h"
 #include "..\Stmt\Mul.h"
 #include "..\Stmt\Negate.h"
 #include "..\Stmt\Pop.h"
@@ -46,17 +43,18 @@
 class Parser {
 
 public:
-    static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //gets single instance of parser
+    static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //gets single instance of parser
     void beginParser();
     //void setError();
     //bool getError();
 
 private:
-    Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //private parser constructor used by getInstance
+    Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //private parser constructor used by getInstance
     static Parser* parser;  //unique instantiation of parser
     void createStmt(int type, std::string str);
     int determineType(std::string str);
     void determineAction(std::string str);
+    void printInstrBuf();
     InstructionBuffer* instrBuf;
     SymbolTable* symTable;
     StringBuffer* strBuf;

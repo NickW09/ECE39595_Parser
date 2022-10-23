@@ -3,7 +3,7 @@
 Parser* Parser::parser = nullptr; 
 
 //Constructor
-Parser::Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf) {
+Parser::Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf) {
     instrBuf = _instrBuf; //Set instructionBuffer
     symTable = _symTable; //Set symbolTable
     strBuf = _strBuf; //Set stringBuffer
@@ -12,9 +12,9 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
 }
 
 //Singelton 
-Parser* Parser::getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf){
+Parser* Parser::getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf){
     if(parser == nullptr) {
-        parser = new Parser(inputFileName, outputFileName, _instrBuf, _symTable, _strBuf); // makes unique instantiation
+        parser = new Parser(inputFileName, outputFileName, _instrBuf, _symTable, _strBuf, _todoBuf); // makes unique instantiation
     }
     return parser; // return singleton
 }
@@ -94,31 +94,32 @@ void Parser::createStmt(int type, std::string instr) {
             }
             break;
 
-        case (VAR_PARAM):
+        case (INT_VAR_PARAM):
             std::string var = readWrite->getVariable();
             if (inst == "declarr") {
                 //stmt = new Declarr(var);
             }
+            break;
 
-        case (INT_VAR_PARAM):
+        case (VAR_PARAM):
             std::string var;
-            int integer = readWrite->getIntVar(var);
+            var = readWrite->getVariable();
             if (inst == "declscal") {
                 //stmt = new Declscal();
             }
             else if (inst == "pushscal") {
-                stmt = new Pushscal();
+                stmt = new Pushscal(var);
             }
             else if (inst == "pusharr") {
-                stmt = new Pusharr();
+                stmt = new Pusharr(var);
             }
             else if (inst == "popscal") {
-                stmt = new Popscal();
+                stmt = new Popscal(var);
             }
             else if (inst == "poparr") {
-                stmt = new Poparr();
+                stmt = new Poparr(var);
             }
-
+            break;
         case (LABEL_PARAM):
             std::string label = readWrite->getLabel();
             if (inst == "label") {
@@ -201,4 +202,9 @@ void Parser::determineAction(std::string instr) {
 
 }
 
+void Parser::printInstrBuf() {
+    for (int i = 0; i < instrBuf->getSize(); i++) {
+        readWrite->writeLine(instrBuf->getStmt(i)->toString());
+    }
+}
 
