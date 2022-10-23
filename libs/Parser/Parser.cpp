@@ -97,26 +97,26 @@ void Parser::createStmt(int type, std::string instr) {
     case (VAR_PARAM):
         std::string var = readWrite->getVariable();
         if (inst == "declarr") {
-
+            stmt = new Declarr();
         }
 
     case (INT_VAR_PARAM):
         std::string var;
         int integer = readWrite->getIntVar(var);
         if (inst == "declscal") {
-
+            stmt = new Declscal();
         }
         else if (inst == "pushscal") {
-
+            stmt = new Pushscal();
         }
         else if (inst == "pusharr") {
-
+            stmt = new Pusharr();
         }
         else if (inst == "popscal") {
-
+            stmt = new Popscal();
         }
         else if (inst == "poparr") {
-
+            stmt = new Poparr();
         }
 
     case (LABEL_PARAM):
