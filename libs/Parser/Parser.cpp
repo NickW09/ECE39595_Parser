@@ -127,22 +127,23 @@ void Parser::createStmt(int type, std::string instr) {
             break;
         case (LABEL_PARAM):
             label = readWrite->getLabel();
-            if (inst == "label") {
-                //stmt = new Label(label);
+            if (inst == "label") {            //DONE
+                symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
             }
-            else if (inst == "gosublabel") {
+            else if (inst == "gosublabel") {  //DONE
+                symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
                 stmt = new GoSubLabel(label);
             }
-            else if (inst == "jump") {
+            else if (inst == "jump") {        //DONE
                 stmt = new Jump(label);
             }
-            else if (inst == "jumpzero") {
+            else if (inst == "jumpzero") {    //DONE
                 stmt = new JumpZero(label);
             }
-            else if (inst == "jumpnzero") {
+            else if (inst == "jumpnzero") {   //DONE
                 stmt = new JumpNZero(label);
             }
-            else if (inst == "gosub") {
+            else if (inst == "gosub") {       //DONE
                 stmt = new GoSub(label);
             }
             else {
@@ -152,10 +153,10 @@ void Parser::createStmt(int type, std::string instr) {
 
 
         case (NO_PARAM):
-            if (inst == "start") {
+            if (inst == "start") {         //DONE
                 stmt = new Start();
             }
-            else if (inst == "exit") {
+            else if (inst == "exit") {      //DONE
                 stmt = new Exit();
             }
             else if (inst == "return") {
