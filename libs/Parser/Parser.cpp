@@ -87,108 +87,108 @@ void Parser::createStmt(int type, std::string instr) {
 
     switch (type) {
 
-    case (INT_PARAM):
-        int integer = readWrite->getInt();
-        if (inst == "pushi") {
-            stmt = new Pushi();
-        }
-        break;
+        case (INT_PARAM):
+            int integer = readWrite->getInt();
+            if (inst == "pushi") {
+                stmt = new Pushi();
+            }
+            break;
 
-    case (VAR_PARAM):
-        std::string var = readWrite->getVariable();
-        if (inst == "declarr") {
-            stmt = new Declarr();
-        }
+        case (VAR_PARAM):
+            std::string var = readWrite->getVariable();
+            if (inst == "declarr") {
+                stmt = new Declarr();
+            }
 
-    case (INT_VAR_PARAM):
-        std::string var;
-        int integer = readWrite->getIntVar(var);
-        if (inst == "declscal") {
-            stmt = new Declscal();
-        }
-        else if (inst == "pushscal") {
-            stmt = new Pushscal();
-        }
-        else if (inst == "pusharr") {
-            stmt = new Pusharr();
-        }
-        else if (inst == "popscal") {
-            stmt = new Popscal();
-        }
-        else if (inst == "poparr") {
-            stmt = new Poparr();
-        }
+        case (INT_VAR_PARAM):
+            std::string var;
+            int integer = readWrite->getIntVar(var);
+            if (inst == "declscal") {
+                stmt = new Declscal();
+            }
+            else if (inst == "pushscal") {
+                stmt = new Pushscal();
+            }
+            else if (inst == "pusharr") {
+                stmt = new Pusharr();
+            }
+            else if (inst == "popscal") {
+                stmt = new Popscal();
+            }
+            else if (inst == "poparr") {
+                stmt = new Poparr();
+            }
 
-    case (LABEL_PARAM):
-        std::string label = readWrite->getLabel();
-        if (inst == "label") {
-            stmt = new Label(label);
-        }
-        else if (inst == "gosublabel") {
-            stmt = new GoSubLabel(label);
-        }
-        else if (inst == "jump") {
-            stmt = new Jump(label);
-        }
-        else if (inst == "jumpzero") {
-            stmt = new JumpZero(label);
-        }
-        else if (inst == "jumpnzero") {
-            stmt = new JumpNZero(label);
-        }
-        else if (inst == "gosub") {
-            stmt = new GoSub(label);
-        }
-        else {
-            errFlag = 1;
-        }
-        break;
+        case (LABEL_PARAM):
+            std::string label = readWrite->getLabel();
+            if (inst == "label") {
+                stmt = new Label(label);
+            }
+            else if (inst == "gosublabel") {
+                stmt = new GoSubLabel(label);
+            }
+            else if (inst == "jump") {
+                stmt = new Jump(label);
+            }
+            else if (inst == "jumpzero") {
+                stmt = new JumpZero(label);
+            }
+            else if (inst == "jumpnzero") {
+                stmt = new JumpNZero(label);
+            }
+            else if (inst == "gosub") {
+                stmt = new GoSub(label);
+            }
+            else {
+                errFlag = 1;
+            }
+            break;
 
 
-    case (NO_PARAM):
-        if (inst == "start") {
-            stmt = new Start();
-        }
-        else if (inst == "exit") {
-            stmt = new Exit();
-        }
-        else if (inst == "return") {
-            stmt = new Return();
-        }
-        else if (inst == "pop") {
-            stmt = new Pop();
-        }
-        else if (inst == "dup") {
-            stmt = new Dup();
-        }
-        else if (inst == "swap") {
-            stmt = new Swap();
-        }
-        else if (inst == "add") {
-            stmt = new Add();
-        }
-        else if (inst == "negate") {
-            stmt = new Negate();
-        }
-        else if (inst == "mul") {
-            stmt = new Mul();
-        }
-        else if (inst == "div") {
-            stmt = new Div();
-        }
-        else if (inst == "printtos") {
-            stmt = new Printtos();
-        }
-        else if (inst == "prints") {
-            stmt = new Prints();
-        }
-        else {
-            errFlag = 1;
-        }
-        break;
+        case (NO_PARAM):
+            if (inst == "start") {
+                stmt = new Start();
+            }
+            else if (inst == "exit") {
+                stmt = new Exit();
+            }
+            else if (inst == "return") {
+                stmt = new Return();
+            }
+            else if (inst == "pop") {
+                stmt = new Pop();
+            }
+            else if (inst == "dup") {
+                stmt = new Dup();
+            }
+            else if (inst == "swap") {
+                stmt = new Swap();
+            }
+            else if (inst == "add") {
+                stmt = new Add();
+            }
+            else if (inst == "negate") {
+                stmt = new Negate();
+            }
+            else if (inst == "mul") {
+                stmt = new Mul();
+            }
+            else if (inst == "div") {
+                stmt = new Div();
+            }
+            else if (inst == "printtos") {
+                stmt = new Printtos();
+            }
+            else if (inst == "prints") {
+                stmt = new Prints();
+            }
+            else {
+                errFlag = 1;
+            }
+            break;
 
-    case (END):
-
+        case (END):
+            //do something?
 
     }
 
