@@ -1,7 +1,7 @@
 #include "GoSubLabel.h"
 
 GoSubLabel::GoSubLabel(std::string _lab) {
-	instr = "OP_ENTER_SUBROUTINE";
+	instr = "GoSubLabel";
 	opcode = 0x00000015; //OP_ENTER_SUBROUTINE
 	lab = _lab;
 }

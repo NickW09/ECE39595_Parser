@@ -38,6 +38,8 @@ int main() {
     Debug::test("test_inputs/9Pop", "output.txt", "test_outputs/9Pop.pout");
     Debug::test("test_inputs/10Swap", "output.txt", "test_outputs/10Swap.pout");
     Debug::test("test_inputs/11Label", "output.txt", "test_outputs/11Label.pout");
+    Debug::test("test_inputs/12Jump", "output.txt", "test_outputs/12Jump.pout");
+    Debug::test("test_inputs/13SimpleGoSub_GoSubLabel_Return", "output.txt", "test_outputs/13SimpleGoSub_GoSubLabel_Return.pout");
 
     Debug::score();
 }

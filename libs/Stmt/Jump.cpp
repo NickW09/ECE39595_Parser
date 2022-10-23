@@ -1,7 +1,7 @@
 #include "Jump.h"
 
 Jump::Jump(std::string _lab, int _depth) {
-	instr = "OP_JUMP";
+	instr = "Jump";
 	opcode = 0x00000010;
 	lab = _lab;
 	depth = _depth;
