@@ -42,5 +42,5 @@ void StringBuffer::remove(int i) {
 
 //return size of string buffer
 int StringBuffer::getSize() {
-    return vec.size();
+    return (int) vec.size();
 }
