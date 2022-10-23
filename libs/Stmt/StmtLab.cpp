@@ -31,12 +31,12 @@ std::string StmtLab::getVar() {
 
 //toStrings out instruction, may be overrided if needed
 std::string StmtLab::toString() {
-	return instr + " " + lab + " " + std::to_string(loc);
+	return instr + " " + std::to_string(loc);
 }
 
 //function to be used for overriding purposes (for example see GoSubLabel)
 std::string StmtLab::toString2() {
-	return instr + " " + lab;
+	return instr + " " + std::to_string(loc);
 }
 
 //function to be used for overriding purposes (for example see GoSubLabel)

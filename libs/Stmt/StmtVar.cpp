@@ -7,5 +7,6 @@ StmtVar::StmtVar() {
 
 //toStrings out instruction, may be overrided if needed
 std::string StmtVar::toString() {
-	return instr + " " + var + ", (" + std::to_string(loc) + ")";
+	//return instr + " " + var + ", (" + std::to_string(loc) + ")";
+	return instr + " "  + std::to_string(loc);
 }
