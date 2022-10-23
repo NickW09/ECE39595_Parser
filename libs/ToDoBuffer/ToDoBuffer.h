@@ -2,22 +2,22 @@
 #define TODOBUFFER_H_
 #include <iostream>
 #include <vector>
-#include "..\Stmt\StmtLab.h"
+#include "..\Stmt\StmtToDo.h"
 
 class ToDoBuffer{
 
 public:
     ~ToDoBuffer();                      //DONE
     static ToDoBuffer* getInstance();   //DONE
-    void push(StmtLab*);                //DONE
+    void push(StmtToDo*);                //DONE
     int getSize();                      //DONE
-    StmtLab* getStmt(int idx);          //DONE
+    StmtToDo* getStmt(int idx);          //DONE
     void remove(int idx);               //DONE
 
 private:
     static ToDoBuffer* todoBuf;         //DONE
     ToDoBuffer();                       //DONE
-    std::vector<StmtLab*> vec;          //DONE
+    std::vector<StmtToDo*> vec;          //DONE
 
 };
 

@@ -13,7 +13,7 @@ ToDoBuffer* ToDoBuffer::getInstance(){
     return todoBuf;
 }
 
-void ToDoBuffer::push(StmtLab* statement) {
+void ToDoBuffer::push(StmtToDo* statement) {
     vec.push_back(statement);
 }
 
@@ -23,7 +23,7 @@ int ToDoBuffer::getSize() {
 }
 
 //return statement at specified index
-StmtLab* ToDoBuffer::getStmt(int i) {
+StmtToDo* ToDoBuffer::getStmt(int i) {
     return vec[i];
 }
 

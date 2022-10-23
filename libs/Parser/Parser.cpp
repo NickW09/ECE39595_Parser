@@ -154,10 +154,11 @@ void Parser::createStmt(int type, std::string instr) {
         case (LABEL_PARAM):
             label = readWrite->getLabel();
             if (inst == "label") {            
-                symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
+                //symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
+                symTable->push(label, TableEntry(symTable->getCurrLoc(), 0));
             }
             else if (inst == "gosublabel") {  
-                symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
+                symTable->push(label, TableEntry(symTable->getCurrLoc(), 0));
                 stmt = new GoSubLabel(label);
                 symTable->enterSubroutine();
             }
@@ -231,7 +232,7 @@ void Parser::createStmt(int type, std::string instr) {
         case (END):         //FILLS IN INFO
             start->setLength(symTable->getTotalLength());
             for (int i = 0; i < toDoBuf->getSize(); i++) {
-                toDoBuf->getStmt(i)->setLoc(symTable->getData(toDoBuf->getStmt(i)->getLabel()).getLocation());
+                toDoBuf->getStmt(i)->setLoc(symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation());
             }
 
             break;
