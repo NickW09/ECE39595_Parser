@@ -7,6 +7,10 @@ class Start : public StmtNone {
 public:
 	Start();
 	virtual void action();
+	virtual std::string toString();
+	void setLength(int _length);
+private:
+	int length;
 };
 
 #endif /* START_H_ */

@@ -22,6 +22,7 @@ public:
     int getSubLength();                         //DONE
     int getCurrLoc();                           //DONE
     std::pair<std::pair<int, std::string>, TableEntry> getEntryAtIndex(int i); //DONE
+    int getTotalLength();                       //DONE
 private:
     SymbolTable();                              //DONE
     static SymbolTable* symTab; 

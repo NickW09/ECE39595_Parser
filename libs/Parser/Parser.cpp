@@ -31,7 +31,7 @@ int Parser::beginParser(){
     //readWrite->updateInstruction(); //Grab initial instruction
     std::string instr;// = readWrite->getInstruction();
     bool end = false;
-    while (!(readWrite->getEOF())) { //checking if end of file reached
+    while (!(readWrite->getEOF() || readWrite->getError())) { //checking if end of file reached
         readWrite->updateInstruction();
         instr = readWrite->getInstruction();
         if (!instr.empty()) {
@@ -101,6 +101,8 @@ void Parser::createStmt(int type, std::string instr) {
     Stmt* stmt = nullptr;
     int errFlag = 0;
 
+    Start* start = nullptr;
+    
     std::string inst(instr);
 
     int integer;
@@ -182,7 +184,8 @@ void Parser::createStmt(int type, std::string instr) {
 
         case (NO_PARAM):
             if (inst == "start") { 
-                stmt = new Start();
+                start = new Start();
+                stmt = start;
                 toDoBuf->push(stmt);
             }
             else if (inst == "exit") {      
@@ -221,7 +224,11 @@ void Parser::createStmt(int type, std::string instr) {
             break;
 
         case (END):         //FILLS IN INFO
-            
+            /*for (int i = 0; i < toDoBuf->getSize(); i++) {
+                //toDoBuf->getStmt().set
+            }*/
+            start->setLength(symTable->getTotalLength());
+
             break;
     }
 

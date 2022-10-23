@@ -90,3 +90,15 @@ std::pair<std::pair<int, std::string>, TableEntry> SymbolTable::getEntryAtIndex(
         it++;
     return *(it);
 }
+
+int SymbolTable::getTotalLength() {
+    int length = 0;
+
+    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
+    while (it != map.end()) {
+        length += (*it).second.getLength();
+        it++;
+    }
+
+    return length;
+}
