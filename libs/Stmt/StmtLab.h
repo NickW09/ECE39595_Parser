@@ -8,6 +8,7 @@ public:
 	StmtLab();
 	virtual void setLoc(int i);
 	virtual void setDepth(int i);
+	virtual int getDepth();
 	virtual std::string toString();
 	virtual std::string toString2();
 	virtual std::string toString3();

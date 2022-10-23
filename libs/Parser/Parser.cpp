@@ -242,7 +242,7 @@ void Parser::printInstrBuf() {
 
 void Parser::printSymTable() {
     std::pair<std::pair<int, std::string>, TableEntry> symChunk;
-    readWrite->writeLine("Symbol Table:");
+    std::cout << "Symbol Table:" << std::endl;
     for (int i = 0; i < symTable->getNumEntries(); i++) {
         symChunk = symTable->getEntryAtIndex(i);
         

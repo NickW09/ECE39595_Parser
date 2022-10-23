@@ -16,6 +16,11 @@ void StmtLab::setDepth(int _depth) {
 	depth = _depth;
 }
 
+//gets the depth in subroutines the statement is in
+int StmtLab::getDepth() {
+	return depth;
+}
+
 //toStrings out instruction, may be overrided if needed
 std::string StmtLab::toString() {
 	return instr + " " + lab + ", (" + std::to_string(loc) + ")";
