@@ -1,11 +1,11 @@
 #ifndef PRINTS_H_
 #define PRINTS_H_
 #include <iostream>
-#include "StmtNone.h"
+#include "StmtInt.h"
 
-class Prints : public StmtNone {
+class Prints : public StmtInt {
 public:
-	Prints();
+	Prints(int i);
 	virtual void action();
 };
 

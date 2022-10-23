@@ -55,6 +55,7 @@ private:
     int determineType(std::string str);
     void determineAction(std::string str);
     void printInstrBuf();
+    void printSymTable();
     InstructionBuffer* instrBuf;
     SymbolTable* symTable;
     StringBuffer* strBuf;

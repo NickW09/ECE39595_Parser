@@ -124,6 +124,11 @@ void Parser::createStmt(int type, std::string instr) {
             else if (inst == "poparr") {
                 stmt = new Poparr(var);
             }
+            else if (inst == "prints") {      //DONE
+                strBuf->push(var);
+                //technically int param
+                stmt = new Prints(strBuf->getSize());
+            }
             break;
         case (LABEL_PARAM):
             label = readWrite->getLabel();
@@ -159,35 +164,32 @@ void Parser::createStmt(int type, std::string instr) {
             else if (inst == "exit") {      //DONE
                 stmt = new Exit();
             }
-            else if (inst == "return") {
+            else if (inst == "return") {    //DONE
                 stmt = new Return();
             }
-            else if (inst == "pop") {
+            else if (inst == "pop") {       //DONE
                 stmt = new Pop();
             }
-            else if (inst == "dup") {
+            else if (inst == "dup") {       //DONE
                 stmt = new Dup();
             }
-            else if (inst == "swap") {
+            else if (inst == "swap") {      //DONE
                 stmt = new Swap();
             }
-            else if (inst == "add") {
+            else if (inst == "add") {       //DONE
                 stmt = new Add();
             }
-            else if (inst == "negate") {
+            else if (inst == "negate") {    //DONE
                 stmt = new Negate();
             }
-            else if (inst == "mul") {
+            else if (inst == "mul") {       //DONE
                 stmt = new Mul();
             }
-            else if (inst == "div") {
+            else if (inst == "div") {       //DONE
                 stmt = new Div();
             }
-            else if (inst == "printtos") {
+            else if (inst == "printtos") {  //DONE
                 stmt = new Printtos();
-            }
-            else if (inst == "prints") {
-                stmt = new Prints();
             }
             else {
                 errFlag = 1;
@@ -214,3 +216,8 @@ void Parser::printInstrBuf() {
     }
 }
 
+void Parser::printSymTable() {
+   /* for (int i = 0; i < symTable->getSize(); i++) {
+        readWrite->writeLine(instrBuf->getStmt(i)->toString());
+    }*/
+}
