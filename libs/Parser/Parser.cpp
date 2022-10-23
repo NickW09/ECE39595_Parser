@@ -216,3 +216,8 @@ void Parser::printInstrBuf() {
     }
 }
 
+void Parser::printSymTable() {
+   /* for (int i = 0; i < symTable->getSize(); i++) {
+        readWrite->writeLine(instrBuf->getStmt(i)->toString());
+    }*/
+}
