@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="libs\Debug\Debug.cpp" />
     <ClCompile Include="libs\InstructionBuffer\InstructionBuffer.cpp" />
     <ClCompile Include="libs\Parser\Parser.cpp" />
     <ClCompile Include="libs\ReadWrite\ReadWrite.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="libs\Debug\Debug.h" />
     <ClInclude Include="libs\InstructionBuffer\InstructionBuffer.h" />
     <ClInclude Include="libs\Parser\Parser.h" />
     <ClInclude Include="libs\ReadWrite\ReadWrite.h" />

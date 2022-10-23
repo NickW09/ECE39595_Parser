@@ -6,12 +6,6 @@
 #include "..\libs\StringBuffer\StringBuffer.h"
 #include "..\libs\ToDoBuffer\ToDoBuffer.h"
 #include "..\libs\SymbolTable\SymbolTable.h"
-#include "..\libs\Stmt\Pop.h" //DELETEME
-#include "..\libs\Stmt\Pushscal.h" //DELETEME
-#include "..\libs\Stmt\Pushi.h" //DELETEME
-#include "..\libs\Stmt\GoSub.h" //DELETEME
-#include "..\libs\Stmt\GoSubLabel.h" //DELETEME
-#include "..\libs\TableEntry\TableEntry.h" //DELETEME
 
 int main() {
     
@@ -19,7 +13,7 @@ int main() {
 
     std::cout << "Running." << std::endl;
 
-    const char* input = "input.txt";
+    const char* input = "test_inputs/input.txt";
     const char* output = "output.txt";
 
     // ------------------------- Parser Code -------------------------
