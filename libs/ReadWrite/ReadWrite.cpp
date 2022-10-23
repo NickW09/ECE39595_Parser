@@ -1,6 +1,4 @@
 #include "ReadWrite.h"
-#include <fstream>
-#include <iostream>
 
 // ------------------ Public ------------------
 
@@ -23,14 +21,14 @@ ReadWrite::~ReadWrite(){
 // Updates instruction and parameters in ReadWrite class both the cases and babymonoprop m boo love zoo butbuut not my very
 void ReadWrite::updateInstruction() {
     std::string line = grabLine();
-    if (!line.empty()) { //If not at end of file
+    if (!endOfFile) { //If not at end of file
         instruction.clear();
         param1.clear();
         param2.clear();
         readLine(line);
     }
     else {
-        std::cout << "Invalid Input.txt" << std::endl;
+        std::cout << "EOF detected." << std::endl;
     }
 }
 
@@ -50,6 +48,47 @@ std::string ReadWrite::getParam2() {
     return param2;
 }
 
+bool ReadWrite::getEOF() {
+    return endOfFile;
+}
+
+int ReadWrite::stringToInt(std::string str) {
+    return(std::stoi(str));
+}
+
+int ReadWrite::getInt() {
+    if (!param2.empty() || param1.empty()) {
+        errorFlag = true;
+        std::cout << "Invalid Instruction." << std::endl;
+    }
+    return(stringToInt(param1));
+}
+
+std::string ReadWrite::getVariable() {
+    if (!param2.empty() || param1.empty()) {
+        errorFlag = true;
+        std::cout << "Invalid Instruction." << std::endl;
+    }
+    return(param1);
+}
+
+int ReadWrite::getIntVar(std::string& var) {
+    if (param2.empty() || param1.empty()) {
+        errorFlag = true;
+        std::cout << "Invalid Instruction." << std::endl;
+    }
+    var = param2;
+    return(stringToInt(param1));
+}
+
+std::string ReadWrite::getLabel() {
+    if (!param2.empty() || param1.empty()) {
+        errorFlag = true;
+        std::cout << "Invalid Instruction." << std::endl;
+    }
+    return(param1);
+}
+
 
 // ------------------ Private ------------------
 
@@ -60,8 +99,11 @@ ReadWrite* ReadWrite::readwrite = nullptr;
 ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     readFile.open(inputfile); //Open input file
     writeFile.open(outputfile); //Open output file
+    endOfFile = false;
+    errorFlag = false;
     if (!readFile) { //Check if input file opened properly
         std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
+        errorFlag = true;
     }
 }
 
@@ -77,6 +119,7 @@ std::string ReadWrite::grabLine() {
     }
     else {
         std::cout << "End of File (EOF)." << std::endl;
+        endOfFile = true;
     }
     return line;
 }

@@ -34,13 +34,14 @@
 #include "..\Stmt\Stmt.h"
 #include "..\Stmt\Swap.h"
 
-
+#define ERROR 0
 #define INT_PARAM 1
 #define VAR_PARAM 2
-#define LABEL_PARAM 3
-#define TO_DO 4
-#define NO_PARAM 5
-#define END 6
+#define INT_VAR_PARAM 3
+#define LABEL_PARAM 4
+#define TO_DO 5
+#define NO_PARAM 6
+#define END 7
 
 class Parser {
 
@@ -53,9 +54,9 @@ public:
 private:
     Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf); //private parser constructor used by getInstance
     static Parser* parser;  //unique instantiation of parser
-    void createStmt(char* instruction);
-    int determineType(char* instr);
-    void determineAction(char* instr);
+    void createStmt(int type, std::string str);
+    int determineType(std::string str);
+    void determineAction(std::string str);
     InstructionBuffer* instrBuf;
     SymbolTable* symTable;
     StringBuffer* strBuf;

@@ -57,10 +57,13 @@ int main() {
 
     //TEST - NEEDS .txt FILES TO WORK//
     ReadWrite* readTest = ReadWrite::getInstance(input, output);
-    readTest->updateInstruction();
-    std::cout << readTest->getInstruction() << std::endl;
-    std::cout << readTest->getParam1() << std::endl;
-    std::cout << readTest->getParam2() << std::endl;
+    std::string str = "731";
+    //int x = readTest->stringToInt(str);
+    //std::cout << x << std::endl;
+    //readTest->updateInstruction();
+    //std::cout << readTest->getInstruction() << std::endl;
+    //std::cout << readTest->getParam1() << std::endl;
+    //std::cout << readTest->getParam2() << std::endl;
 
     
     //ENDTEST//
