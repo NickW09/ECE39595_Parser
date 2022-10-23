@@ -25,6 +25,10 @@ std::string StmtLab::getLabel() {
 	return lab;
 }
 
+std::string StmtLab::getVar() {
+	return getLabel();
+}
+
 //toStrings out instruction, may be overrided if needed
 std::string StmtLab::toString() {
 	return instr + " " + lab + ", (" + std::to_string(loc) + ")";
