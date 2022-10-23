@@ -5,7 +5,7 @@ SymbolTable* SymbolTable::symTab = nullptr;
 //Constructor
 SymbolTable::SymbolTable(){
     std::map<std::pair<int, std::string>, TableEntry> map;
-    idx = 0;
+    //idx = 0;
     
     subLv = 0; //depth into subroutines, 0 for main and 1 for subroutine
     subLength = 0; //not supported for nested subroutines
@@ -31,7 +31,7 @@ void SymbolTable::push(std::string str, TableEntry te) {
 }
 
 //returns table entry at last key match
-TableEntry SymbolTable::getEntry(std::string key) {
+TableEntry SymbolTable::getData(std::string key) {
     std::map<std::pair<int, std::string>, TableEntry>::iterator it;
     for (int i = subLv; i >= 0; i--) {
         it = map.find(std::pair<int, std::string>(i, key));
@@ -78,4 +78,11 @@ int SymbolTable::getSubLength() {
 
 int SymbolTable::getCurrLoc() {
     return (int) map.size();
+}
+
+std::pair<std::pair<int, std::string>, TableEntry> SymbolTable::getEntryAtIndex(int i) {
+    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
+    for (int j = 0; j < i; j++)
+        it++;
+    return *(it);
 }

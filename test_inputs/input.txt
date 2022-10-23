@@ -1,5 +1,8 @@
 start
 declscal A
+declarr Bob 2
+declarr Epic 10
+declarr Joe 012
 pushi 4
 exit 0
 end

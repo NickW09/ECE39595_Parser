@@ -38,8 +38,11 @@ void Parser::beginParser(){
     }
 
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
-
+    
+    std::cout << std::endl;
     printInstrBuf();
+    std::cout << std::endl;
+    printSymTable();
 }
 
 int Parser::determineType(std::string instr)
@@ -217,7 +220,13 @@ void Parser::printInstrBuf() {
 }
 
 void Parser::printSymTable() {
-   /* for (int i = 0; i < symTable->getSize(); i++) {
-        readWrite->writeLine(instrBuf->getStmt(i)->toString());
-    }*/
+    std::pair<std::pair<int, std::string>, TableEntry> symChunk;
+    readWrite->writeLine("Symbol Table:");
+    for (int i = 0; i < symTable->getNumEntries(); i++) {
+        symChunk = symTable->getEntryAtIndex(i);
+        
+        readWrite->writeLine("("+std::to_string(symChunk.first.first)+std::string(", ")+
+            symChunk.first.second+ std::string("): (")+std::to_string(symChunk.second.getLocation())+ 
+            std::string(", ")+std::to_string(symChunk.second.getLength())+")");
+    }
 }

@@ -80,12 +80,13 @@ std::string ReadWrite::getVariable() {
 
 //Return integer and variable parameters
 int ReadWrite::getIntVar(std::string& var) {
+    
     if (param2.empty() || param1.empty()) {
         errorFlag = true;
         std::cout << "Invalid Instruction." << std::endl;
     }
-    var = param2;
-    return(stringToInt(param1));
+    var = param1;
+    return(stringToInt(param2));
 }
 
 //Return label parameter
@@ -138,6 +139,10 @@ void ReadWrite::readLine(std::string curLine) {
 
     std::string::iterator ch;
     ch = curLine.begin();
+
+    /*instruction = ""; //Needed?
+    param1 = "";
+    param2 = "";*/
 
     for (int i = 0; ch != curLine.end() && *ch != 32; i++) {
         instruction.append(sizeof(char), *ch);

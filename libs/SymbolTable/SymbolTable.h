@@ -11,10 +11,8 @@ class SymbolTable {
 
 public:
 
-    ~SymbolTable(); 
     static SymbolTable* getInstance();          //DONE
-    int getData(std::string key);               //DONE
-    TableEntry getEntry(std::string key);       //DONE
+    TableEntry getData(std::string key);        //DONE
     void push(std::string str, TableEntry te);  //DONE
     void exitSubroutine();                      //DONE
     int getSubLv();                             //DONE
@@ -22,11 +20,12 @@ public:
     int getNumEntries();                        //DONE
     int getSubLength();                         //DONE
     int getCurrLoc();                           //DONE
+    std::pair<std::pair<int, std::string>, TableEntry> getEntryAtIndex(int i); //DONE
 private:
     SymbolTable();                              //DONE
     static SymbolTable* symTab; 
     std::map<std::pair<int, std::string>, TableEntry> map;
-    int idx;
+    //int idx;
     int subLv;
     int subLength;
 };

@@ -8,9 +8,9 @@ TableEntry::TableEntry() {
 }
 
 TableEntry::TableEntry(int loc, int len){
-    data = std::pair<int, int>();
-    data.first = loc;
-    data.second = len;
+    data = std::pair<int, int>(loc, len);
+    //data.first = loc;
+    //data.second = len;
 }
 
 int TableEntry::getLocation() {
