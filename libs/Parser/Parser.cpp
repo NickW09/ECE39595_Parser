@@ -22,7 +22,7 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
 
 //Starts the parsing
 void Parser::beginParser(){
-    printf("Parser Running...");
+    std::cout << "Parser Running..." << std::endl;
 
     readWrite->updateInstruction(); //Grab initial instruction
     std::string instr = readWrite->getInstruction();
@@ -36,6 +36,9 @@ void Parser::beginParser(){
         }
         createStmt(type, instr);
     }
+
+    printInstrBuf();
+
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
 }
 
