@@ -1,2 +1,10 @@
-﻿  ReadWrite.cpp
-  ECE39595_Parser.vcxproj -> C:\Users\Nick Williams\Documents\School\ECE 39595\Parser\ECE39595_Parser\x64\Debug\ECE39595_Parser.exe
+﻿  Debug.cpp
+  Parser.cpp
+  GoSub.cpp
+  GoSubLabel.cpp
+  Jump.cpp
+  StmtLab.cpp
+  StmtVar.cpp
+  main.cpp
+  Generating Code...
+  ECE39595_Parser.vcxproj -> C:\Users\rxxd1\OneDrive\Documents\Purdue\Fall 2022\ECE39595\Project\ECE39595_Parser\x64\Debug\ECE39595_Parser.exe

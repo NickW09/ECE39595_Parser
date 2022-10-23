@@ -126,6 +126,9 @@
     <ClCompile Include="libs\Debug\Debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libs\Stmt\StmtToDo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\Stmt\Add.h">
@@ -234,6 +237,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Debug\Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\Stmt\StmtToDo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

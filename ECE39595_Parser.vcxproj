@@ -156,6 +156,7 @@
     <ClCompile Include="libs\Stmt\StmtInt.cpp" />
     <ClCompile Include="libs\Stmt\StmtLab.cpp" />
     <ClCompile Include="libs\Stmt\StmtNone.cpp" />
+    <ClCompile Include="libs\Stmt\StmtToDo.cpp" />
     <ClCompile Include="libs\Stmt\StmtVar.cpp" />
     <ClCompile Include="libs\Stmt\StmtVarLen.cpp" />
     <ClCompile Include="libs\Stmt\Swap.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="libs\Stmt\StmtInt.h" />
     <ClInclude Include="libs\Stmt\StmtLab.h" />
     <ClInclude Include="libs\Stmt\StmtNone.h" />
+    <ClInclude Include="libs\Stmt\StmtToDo.h" />
     <ClInclude Include="libs\Stmt\StmtVar.h" />
     <ClInclude Include="libs\Stmt\StmtVarLen.h" />
     <ClInclude Include="libs\Stmt\Swap.h" />
