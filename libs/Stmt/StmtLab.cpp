@@ -14,3 +14,8 @@ std::string StmtLab::toPrint() {
 std::string StmtLab::toPrint2() {
 	return instr + " " + lab;
 }
+
+//function to be used for overriding purposes (for example see GoSubLabel)
+std::string StmtLab::toPrint3() {
+	return instr + ", " + "#";
+}

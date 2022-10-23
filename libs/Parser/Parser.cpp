@@ -90,14 +90,14 @@ void Parser::createStmt(int type, std::string instr) {
         case (INT_PARAM):
             int integer = readWrite->getInt();
             if (inst == "pushi") {
-                stmt = new Pushi();
+                stmt = new Pushi(integer);
             }
             break;
 
         case (VAR_PARAM):
             std::string var = readWrite->getVariable();
             if (inst == "declarr") {
-                stmt = new Declarr();
+                stmt = new Declarr(var);
             }
 
         case (INT_VAR_PARAM):
@@ -193,7 +193,7 @@ void Parser::createStmt(int type, std::string instr) {
     }
 
     if (stmt != nullptr) {
-        instrBuf.push(stmt);
+        instrBuf->push(stmt);
     }
 }
 

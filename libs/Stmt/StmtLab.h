@@ -8,6 +8,7 @@ public:
 	StmtLab();
 	virtual std::string toPrint();
 	virtual std::string toPrint2();
+	virtual std::string toPrint3();
 protected:
 	std::string lab;
 };
