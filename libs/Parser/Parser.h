@@ -45,12 +45,12 @@ class Parser {
 public:
     static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //gets single instance of parser
     int beginParser();
+    ~Parser();
     //void setError();
     //bool getError();
 
 private:
     Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //private parser constructor used by getInstance
-    ~Parser();
     static Parser* parser;  //unique instantiation of parser
     void createStmt(int type, std::string str);
     int determineType(std::string str);
@@ -66,4 +66,3 @@ private:
 };
 
 #endif /* PARSER_H_ */
-

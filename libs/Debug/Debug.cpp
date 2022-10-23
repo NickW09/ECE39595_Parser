@@ -17,6 +17,7 @@ void Debug::startParser(const char* input, const char* output) {
     ToDoBuffer* toDoBuf = ToDoBuffer::getInstance();
     Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
     int error = parser->beginParser(); 
+    parser->~Parser();
 }
 
 void Debug::compareOutput(const char* output, const char* output_compare) {
@@ -50,9 +51,7 @@ void Debug::compareOutput(const char* output, const char* output_compare) {
             char* _line_actual = new char[100];
             char* _line_ideal = new char[100];
             actual.getline(_line_actual, 100, '\n');
-            actual.getline(_line_actual, 100, '\n');
             ideal.getline(_line_ideal, 100, '\n');
-            std::cout << _line_actual << std::endl;
             std::string line_actual = _line_actual;
             std::string line_ideal = _line_ideal;
             delete[] _line_actual;
@@ -63,6 +62,7 @@ void Debug::compareOutput(const char* output, const char* output_compare) {
                 std::cout << "Correct: " << line_ideal << " | " << "Actual: " << line_actual << std::endl;
             }
         }
+        line_count++;
     }
     actual.close();
     ideal.close();
