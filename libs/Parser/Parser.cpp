@@ -10,6 +10,7 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
     toDoBuf = _todoBuf;
     readWrite = ReadWrite::getInstance(inputFileName, outputFileName); //give ReadWriteParser the input and output files
     start = nullptr;
+    gosublabel = nullptr;
     error = 0;
 }
 
@@ -155,10 +156,10 @@ void Parser::createStmt(int type, std::string instr) {
             label = readWrite->getLabel();
             if (inst == "label") {            
                 //symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
-                symTable->push(label, TableEntry(instrBuf->getSize() + 1, 0));
+                symTable->push(label, TableEntry(instrBuf->getSize(), 0));
             }
             else if (inst == "gosublabel") {  
-                symTable->push(label, TableEntry(instrBuf->getSize() + 1, 0));
+                symTable->push(label, TableEntry(instrBuf->getSize(), 0));
                 stmt = new GoSubLabel(label);
                 symTable->enterSubroutine();
             }

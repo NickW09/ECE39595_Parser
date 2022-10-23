@@ -65,6 +65,7 @@ private:
     ReadWrite* readWrite;
     bool error;
     Start* start;
+    GoSubLabel* gosublabel;
 };
 
 #endif /* PARSER_H_ */
