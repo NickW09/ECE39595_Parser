@@ -9,6 +9,7 @@ StringBuffer::StringBuffer(){
 
 StringBuffer::~StringBuffer() {
     vec.clear();
+    strBuf = nullptr;
 }
 
 //possibly creates then returns singleton

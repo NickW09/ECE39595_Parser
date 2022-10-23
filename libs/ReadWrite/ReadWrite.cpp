@@ -16,6 +16,7 @@ ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile)
 ReadWrite::~ReadWrite(){
     readFile.close();
     writeFile.close();
+    readwrite = nullptr;
 }
 
 // Updates instruction and parameters in ReadWrite class both the cases and babymonoprop m boo love zoo butbuut not my very

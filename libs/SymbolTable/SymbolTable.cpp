@@ -16,6 +16,7 @@ SymbolTable::SymbolTable(){
 
 SymbolTable::~SymbolTable() {
     map.clear();
+    symTab = nullptr;
 }
 
 //possibly creates then returns singleton

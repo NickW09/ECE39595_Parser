@@ -5,6 +5,7 @@ int Debug::numCorrectTests = 0;
 
 //Input: Input file to parse |
 void Debug::test(const char* input, const char* output, const char* output_compare) {
+    std::cout << numTests << std::endl;
     numTests++;
     startParser(input, output);
     compareOutput(output, output_compare);
@@ -18,6 +19,10 @@ void Debug::startParser(const char* input, const char* output) {
     Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
     int error = parser->beginParser(); 
     parser->~Parser();
+    instrBuf->~InstructionBuffer();
+    symTable->~SymbolTable();
+    strBuf->~StringBuffer();
+    toDoBuf->~ToDoBuffer();
     
 }
 

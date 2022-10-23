@@ -15,6 +15,7 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
 
 Parser::~Parser() {
     readWrite->~ReadWrite();
+    parser = nullptr;
 }
 
 //Singelton 

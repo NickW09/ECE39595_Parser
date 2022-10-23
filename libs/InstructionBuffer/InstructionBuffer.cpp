@@ -3,6 +3,7 @@
 // ------------ Public ------------
 InstructionBuffer::~InstructionBuffer(){
     vec.clear();
+    instrBuf = nullptr;
 }
 
 InstructionBuffer* InstructionBuffer::getInstance(){

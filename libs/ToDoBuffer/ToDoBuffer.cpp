@@ -3,6 +3,7 @@
 // ------------ Public ------------
 ToDoBuffer::~ToDoBuffer() {
     vec.clear();
+    todoBuf = nullptr;
 }
 
 ToDoBuffer* ToDoBuffer::getInstance(){
