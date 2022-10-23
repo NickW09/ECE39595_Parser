@@ -37,9 +37,9 @@ void Parser::beginParser(){
         createStmt(type, instr);
     }
 
-    printInstrBuf();
-
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
+
+    printInstrBuf();
 }
 
 int Parser::determineType(std::string instr)
@@ -101,14 +101,12 @@ void Parser::createStmt(int type, std::string instr) {
                 stmt = new Pushi(integer);
             }
             break;
-
         case (INT_VAR_PARAM):
             integer = readWrite->getIntVar(var);
             if (inst == "declarr") {            //DONE
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
             }
             break;
-
         case (VAR_PARAM):
             var = readWrite->getVariable();
             if (inst == "declscal") {
