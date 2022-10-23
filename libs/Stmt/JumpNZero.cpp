@@ -2,7 +2,7 @@
 
 JumpNZero::JumpNZero(std::string _lab) {
 	instr = "JumpNZero";
-	opcode = 0x00000013;
+	opcode = 0x00000012;
 	lab = _lab;
 }
 
