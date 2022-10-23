@@ -39,19 +39,10 @@
     <ClCompile Include="libs\Stmt\Add.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="libs\Stmt\Declarr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libs\Stmt\Declscal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="libs\Stmt\Div.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\Stmt\Dup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libs\Stmt\End.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\Stmt\Exit.cpp">
@@ -67,9 +58,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\Stmt\JumpZero.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libs\Stmt\Label.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\Stmt\Mul.cpp">
@@ -132,24 +120,18 @@
     <ClCompile Include="libs\TableEntry\TableEntry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libs\Stmt\JumpNZero.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libs\Stmt\Add.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libs\Stmt\Declarr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libs\Stmt\Declscal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\Div.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\Dup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libs\Stmt\End.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\Exit.h">
@@ -168,9 +150,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\JumpZero.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libs\Stmt\Label.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="libs\Stmt\Mul.h">

@@ -101,9 +101,8 @@ void Parser::createStmt(int type, std::string instr) {
 
         case (INT_VAR_PARAM):
             integer = readWrite->getIntVar(var);
-            if (inst == "declarr") {
+            if (inst == "declarr") {            //DONE
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
-            //stmt = new Declarr(var);
             }
             break;
 
