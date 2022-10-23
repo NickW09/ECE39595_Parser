@@ -100,36 +100,36 @@ void Parser::createStmt(int type, std::string instr) {
 
         case (INT_PARAM):
             integer = readWrite->getInt();
-            if (inst == "pushi") {              //DONE
+            if (inst == "pushi") {              
                 stmt = new Pushi(integer);
             }
             break;
         case (INT_VAR_PARAM):
             integer = readWrite->getIntVar(var);
-            if (inst == "declarr") {            //DONE
+            if (inst == "declarr") {            
                 //is this instr buffer loc instead?
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
             }
             break;
         case (VAR_PARAM):
             var = readWrite->getVariable();
-            if (inst == "declscal") {           //DONE
+            if (inst == "declscal") {           
                 //is this instr buffer loc instead?
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
             }
-            else if (inst == "pushscal") {      //DONE
+            else if (inst == "pushscal") {      
                 stmt = new Pushscal(var);
             }
-            else if (inst == "pusharr") {       //DONE
+            else if (inst == "pusharr") {       
                 stmt = new Pusharr(var);
             }
-            else if (inst == "popscal") {       //DONE
+            else if (inst == "popscal") {       
                 stmt = new Popscal(var);
             }
-            else if (inst == "poparr") {       //DONE
+            else if (inst == "poparr") {       
                 stmt = new Poparr(var);
             }
-            else if (inst == "prints") {      //DONE
+            else if (inst == "prints") {      
                 strBuf->push(var);
                 //technically int param
                 stmt = new Prints(strBuf->getSize());
@@ -137,20 +137,22 @@ void Parser::createStmt(int type, std::string instr) {
             break;
         case (LABEL_PARAM):
             label = readWrite->getLabel();
-            if (inst == "label") {            //DONE
+            if (inst == "label") {            
                 symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
             }
-            else if (inst == "gosublabel") {  //DONE
+            else if (inst == "gosublabel") {  
                 symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
                 stmt = new GoSubLabel(label);
+                symTable->enterSubroutine();
             }
-            else if (inst == "jump") {        //DONE
+            else if (inst == "jump") {        //TODO
+                //make searches only able to see in subroutine
                 stmt = new Jump(label);
             }
-            else if (inst == "jumpzero") {    //DONE
+            else if (inst == "jumpzero") {    //TODO
                 stmt = new JumpZero(label);
             }
-            else if (inst == "jumpnzero") {   //DONE
+            else if (inst == "jumpnzero") {   //TODO
                 stmt = new JumpNZero(label);
             }
             else if (inst == "gosub") {       //DONE
@@ -163,37 +165,37 @@ void Parser::createStmt(int type, std::string instr) {
 
 
         case (NO_PARAM):
-            if (inst == "start") {         //DONE
+            if (inst == "start") {         //TODO
                 stmt = new Start();
             }
-            else if (inst == "exit") {      //DONE
+            else if (inst == "exit") {      
                 stmt = new Exit();
             }
-            else if (inst == "return") {    //DONE
+            else if (inst == "return") {    //DOES STUFF
                 stmt = new Return();
             }
-            else if (inst == "pop") {       //DONE
+            else if (inst == "pop") {       
                 stmt = new Pop();
             }
-            else if (inst == "dup") {       //DONE
+            else if (inst == "dup") {       
                 stmt = new Dup();
             }
-            else if (inst == "swap") {      //DONE
+            else if (inst == "swap") {      
                 stmt = new Swap();
             }
-            else if (inst == "add") {       //DONE
+            else if (inst == "add") {       
                 stmt = new Add();
             }
-            else if (inst == "negate") {    //DONE
+            else if (inst == "negate") {    
                 stmt = new Negate();
             }
-            else if (inst == "mul") {       //DONE
+            else if (inst == "mul") {       
                 stmt = new Mul();
             }
-            else if (inst == "div") {       //DONE
+            else if (inst == "div") {       
                 stmt = new Div();
             }
-            else if (inst == "printtos") {  //DONE
+            else if (inst == "printtos") {  
                 stmt = new Printtos();
             }
             else {

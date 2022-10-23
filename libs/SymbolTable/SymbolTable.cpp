@@ -42,6 +42,10 @@ TableEntry SymbolTable::getData(std::string key) {
     return TableEntry(-99, -99);
 }
 
+void SymbolTable::enterSubroutine() {
+    subLv++;
+}
+
 //erases subroutine symbols and decrements the subLv
 void SymbolTable::exitSubroutine() {
     std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
