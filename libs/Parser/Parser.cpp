@@ -9,6 +9,7 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
     strBuf = _strBuf; //Set stringBuffer
     toDoBuf = _todoBuf;
     readWrite = ReadWrite::getInstance(inputFileName, outputFileName); //give ReadWriteParser the input and output files
+    start = nullptr;
     error = 0;
 }
 
@@ -100,8 +101,6 @@ void Parser::createStmt(int type, std::string instr) {
 
     Stmt* stmt = nullptr;
     int errFlag = 0;
-
-    Start* start = nullptr;
     
     std::string inst(instr);
 

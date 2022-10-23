@@ -63,6 +63,7 @@ private:
     ToDoBuffer* toDoBuf;
     ReadWrite* readWrite;
     bool error;
+    Start* start;
 };
 
 #endif /* PARSER_H_ */

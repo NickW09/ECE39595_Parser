@@ -26,5 +26,5 @@ int main() {
     // ------------------- Virtual Machine Code ----------------------
 
     // -------------------------- Testing ----------------------------
-    Debug::test("test_inputs/1Pushl", "output.txt", "test_outputs/1PushI.pout");
+    Debug::test("test_inputs/1PushI", "output.txt", "test_outputs/1PushI.pout");
 }
