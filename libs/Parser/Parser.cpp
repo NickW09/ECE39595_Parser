@@ -24,8 +24,8 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
 void Parser::beginParser(){
     std::cout << "Parser Running..." << std::endl;
 
-    readWrite->updateInstruction(); //Grab initial instruction
-    std::string instr = readWrite->getInstruction();
+    //readWrite->updateInstruction(); //Grab initial instruction
+    std::string instr;// = readWrite->getInstruction();
 
     while (!(readWrite->getEOF())) { //checking if end of file reached
         readWrite->updateInstruction();

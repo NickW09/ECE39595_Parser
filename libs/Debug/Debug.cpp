@@ -16,6 +16,8 @@ void Debug::test(const char* input, const char* output, const char* output_compa
 }
 
 void Debug::compareOutput(const char* output, const char* output_compare) {
+    std::cout << "Testing..." << std::endl;
+    
     std::ifstream actual;
     std::ifstream ideal;
     actual.open(output);

@@ -39,7 +39,9 @@ void ReadWrite::writeLine(std::string str){
 }
 
 std::string ReadWrite::getInstruction() {
+    std::cout << instruction << std::endl;
     return instruction;
+
 }
 
 std::string ReadWrite::getParam1() {
@@ -110,7 +112,7 @@ ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
     writeFile.open(outputfile); //Open output file
     endOfFile = false;
     errorFlag = false;
-    if (!readFile) { //Check if input file opened properly
+    if (!readFile || readFile.eof()) { //Check if input file opened properly
         std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
         errorFlag = true;
     }
@@ -139,10 +141,6 @@ void ReadWrite::readLine(std::string curLine) {
 
     std::string::iterator ch;
     ch = curLine.begin();
-
-    /*instruction = ""; //Needed?
-    param1 = "";
-    param2 = "";*/
 
     for (int i = 0; ch != curLine.end() && *ch != 32; i++) {
         instruction.append(sizeof(char), *ch);
