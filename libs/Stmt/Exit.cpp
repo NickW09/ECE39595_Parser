@@ -1,7 +1,7 @@
 #include "Exit.h"
 
 Exit::Exit() {
-	instr = "OP_EXIT_PROGRAM";
+	instr = "Exit";
 	opcode = 0x00000018;
 }
 

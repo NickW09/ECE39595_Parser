@@ -1,7 +1,7 @@
 #include "Start.h"
 
 Start::Start() {
-	instr = "OP_START_PROGRAM";
+	instr = "Start";
 	opcode = 0x00000017;
 }
 

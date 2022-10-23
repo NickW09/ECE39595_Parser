@@ -16,7 +16,7 @@ void Debug::startParser(const char* input, const char* output) {
     StringBuffer* strBuf = StringBuffer::getInstance();
     ToDoBuffer* toDoBuf = ToDoBuffer::getInstance();
     Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
-    int error = parser->beginParser();
+    int error = parser->beginParser(); 
 }
 
 void Debug::compareOutput(const char* output, const char* output_compare) {

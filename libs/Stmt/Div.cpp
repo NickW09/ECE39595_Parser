@@ -1,7 +1,7 @@
 #include "Div.h"
 
 Div::Div() {
-	instr = "OP_DIV";
+	instr = "Div";
 	opcode = 0x00000053;
 }
 

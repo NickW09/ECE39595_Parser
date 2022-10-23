@@ -1,7 +1,7 @@
 #include "Mul.h"
 
 Mul::Mul() {
-	instr = "OP_MUL";
+	instr = "Mul";
 	opcode = 0x00000052;
 }
 

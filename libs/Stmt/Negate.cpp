@@ -1,7 +1,7 @@
 #include "Negate.h"
 
 Negate::Negate() {
-	instr = "OP_NEGATE";
+	instr = "Negate";
 	opcode = 0x00000051;
 }
 

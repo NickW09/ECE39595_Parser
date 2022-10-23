@@ -2,7 +2,7 @@
 
 
 Pushi::Pushi(int _num) {
-	instr = "OP_PUSHI";
+	instr = "Pushi";
 	opcode = 0x00000022;
 	num = _num;
 }

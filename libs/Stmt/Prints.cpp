@@ -1,7 +1,7 @@
 #include "Prints.h"
 
 Prints::Prints(int i) {
-	instr = "OP_PRINTS";
+	instr = "Prints";
 	opcode = 0x00000060;
 	num = i;
 }

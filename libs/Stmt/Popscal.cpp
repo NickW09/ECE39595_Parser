@@ -1,7 +1,7 @@
 #include "Popscal.h"
 
 Popscal::Popscal(std::string _var) {
-	instr = "OP_POPSCALAR";
+	instr = "PopScalar";
 	opcode = 0x00000030;
 	var = _var;
 }

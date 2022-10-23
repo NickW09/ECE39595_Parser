@@ -1,7 +1,7 @@
 #include "Return.h"
 
 Return::Return() {
-	instr = "OP_RETURN";
+	instr = "Return";
 	opcode = 0x00000014;
 }
 

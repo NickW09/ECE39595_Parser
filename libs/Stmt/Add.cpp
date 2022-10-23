@@ -1,7 +1,7 @@
 #include "Add.h"
 
 Add::Add() {
-	instr = "OP_ADD";
+	instr = "Add";
 	opcode = 0x00000051;
 }
 
