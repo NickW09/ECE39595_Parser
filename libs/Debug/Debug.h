@@ -15,6 +15,7 @@ class Debug {
 
 public:
 	static void test(const char* input, const char* output, const char* output_compare);
+	static void score();
 
 private:
 	static int numTests;

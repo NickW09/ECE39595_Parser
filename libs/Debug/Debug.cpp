@@ -18,6 +18,7 @@ void Debug::startParser(const char* input, const char* output) {
     Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
     int error = parser->beginParser(); 
     parser->~Parser();
+    
 }
 
 void Debug::compareOutput(const char* output, const char* output_compare) {
@@ -67,4 +68,8 @@ void Debug::compareOutput(const char* output, const char* output_compare) {
     actual.close();
     ideal.close();
     numCorrectTests++;
+}
+
+void Debug::score() {
+    std::cout << "SCORE: " << numCorrectTests << "/" << numTests << std::endl;
 }

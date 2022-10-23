@@ -7,6 +7,10 @@ StringBuffer::StringBuffer(){
     vec = std::vector<std::string>();
 }
 
+StringBuffer::~StringBuffer() {
+    vec.clear();
+}
+
 //possibly creates then returns singleton
 StringBuffer* StringBuffer::getInstance(){
     if(strBuf == nullptr) {
