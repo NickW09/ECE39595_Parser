@@ -135,7 +135,6 @@ std::string ReadWrite::grabLine() {
 //Reads most recent line grabbed, and sets the instruction
 //and parameters from the line.
 void ReadWrite::readLine(std::string curLine) {
-    std::cout << "Line read:" << std::endl;
 
     std::string::iterator ch;
     ch = curLine.begin();
