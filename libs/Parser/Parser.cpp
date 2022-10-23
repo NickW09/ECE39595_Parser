@@ -228,9 +228,9 @@ void Parser::createStmt(int type, std::string instr) {
 
         case (END):         //FILLS IN INFO
             start->setLength(symTable->getTotalLength());
-            /*for (int i = 0; i < toDoBuf->getSize(); i++) {
-                //toDoBuf->getStmt().set
-            }*/
+            for (int i = 0; i < toDoBuf->getSize(); i++) {
+                toDoBuf->getStmt(i)->setLoc(symTable->getData(toDoBuf->getStmt(i)->getLabel()).getLocation());
+            }
 
             break;
     }
