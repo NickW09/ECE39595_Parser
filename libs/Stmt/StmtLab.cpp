@@ -21,6 +21,10 @@ int StmtLab::getDepth() {
 	return depth;
 }
 
+std::string StmtLab::getLabel() {
+	return lab;
+}
+
 //toStrings out instruction, may be overrided if needed
 std::string StmtLab::toString() {
 	return instr + " " + lab + ", (" + std::to_string(loc) + ")";
