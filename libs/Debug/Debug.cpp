@@ -24,7 +24,7 @@ void Debug::compareOutput(const char* output, const char* output_compare) {
 
     while (!ideal.eof()) {
         if (actual.eof()) {
-            std::cout << "Failure at line: " << line_count << std::endl;
+            //std::cout << "Failure at line: " << line_count << std::endl;
             actual.close();
             ideal.close();
             return;

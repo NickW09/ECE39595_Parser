@@ -31,5 +31,5 @@ int main() {
     // ------------------- Virtual Machine Code ----------------------
 
     // -------------------------- Testing ----------------------------
-    Debug::test("test_inputs/input.txt", "output.txt", "test_inputs/input.txt");
+    Debug::test("test_inputs/0StartExit", "output.txt", "test_inputs/0StartExit.pout");
 }
