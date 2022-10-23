@@ -21,6 +21,7 @@ public:
     void setSubLv(int lv);                      //DONE
     int getNumEntries();                        //DONE
     int getSubLength();                         //DONE
+    int getCurrLoc();                           //DONE
 private:
     SymbolTable();                              //DONE
     static SymbolTable* symTab; 

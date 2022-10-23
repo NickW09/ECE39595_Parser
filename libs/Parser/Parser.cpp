@@ -7,6 +7,7 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
     instrBuf = _instrBuf; //Set instructionBuffer
     symTable = _symTable; //Set symbolTable
     strBuf = _strBuf; //Set stringBuffer
+    toDoBuf = _todoBuf;
     readWrite = ReadWrite::getInstance(inputFileName, outputFileName); //give ReadWriteParser the input and output files
     error = 0;
 }
@@ -53,7 +54,7 @@ int Parser::determineType(std::string instr)
     }
     //INT AND VAR PARAM
     else if (instr == "declarr") {
-        type == INT_VAR_PARAM;
+        type = INT_VAR_PARAM;
     }
     //LABEL PARAM
     else if (instr == "label" || instr == "gosublabel" || instr == "jump" || instr == "jumpzero" || instr == "jumpnzero" || instr == "gosub") {
@@ -79,7 +80,6 @@ int Parser::determineType(std::string instr)
 
 void Parser::createStmt(int type, std::string instr) {
 
-    int type = determineType(instr);
     Stmt* stmt = nullptr;
     int errFlag = 0;
 
@@ -88,20 +88,22 @@ void Parser::createStmt(int type, std::string instr) {
     int integer;
     std::string var;
     std::string label;
+    //TableEntry te;
 
     switch (type) {
 
         case (INT_PARAM):
-            int integer = readWrite->getInt();
-            if (inst == "pushi") {
+            integer = readWrite->getInt();
+            if (inst == "pushi") {              //DONE
                 stmt = new Pushi(integer);
             }
             break;
 
         case (INT_VAR_PARAM):
-            var = readWrite->getVariable();
+            integer = readWrite->getIntVar(var);
             if (inst == "declarr") {
-                //stmt = new Declarr(var);
+                symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
+            //stmt = new Declarr(var);
             }
             break;
 
@@ -193,7 +195,7 @@ void Parser::createStmt(int type, std::string instr) {
 
         case (END):
             //do something?
-
+            break;
     }
 
     if (stmt != nullptr) {

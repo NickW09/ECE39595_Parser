@@ -58,6 +58,7 @@ private:
     InstructionBuffer* instrBuf;
     SymbolTable* symTable;
     StringBuffer* strBuf;
+    ToDoBuffer* toDoBuf;
     ReadWrite* readWrite;
     bool error;
 };

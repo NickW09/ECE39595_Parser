@@ -69,9 +69,13 @@ void SymbolTable::setSubLv(int lv) {
 }
 
 int SymbolTable::getNumEntries() {
-    return map.size();
+    return (int) map.size();
 }
 
 int SymbolTable::getSubLength() {
     return subLength;
+}
+
+int SymbolTable::getCurrLoc() {
+    return (int) map.size();
 }
