@@ -10,6 +10,6 @@ void Jump::action() {
 
 }
 
-std::string Jump::toPrint() {
-	return toPrint3();
+std::string Jump::toString() {
+	return toString3();
 }

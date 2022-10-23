@@ -8,6 +8,6 @@ StmtVarLen::StmtVarLen() {
 }
 
 //NOT NEEDED
-std::string StmtVarLen::toPrint() {
+std::string StmtVarLen::toString() {
 	return "";
 }

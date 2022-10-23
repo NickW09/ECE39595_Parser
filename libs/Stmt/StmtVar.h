@@ -6,7 +6,7 @@
 class StmtVar : public Stmt {
 public:
 	StmtVar();
-	virtual std::string toPrint();
+	virtual std::string toString();
 protected:
 	std::string var;
 };

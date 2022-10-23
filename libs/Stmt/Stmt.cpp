@@ -7,5 +7,5 @@ Stmt::Stmt() {
 }
 
 void Stmt::print() {
-	std::cout << toPrint() << std::endl;
+	std::cout << toString() << std::endl;
 }

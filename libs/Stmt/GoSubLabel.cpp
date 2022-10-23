@@ -10,6 +10,6 @@ void GoSubLabel::action() {
 
 }
 
-std::string GoSubLabel::toPrint() {
-	return toPrint2();
+std::string GoSubLabel::toString() {
+	return toString2();
 }

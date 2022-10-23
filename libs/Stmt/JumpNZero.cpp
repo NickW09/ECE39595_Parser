@@ -10,6 +10,6 @@ void JumpNZero::action() {
 
 }
 
-std::string JumpNZero::toPrint() {
-	return toPrint2();
+std::string JumpNZero::toString() {
+	return toString2();
 }

@@ -7,7 +7,7 @@ class GoSubLabel : public StmtLab {
 public:
 	GoSubLabel(std::string lab);
 	virtual void action();
-	virtual std::string toPrint();
+	virtual std::string toString();
 
 };
 

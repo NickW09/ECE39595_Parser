@@ -112,12 +112,12 @@ int main() {
     instrBuf->push(new Pop());
     instrBuf->push(new Pushi(5));
     for (int i = 0; i < instrBuf->getBufSize(); i++) {
-        std::cout << instrBuf->getStmt(i)->toPrint() << std::endl;
+        std::cout << instrBuf->getStmt(i)->toString() << std::endl;
     }
     instrBuf->remove(1);
     std::cout << std::endl;
     for (int i = 0; i < instrBuf->getBufSize(); i++) {
-        std::cout << instrBuf->getStmt(i)->toPrint() << std::endl;
+        std::cout << instrBuf->getStmt(i)->toString() << std::endl;
     }
     *///ENDTEST
 

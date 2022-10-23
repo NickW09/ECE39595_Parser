@@ -7,7 +7,7 @@ class JumpZero : public StmtLab {
 public:
 	JumpZero(std::string lab);
 	virtual void action();
-	virtual std::string toPrint();
+	virtual std::string toString();
 };
 
 #endif /* JUMPZERO_H_ */

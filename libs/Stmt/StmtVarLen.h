@@ -8,7 +8,7 @@
 class StmtVarLen : public Stmt {
 public:
 	StmtVarLen();
-	virtual std::string toPrint();
+	virtual std::string toString();
 protected:
 	std::string var;
 	int len;

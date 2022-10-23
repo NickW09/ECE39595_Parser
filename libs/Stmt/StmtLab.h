@@ -6,9 +6,9 @@
 class StmtLab : public Stmt {
 public:
 	StmtLab();
-	virtual std::string toPrint();
-	virtual std::string toPrint2();
-	virtual std::string toPrint3();
+	virtual std::string toString();
+	virtual std::string toString2();
+	virtual std::string toString3();
 protected:
 	std::string lab;
 };

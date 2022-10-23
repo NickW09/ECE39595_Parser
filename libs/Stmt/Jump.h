@@ -7,7 +7,7 @@ class Jump : public StmtLab {
 public:
 	Jump(std::string lab);
 	virtual void action();
-	virtual std::string toPrint();
+	virtual std::string toString();
 };
 
 #endif /* JUMP_H_ */
