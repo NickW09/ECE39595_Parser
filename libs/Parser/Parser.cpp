@@ -85,6 +85,10 @@ void Parser::createStmt(int type, std::string instr) {
 
     std::string inst(instr);
 
+    int integer;
+    std::string var;
+    std::string label;
+
     switch (type) {
 
         case (INT_PARAM):
@@ -95,14 +99,13 @@ void Parser::createStmt(int type, std::string instr) {
             break;
 
         case (INT_VAR_PARAM):
-            std::string var = readWrite->getVariable();
+            var = readWrite->getVariable();
             if (inst == "declarr") {
                 //stmt = new Declarr(var);
             }
             break;
 
         case (VAR_PARAM):
-            std::string var;
             var = readWrite->getVariable();
             if (inst == "declscal") {
                 //stmt = new Declscal();
@@ -121,7 +124,7 @@ void Parser::createStmt(int type, std::string instr) {
             }
             break;
         case (LABEL_PARAM):
-            std::string label = readWrite->getLabel();
+            label = readWrite->getLabel();
             if (inst == "label") {
                 //stmt = new Label(label);
             }
