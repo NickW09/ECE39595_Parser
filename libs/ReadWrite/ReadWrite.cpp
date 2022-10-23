@@ -32,6 +32,7 @@ void ReadWrite::updateInstruction() {
     }
 }
 
+//Write to output file
 void ReadWrite::writeLine(std::string str){
     writeFile << str;
 }
@@ -48,14 +49,17 @@ std::string ReadWrite::getParam2() {
     return param2;
 }
 
+//Check if end of file reached
 bool ReadWrite::getEOF() {
     return endOfFile;
 }
 
+//Converts string to int
 int ReadWrite::stringToInt(std::string str) {
     return(std::stoi(str));
 }
 
+//Return integer parameter
 int ReadWrite::getInt() {
     if (!param2.empty() || param1.empty()) {
         errorFlag = true;
@@ -64,6 +68,7 @@ int ReadWrite::getInt() {
     return(stringToInt(param1));
 }
 
+//Return variable parameter
 std::string ReadWrite::getVariable() {
     if (!param2.empty() || param1.empty()) {
         errorFlag = true;
@@ -72,6 +77,7 @@ std::string ReadWrite::getVariable() {
     return(param1);
 }
 
+//Return integer and variable parameters
 int ReadWrite::getIntVar(std::string& var) {
     if (param2.empty() || param1.empty()) {
         errorFlag = true;
@@ -81,6 +87,7 @@ int ReadWrite::getIntVar(std::string& var) {
     return(stringToInt(param1));
 }
 
+//Return label parameter
 std::string ReadWrite::getLabel() {
     if (!param2.empty() || param1.empty()) {
         errorFlag = true;
@@ -165,6 +172,3 @@ void ReadWrite::toLowerCase(std::string& string) {
         }
     }
 }
-
-
-

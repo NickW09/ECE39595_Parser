@@ -1,6 +1,6 @@
 #include "Parser.h"
 
-Parser* Parser::parser = nullptr;
+Parser* Parser::parser = nullptr; 
 
 //Constructor
 Parser::Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf) {
