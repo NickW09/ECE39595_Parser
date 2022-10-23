@@ -52,11 +52,11 @@ int Parser::beginParser(){
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
     
     std::cout << std::endl;
-    printStringBuf();
-    std::cout << std::endl;
-    printInstrBuf();
-    std::cout << std::endl;
     printSymTable();
+
+    std::cout << std::endl;
+    printStringBuf();
+    printInstrBuf();
 
     return 0;
 }

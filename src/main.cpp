@@ -32,5 +32,12 @@ int main() {
     Debug::test("test_inputs/3Add", "output.txt", "test_outputs/3Add.pout");
     Debug::test("test_inputs/4Prints", "output.txt", "test_outputs/4Prints.pout");
     Debug::test("test_inputs/5Div", "output.txt", "test_outputs/5Div.pout");
+    Debug::test("test_inputs/6Dup", "output.txt", "test_outputs/6Dup.pout");
+    Debug::test("test_inputs/7Mul", "output.txt", "test_outputs/7Mul.pout");
+    Debug::test("test_inputs/8Negate", "output.txt", "test_outputs/8Negate.pout");
+    Debug::test("test_inputs/9Pop", "output.txt", "test_outputs/9Pop.pout");
+    Debug::test("test_inputs/10Swap", "output.txt", "test_outputs/10Swap.pout");
+    Debug::test("test_inputs/11Label", "output.txt", "test_outputs/11Label.pout");
+
     Debug::score();
 }
