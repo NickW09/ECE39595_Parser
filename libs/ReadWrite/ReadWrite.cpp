@@ -35,6 +35,7 @@ void ReadWrite::updateInstruction() {
 //Write to output file
 void ReadWrite::writeLine(std::string str){
     writeFile << str;
+    std::cout << str << std::endl;
 }
 
 std::string ReadWrite::getInstruction() {

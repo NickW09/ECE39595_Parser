@@ -4,6 +4,7 @@
 #include "..\libs\ReadWrite\ReadWrite.h"
 #include "..\libs\Stmt\Stmt.h"
 #include "..\libs\StringBuffer\StringBuffer.h"
+#include "..\libs\ToDoBuffer\ToDoBuffer.h"
 #include "..\libs\SymbolTable\SymbolTable.h"
 #include "..\libs\Stmt\Pop.h" //DELETEME
 #include "..\libs\Stmt\Pushscal.h" //DELETEME
@@ -26,99 +27,14 @@ int main() {
     InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
     SymbolTable* symTable = SymbolTable::getInstance();
     StringBuffer* strBuf = StringBuffer::getInstance();
-    //to do table
-    //Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf);
+    ToDoBuffer* toDoBuf = ToDoBuffer::getInstance();
+    Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
+    parser->beginParser();
     
     //parse.beginParser(filename);
 
     // ------------------- Virtual Machine Code ----------------------
 
     // -------------------------- Testing ----------------------------
-
-    /*//TEST - abstract stmt classes//
-        Stmt* stmt1;
-        Stmt* stmt2;
-        Stmt* stmt3;
-        Stmt* stmt4;
-        Stmt* stmt5;
-
-        stmt1 = new Pop();
-        stmt2 = new Pushscal("x");
-        stmt3 = new Pushi(5);
-        stmt4 = new GoSub("L1");
-        stmt5 = new GoSubLabel("L2");
-    
-        stmt1->print();
-        stmt2->print();
-        stmt3->print();
-        stmt4->print();
-        stmt5->print();
-    //ENDTEST//*/
-
-    //TEST - NEEDS .txt FILES TO WORK//
-    ReadWrite* readTest = ReadWrite::getInstance(input, output);
-    std::string str = "731";
-    //int x = readTest->stringToInt(str);
-    //std::cout << x << std::endl;
-    //readTest->updateInstruction();
-    //std::cout << readTest->getInstruction() << std::endl;
-    //std::cout << readTest->getParam1() << std::endl;
-    //std::cout << readTest->getParam2() << std::endl;
-
-    
-    //ENDTEST//
-
-    /*//TEST - Table Entry / Symbol Table//
-        TableEntry* te = new TableEntry(3, 5);
-        std::cout << te->getLength() << std::endl;
-        std::cout << te->getLocation() << std::endl;
-        te->setLength(2);
-        std::cout << te->getLength() << std::endl;
-    
-        symTable->push("myVar", *te);
-        symTable->push("Z", TableEntry(8, 22));
-        std::cout << symTable->getEntry("Z").getLocation() << std::endl;
-        std::cout << "Size bf subroutine: " << symTable->getNumEntries() << std::endl;
-        //entering into subroutine
-        symTable->setSubLv(symTable->getSubLv() + 1);
-        symTable->push("myVar", TableEntry(100, 101));
-        symTable->push("Z", TableEntry(6, 7));
-        symTable->push("Apple", TableEntry(20, 21));
-        std::cout << symTable->getEntry("myVar").getLength() << std::endl;
-        std::cout << "Size at end of subroutine: " << symTable->getNumEntries() << std::endl;
-        //exiting subrouting
-        std::cout << symTable->getSubLength() << std::endl;
-        symTable->exitSubroutine();
-        std::cout << symTable->getEntry("myVar").getLength() << std::endl;
-        std::cout << "Size at after subroutine: " << symTable->getNumEntries() << std::endl;
-    *///ENDTEST//
-
-    /*//TEST - String Buffer//
-        strBuf->push("Hello");
-        strBuf->push(" World");
-        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-        strBuf->push(" World1");
-        strBuf->push(" World2");
-        strBuf->push(" World3");
-        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-        strBuf->remove(1);
-        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-        strBuf->pop();
-        std::cout << "Size: " << strBuf->getSize() << " String: " << strBuf->get(0) << strBuf->get(1) << std::endl;
-    *///ENDTEST//
-
-    /*//TEST - Instruction Buffer//
-    instrBuf->push(new Pushscal("x"));
-    instrBuf->push(new Pop());
-    instrBuf->push(new Pushi(5));
-    for (int i = 0; i < instrBuf->getBufSize(); i++) {
-        std::cout << instrBuf->getStmt(i)->toString() << std::endl;
-    }
-    instrBuf->remove(1);
-    std::cout << std::endl;
-    for (int i = 0; i < instrBuf->getBufSize(); i++) {
-        std::cout << instrBuf->getStmt(i)->toString() << std::endl;
-    }
-    *///ENDTEST
 
 }

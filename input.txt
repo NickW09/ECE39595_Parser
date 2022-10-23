@@ -1,3 +1,5 @@
-te st1
-te st2
-test3
+start
+declscal A
+pushi 4
+exit 0
+end
