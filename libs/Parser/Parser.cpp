@@ -21,20 +21,26 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
 }
 
 //Starts the parsing
-void Parser::beginParser(){
+int Parser::beginParser(){
     std::cout << "Parser Running..." << std::endl;
 
     //readWrite->updateInstruction(); //Grab initial instruction
     std::string instr;// = readWrite->getInstruction();
-
+    bool end = false;
     while (!(readWrite->getEOF())) { //checking if end of file reached
         readWrite->updateInstruction();
         instr = readWrite->getInstruction();
-        int type = determineType(instr);
-        if (type == 0) {
-            return;
+        if (!instr.empty()) {
+            if (end) {
+                return 1;
+            }
+            int type = determineType(instr);
+            if (type == ERROR) {
+                return 1;
+            }
+            createStmt(type, instr);
+            end = type == END;
         }
-        createStmt(type, instr);
     }
 
     std::cout << "EOF Reached. Parsing Complete." << std::endl;
@@ -43,6 +49,8 @@ void Parser::beginParser(){
     printInstrBuf();
     std::cout << std::endl;
     printSymTable();
+
+    return 0;
 }
 
 int Parser::determineType(std::string instr)

@@ -44,7 +44,7 @@ class Parser {
 
 public:
     static Parser* getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //gets single instance of parser
-    void beginParser();
+    int beginParser();
     //void setError();
     //bool getError();
 
