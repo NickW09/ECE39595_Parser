@@ -30,6 +30,7 @@ void ReadWrite::updateInstruction() {
     else {
         std::cout << "EOF detected." << std::endl;
     }
+    std::cout << instruction << std::endl;
 }
 
 //Write to output file
@@ -39,7 +40,6 @@ void ReadWrite::writeLine(std::string str){
 }
 
 std::string ReadWrite::getInstruction() {
-    std::cout << instruction << std::endl;
     return instruction;
 
 }
@@ -98,6 +98,10 @@ std::string ReadWrite::getLabel() {
         std::cout << "Invalid Instruction." << std::endl;
     }
     return(param1);
+}
+
+bool ReadWrite::getError() {
+    return errorFlag;
 }
 
 

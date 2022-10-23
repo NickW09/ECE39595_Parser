@@ -12,11 +12,6 @@ int main() {
     
     // --------------------------- Set-up ---------------------------
 
-    std::cout << "Running." << std::endl;
-
-    const char* input = "test_inputs/input.txt";
-    const char* output = "output.txt";
-
     // ------------------------- Parser Code -------------------------
 
     //InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
@@ -31,5 +26,5 @@ int main() {
     // ------------------- Virtual Machine Code ----------------------
 
     // -------------------------- Testing ----------------------------
-    Debug::test("test_inputs/0StartExit", "output.txt", "test_outputs/0StartExit.pout");
+    Debug::test("test_inputs/1Pushl", "output.txt", "test_outputs/1Pushl.pout");
 }

@@ -18,6 +18,7 @@ public:
     std::string getVariable(); //DONE 
     int getIntVar(std::string& var); //DONE
     std::string getLabel(); //DONE
+    bool getError();
     
     void writeLine(std::string); //in-progress  
 
