@@ -2,6 +2,7 @@ start
 declscal A
 declarr Bob 2
 declarr Epic 10
+declscal Uno
 declarr Joe 012
 pushi 4
 exit 0
