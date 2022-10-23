@@ -3,11 +3,22 @@
 
 StmtLab::StmtLab() {
 	instr = "Lab";
+	loc = -99;
+}
+
+//sets the location at which the label is in the symbol table
+void StmtLab::setLoc(int _loc) {
+	loc = _loc;
+}
+
+//sets the depth in subroutines the statement is in
+void StmtLab::setDepth(int _depth) {
+	depth = _depth;
 }
 
 //toStrings out instruction, may be overrided if needed
 std::string StmtLab::toString() {
-	return instr + " " + lab + ", (" + "#" + ")";
+	return instr + " " + lab + ", (" + std::to_string(loc) + ")";
 }
 
 //function to be used for overriding purposes (for example see GoSubLabel)
@@ -17,5 +28,5 @@ std::string StmtLab::toString2() {
 
 //function to be used for overriding purposes (for example see GoSubLabel)
 std::string StmtLab::toString3() {
-	return instr + ", " + "#";
+	return instr + ", " + std::to_string(loc);
 }

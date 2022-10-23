@@ -50,6 +50,7 @@ public:
 
 private:
     Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* instrBuf, SymbolTable* symTable, StringBuffer* strBuf, ToDoBuffer* todoBuf); //private parser constructor used by getInstance
+    ~Parser();
     static Parser* parser;  //unique instantiation of parser
     void createStmt(int type, std::string str);
     int determineType(std::string str);

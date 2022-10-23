@@ -5,7 +5,7 @@
 
 class GoSub : public StmtLab {
 public:
-	GoSub(std::string lab);
+	GoSub(std::string lab, int depth);
 	virtual void action();
 };
 

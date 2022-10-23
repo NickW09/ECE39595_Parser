@@ -12,6 +12,10 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
     error = 0;
 }
 
+Parser::~Parser() {
+    readWrite->~ReadWrite();
+}
+
 //Singelton 
 Parser* Parser::getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf){
     if(parser == nullptr) {
@@ -153,18 +157,22 @@ void Parser::createStmt(int type, std::string instr) {
                 stmt = new GoSubLabel(label);
                 symTable->enterSubroutine();
             }
-            else if (inst == "jump") {        //TODO
+            else if (inst == "jump") {        
                 //make searches only able to see in subroutine
-                stmt = new Jump(label);
+                stmt = new Jump(label, symTable->getSubLv());
+                toDoBuf->push(stmt);
             }
-            else if (inst == "jumpzero") {    //TODO
-                stmt = new JumpZero(label);
+            else if (inst == "jumpzero") {    
+                stmt = new JumpZero(label, symTable->getSubLv());
+                toDoBuf->push(stmt);
             }
-            else if (inst == "jumpnzero") {   //TODO
-                stmt = new JumpNZero(label);
+            else if (inst == "jumpnzero") {   
+                stmt = new JumpNZero(label, symTable->getSubLv());
+                toDoBuf->push(stmt);
             }
-            else if (inst == "gosub") {       //DONE
-                stmt = new GoSub(label);
+            else if (inst == "gosub") {     
+                stmt = new GoSub(label, symTable->getSubLv());
+                toDoBuf->push(stmt);
             }
             else {
                 errFlag = 1;
@@ -173,13 +181,14 @@ void Parser::createStmt(int type, std::string instr) {
 
 
         case (NO_PARAM):
-            if (inst == "start") {         //TODO
+            if (inst == "start") { 
                 stmt = new Start();
+                toDoBuf->push(stmt);
             }
             else if (inst == "exit") {      
                 stmt = new Exit();
             }
-            else if (inst == "return") {    //DOES STUFF
+            else if (inst == "return") {    //FILLS IN INFO
                 stmt = new Return();
             }
             else if (inst == "pop") {       
@@ -211,8 +220,8 @@ void Parser::createStmt(int type, std::string instr) {
             }
             break;
 
-        case (END):
-            //do something?
+        case (END):         //FILLS IN INFO
+            
             break;
     }
 
@@ -237,8 +246,8 @@ void Parser::printSymTable() {
     for (int i = 0; i < symTable->getNumEntries(); i++) {
         symChunk = symTable->getEntryAtIndex(i);
         
-        readWrite->writeLine("("+std::to_string(symChunk.first.first)+std::string(", ")+
+        std::cout << "(" + std::to_string(symChunk.first.first) + std::string(", ") +
             symChunk.first.second+ std::string("): (")+std::to_string(symChunk.second.getLocation())+ 
-            std::string(", ")+std::to_string(symChunk.second.getLength())+")");
+            std::string(", ")+std::to_string(symChunk.second.getLength())+")" << std::endl;
     }
 }

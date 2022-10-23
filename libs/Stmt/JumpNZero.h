@@ -5,7 +5,7 @@
 
 class JumpNZero : public StmtLab {
 public:
-	JumpNZero(std::string lab);
+	JumpNZero(std::string lab, int depth);
 	virtual void action();
 	virtual std::string toString();
 };
