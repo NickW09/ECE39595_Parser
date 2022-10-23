@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <algorithm>
 #include "..\InstructionBuffer\InstructionBuffer.h"
 #include "..\Parser\Parser.h"
 #include "..\ReadWrite\ReadWrite.h"
@@ -22,6 +23,7 @@ private:
 	static int numCorrectTests;
 	static void startParser(const char* input, const char* output);
 	static void compareOutput(const char* output, const char* output_compare);
+	static std::string deleteSpaces(char* str);
 };
 
 #endif /* DEBUG_H_ */

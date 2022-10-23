@@ -69,7 +69,7 @@ int Parser::determineType(std::string instr)
         type = INT_PARAM;
     }
     //VAR PARAM
-    else if (instr == "declscal" || instr == "pushscal" || instr == "pusharr" || instr == "popscal" || instr == "poparr") {
+    else if (instr == "declscal" || instr == "pushscal" || instr == "pusharr" || instr == "popscal" || instr == "poparr" || instr == "prints") {
         type = VAR_PARAM;
     }
     //INT AND VAR PARAM
@@ -82,7 +82,7 @@ int Parser::determineType(std::string instr)
     }
     //NO PARAM 
     else if (instr == "start" || instr == "exit" || instr == "return" || instr == "pop" || instr == "dup" || instr == "swap" 
-        || instr == "add" || instr == "negate" || instr == "mul" || instr == "div" || instr == "printtos" || instr == "prints") {
+        || instr == "add" || instr == "negate" || instr == "mul" || instr == "div" || instr == "printtos") {
         type = NO_PARAM;
     }
     //END
@@ -144,9 +144,9 @@ void Parser::createStmt(int type, std::string instr) {
                 stmt = new Poparr(var);
             }
             else if (inst == "prints") {      
+                stmt = new Prints(strBuf->getSize());
                 strBuf->push(var);
                 //technically int param
-                stmt = new Prints(strBuf->getSize());
             }
             break;
         case (LABEL_PARAM):

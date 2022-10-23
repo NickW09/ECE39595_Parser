@@ -1,7 +1,7 @@
 #include "Printtos.h"
 
 Printtos::Printtos() {
-	instr = "PrintTos";
+	instr = "PrintTOS";
 	opcode = 0x00000061;
 }
 

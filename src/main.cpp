@@ -28,5 +28,9 @@ int main() {
     // -------------------------- Testing ----------------------------
     Debug::test("test_inputs/0StartExit", "output.txt", "test_outputs/0StartExit.pout");
     Debug::test("test_inputs/1PushI", "output.txt", "test_outputs/1PushI.pout");
+    Debug::test("test_inputs/2PrintTOS", "output.txt", "test_outputs/2PrintTOS.pout");
+    Debug::test("test_inputs/3Add", "output.txt", "test_outputs/3Add.pout");
+    Debug::test("test_inputs/4Prints", "output.txt", "test_outputs/4Prints.pout");
+
     Debug::score();
 }
