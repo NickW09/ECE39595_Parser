@@ -31,6 +31,6 @@ int main() {
     Debug::test("test_inputs/2PrintTOS", "output.txt", "test_outputs/2PrintTOS.pout");
     Debug::test("test_inputs/3Add", "output.txt", "test_outputs/3Add.pout");
     Debug::test("test_inputs/4Prints", "output.txt", "test_outputs/4Prints.pout");
-
+    Debug::test("test_inputs/5Div", "output.txt", "test_outputs/5Div.pout");
     Debug::score();
 }
