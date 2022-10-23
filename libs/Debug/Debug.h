@@ -1,6 +1,8 @@
 #ifndef DEBUG_H_
 #define DEBUG_H_
 #include <iostream>
+#include <string>
+#include <fstream>
 #include "..\InstructionBuffer\InstructionBuffer.h"
 #include "..\Parser\Parser.h"
 #include "..\ReadWrite\ReadWrite.h"
@@ -12,14 +14,12 @@
 class Debug {
 
 public:
-	Debug(const char* input, const char* output);
-	~Debug();
-	void test();
+	static void test(const char* input, const char* output, const char* output_compare);
 
 private:
 	static int numTests;
 	static int numCorrectTests;
-	void compareOutput();
+	static void compareOutput(const char* output, const char* output_compare);
 };
 
 #endif /* DEBUG_H_ */
