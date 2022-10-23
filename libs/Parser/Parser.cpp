@@ -107,24 +107,26 @@ void Parser::createStmt(int type, std::string instr) {
         case (INT_VAR_PARAM):
             integer = readWrite->getIntVar(var);
             if (inst == "declarr") {            //DONE
+                //is this instr buffer loc instead?
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
             }
             break;
         case (VAR_PARAM):
             var = readWrite->getVariable();
-            if (inst == "declscal") {
-                //stmt = new Declscal();
+            if (inst == "declscal") {           //DONE
+                //is this instr buffer loc instead?
+                symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
             }
-            else if (inst == "pushscal") {
+            else if (inst == "pushscal") {      //DONE
                 stmt = new Pushscal(var);
             }
-            else if (inst == "pusharr") {
+            else if (inst == "pusharr") {       //DONE
                 stmt = new Pusharr(var);
             }
-            else if (inst == "popscal") {
+            else if (inst == "popscal") {       //DONE
                 stmt = new Popscal(var);
             }
-            else if (inst == "poparr") {
+            else if (inst == "poparr") {       //DONE
                 stmt = new Poparr(var);
             }
             else if (inst == "prints") {      //DONE
