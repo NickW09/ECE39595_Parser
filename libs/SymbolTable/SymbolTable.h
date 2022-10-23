@@ -10,7 +10,7 @@
 class SymbolTable {
 
 public:
-
+    ~SymbolTable();                             //DONE
     static SymbolTable* getInstance();          //DONE
     TableEntry getData(std::string key);        //DONE
     void push(std::string str, TableEntry te);  //DONE

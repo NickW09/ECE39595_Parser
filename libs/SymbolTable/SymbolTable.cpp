@@ -14,6 +14,10 @@ SymbolTable::SymbolTable(){
     //parserActions.pdf pg 2 : "we do not have nested subroutines or functions"
 }
 
+SymbolTable::~SymbolTable() {
+    map.clear();
+}
+
 //possibly creates then returns singleton
 SymbolTable* SymbolTable::getInstance(){
     if(symTab == nullptr) {

@@ -160,20 +160,24 @@ void Parser::createStmt(int type, std::string instr) {
             }
             else if (inst == "jump") {        
                 //make searches only able to see in subroutine
-                stmt = new Jump(label, symTable->getSubLv());
-                toDoBuf->push(stmt);
+                StmtLab* stmtLab = new Jump(label, symTable->getSubLv());
+                stmt = stmtLab;
+                toDoBuf->push(stmtLab);
             }
             else if (inst == "jumpzero") {    
-                stmt = new JumpZero(label, symTable->getSubLv());
-                toDoBuf->push(stmt);
+                StmtLab* stmtLab = new JumpZero(label, symTable->getSubLv());
+                stmt = stmtLab;
+                toDoBuf->push(stmtLab);
             }
             else if (inst == "jumpnzero") {   
-                stmt = new JumpNZero(label, symTable->getSubLv());
-                toDoBuf->push(stmt);
+                StmtLab* stmtLab = new JumpNZero(label, symTable->getSubLv());
+                stmt = stmtLab;
+                toDoBuf->push(stmtLab);
             }
             else if (inst == "gosub") {     
-                stmt = new GoSub(label, symTable->getSubLv());
-                toDoBuf->push(stmt);
+                StmtLab* stmtLab = new GoSub(label, symTable->getSubLv());
+                stmt = stmtLab;
+                toDoBuf->push(stmtLab);
             }
             else {
                 errFlag = 1;
@@ -185,7 +189,6 @@ void Parser::createStmt(int type, std::string instr) {
             if (inst == "start") { 
                 start = new Start();
                 stmt = start;
-                toDoBuf->push(stmt);
             }
             else if (inst == "exit") {      
                 stmt = new Exit();
@@ -223,10 +226,10 @@ void Parser::createStmt(int type, std::string instr) {
             break;
 
         case (END):         //FILLS IN INFO
+            start->setLength(symTable->getTotalLength());
             /*for (int i = 0; i < toDoBuf->getSize(); i++) {
                 //toDoBuf->getStmt().set
             }*/
-            start->setLength(symTable->getTotalLength());
 
             break;
     }
