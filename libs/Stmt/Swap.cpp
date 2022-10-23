@@ -1,7 +1,7 @@
 #include "Swap.h"
 
 Swap::Swap() {
-	instr = "Swap";
+	instr = "OP_SWAP";
 	opcode = 0x00000041;
 }
 

@@ -1,7 +1,7 @@
 #include "JumpZero.h"
 
 JumpZero::JumpZero(std::string _lab) {
-	instr = "JumpZero";
+	instr = "OP_JUMPZERO";
 	opcode = 0x00000011;
 	lab = _lab;
 }

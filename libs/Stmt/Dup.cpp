@@ -1,7 +1,7 @@
 #include "Dup.h"
 
 Dup::Dup() {
-	instr = "Dup";
+	instr = "OP_DUP";
 	opcode = 0x00000040;
 }
 

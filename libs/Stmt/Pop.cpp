@@ -2,7 +2,7 @@
 
 
 Pop::Pop() {
-	instr = "Pop";
+	instr = "OP_POP";
 	opcode = 0x00000032;
 }
 
