@@ -134,19 +134,19 @@ void Parser::createStmt(int type, std::string instr) {
                 //is this instr buffer loc instead?
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
             }
-            else if (inst == "pushscal") {      
+            else if (inst == "pushscal") {              //TODO - NEED to change the classes to allow subroutine depth as well
                 stmt = new Pushscal(var);
             }
-            else if (inst == "pusharr") {       
+            else if (inst == "pusharr") {                  //TODO
                 stmt = new Pusharr(var);
             }
-            else if (inst == "popscal") {       
+            else if (inst == "popscal") {                  //TODO
                 stmt = new Popscal(var);
             }
-            else if (inst == "poparr") {       
+            else if (inst == "poparr") {                      //TODO
                 stmt = new Poparr(var);
             }
-            else if (inst == "prints") {      
+            else if (inst == "prints") {
                 stmt = new Prints(strBuf->getSize());
                 strBuf->push(var);
                 //technically int param
@@ -160,11 +160,11 @@ void Parser::createStmt(int type, std::string instr) {
             }
             else if (inst == "gosublabel") {  
                 symTable->push(label, TableEntry(instrBuf->getSize(), 0));
-                stmt = new GoSubLabel(label);
+                gosublabel = new GoSubLabel(label);
+                stmt = gosublabel;
                 symTable->enterSubroutine();
             }
             else if (inst == "jump") {        
-                //make searches only able to see in subroutine
                 StmtLab* stmtLab = new Jump(label, symTable->getSubLv());
                 stmt = stmtLab;
                 toDoBuf->push(stmtLab);
@@ -198,8 +198,29 @@ void Parser::createStmt(int type, std::string instr) {
             else if (inst == "exit") {      
                 stmt = new Exit();
             }
-            else if (inst == "return") {    //FILLS IN INFO
+            else if (inst == "return") {    //FILLS IN INFO; TODO
                 stmt = new Return();
+                gosublabel->setLength(symTable->getSubLength());
+                
+                for (int i = 0; i < toDoBuf->getSize(); i++) {
+                    if (toDoBuf->getStmt(i)->getDepth() == 1) {
+                        int loc = -1;
+                        if(toDoBuf->getStmt(i)->getIsStmtLab())
+                            //labels can only pulled from within the subroutine
+                            loc = symTable->getDataFromSub(toDoBuf->getStmt(i)->getVar()).getLocation();
+                        else {
+                            //vars can be pulled from anywhere
+                            loc = symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation();
+                        }
+                        if (loc != -1 && loc != -99 /*from symboltable*/) {
+                            toDoBuf->getStmt(i)->setLoc(loc);
+                        }
+                        else {
+                            errFlag = 1;
+                        }
+                    }
+                }
+                symTable->exitSubroutine();
             }
             else if (inst == "pop") {       
                 stmt = new Pop();
@@ -233,7 +254,9 @@ void Parser::createStmt(int type, std::string instr) {
         case (END):         //FILLS IN INFO
             start->setLength(symTable->getTotalLength());
             for (int i = 0; i < toDoBuf->getSize(); i++) {
-                toDoBuf->getStmt(i)->setLoc(symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation());
+                if (toDoBuf->getStmt(i)->getDepth() == 0) { //should this allow depth of 0 or 1?
+                    toDoBuf->getStmt(i)->setLoc(symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation());
+                }
             }
 
             break;

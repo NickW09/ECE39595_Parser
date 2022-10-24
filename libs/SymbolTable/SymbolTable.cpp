@@ -47,6 +47,15 @@ TableEntry SymbolTable::getData(std::string key) {
     return TableEntry(-99, -99);
 }
 
+TableEntry SymbolTable::getDataFromSub(std::string key) {
+    std::map<std::pair<int, std::string>, TableEntry>::iterator it;
+    it = map.find(std::pair<int, std::string>(1, key));
+    if (it != map.end()) {
+        return it->second;
+    }
+    return TableEntry(-99, -99);
+}
+
 void SymbolTable::enterSubroutine() {
     subLv++;
 }

@@ -8,7 +8,9 @@ public:
 	GoSubLabel(std::string lab);
 	virtual void action();
 	virtual std::string toString();
-
+	virtual void setLength(int len);
+private:
+	int len;
 };
 
 #endif /* GOSUBLABEL_H_ */

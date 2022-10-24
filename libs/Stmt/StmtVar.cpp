@@ -3,6 +3,7 @@
 
 StmtVar::StmtVar() {
 	instr = "Var";
+	isStmtLab = false;
 }
 
 //toStrings out instruction, may be overrided if needed

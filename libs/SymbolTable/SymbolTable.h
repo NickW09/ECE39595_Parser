@@ -13,6 +13,7 @@ public:
     ~SymbolTable();                             //DONE
     static SymbolTable* getInstance();          //DONE
     TableEntry getData(std::string key);        //DONE
+    TableEntry getDataFromSub(std::string key); //DONE
     void push(std::string str, TableEntry te);  //DONE
     void enterSubroutine();                     //DONE
     void exitSubroutine();                      //DONE

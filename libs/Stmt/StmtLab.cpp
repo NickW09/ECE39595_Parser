@@ -4,6 +4,7 @@
 StmtLab::StmtLab() {
 	instr = "Lab";
 	loc = -99;
+	isStmtLab = true;
 }
 
 //sets the location at which the label is in the symbol table

@@ -13,3 +13,11 @@ void StmtToDo::setLoc(int _loc) {
 std::string StmtToDo::getVar() {
 	return var;
 }
+
+int StmtToDo::getDepth() {
+	return depth;
+}
+
+bool StmtToDo::getIsStmtLab() {
+	return isStmtLab;
+}
