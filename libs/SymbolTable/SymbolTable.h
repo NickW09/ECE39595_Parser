@@ -22,15 +22,15 @@ public:
     int getNumEntries();                        //DONE
     int getSubLength();                         //DONE
     int getCurrLoc();                           //DONE
-    std::pair<std::pair<int, std::string>, TableEntry> getEntryAtIndex(int i); //DONE
+    std::pair<std::string, TableEntry> getEntryAtIndex(int i); //DONE
     int getTotalLength();                       //DONE
 private:
     SymbolTable();                              //DONE
     static SymbolTable* symTab; 
-    std::map<std::pair<int, std::string>, TableEntry> map;
+    std::map<std::string, TableEntry> map;
+    std::map<std::string, TableEntry> mapSub;
     //int idx;
     int subLv;
-    int subLength;
 };
 
 #endif /* SYMBOLTABLE_H_ */

@@ -300,13 +300,12 @@ void Parser::printInstrBuf() {
 }
 
 void Parser::printSymTable() {
-    std::pair<std::pair<int, std::string>, TableEntry> symChunk;
+    std::pair<std::string, TableEntry> symChunk;
     std::cout << "Symbol Table:" << std::endl;
     for (int i = 0; i < symTable->getNumEntries(); i++) {
         symChunk = symTable->getEntryAtIndex(i);
         
-        std::cout << "(" + std::to_string(symChunk.first.first) + std::string(", ") +
-            symChunk.first.second+ std::string("): (")+std::to_string(symChunk.second.getLocation())+ 
-            std::string(", ")+std::to_string(symChunk.second.getLength())+")" << std::endl;
+        std::cout << "(" + symChunk.first + "): (" + std::to_string(symChunk.second.getLocation()) + 
+            ", " + std::to_string(symChunk.second.getLength()) + ")" << std::endl;
     }
 }

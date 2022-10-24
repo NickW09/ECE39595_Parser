@@ -4,11 +4,11 @@ SymbolTable* SymbolTable::symTab = nullptr;
 
 //Constructor
 SymbolTable::SymbolTable(){
-    std::map<std::pair<int, std::string>, TableEntry> map;
+    std::map<std::string, TableEntry> map;
+    std::map<std::string, TableEntry> mapSub;
     //idx = 0;
     
     subLv = 0; //depth into subroutines, 0 for main and 1 for subroutine
-    subLength = 0; //not supported for nested subroutines
 
 
     //parserActions.pdf pg 2 : "we do not have nested subroutines or functions"
@@ -16,6 +16,7 @@ SymbolTable::SymbolTable(){
 
 SymbolTable::~SymbolTable() {
     map.clear();
+    mapSub.clear();
     symTab = nullptr;
 }
 
@@ -28,18 +29,26 @@ SymbolTable* SymbolTable::getInstance(){
 }
 
 void SymbolTable::push(std::string str, TableEntry te) {
-    if (subLv == 1) {
-        subLength += te.getLength();
+    if (subLv == 0) {
+        map.insert(std::pair<std::string, TableEntry>(str, te));
+    }
+    else {
+        mapSub.insert(std::pair<std::string, TableEntry>(str, te));
     }
     
-    map.insert(std::pair<std::pair<int, std::string>, TableEntry>(std::pair<int, std::string>(subLv, str), te));
 }
 
 //returns table entry at last key match
 TableEntry SymbolTable::getData(std::string key) {
-    std::map<std::pair<int, std::string>, TableEntry>::iterator it;
-    for (int i = subLv; i >= 0; i--) {
-        it = map.find(std::pair<int, std::string>(i, key));
+    std::map<std::string, TableEntry>::iterator it;
+    if (!mapSub.empty()) {
+        it = mapSub.find(key);
+        if (it != mapSub.end()) {
+            return it->second;
+        }
+    }
+    if (!map.empty()) {
+        it = map.find(key);
         if (it != map.end()) {
             return it->second;
         }
@@ -48,10 +57,12 @@ TableEntry SymbolTable::getData(std::string key) {
 }
 
 TableEntry SymbolTable::getDataFromSub(std::string key) {
-    std::map<std::pair<int, std::string>, TableEntry>::iterator it;
-    it = map.find(std::pair<int, std::string>(1, key));
-    if (it != map.end()) {
-        return it->second;
+    std::map<std::string, TableEntry>::iterator it;
+    if (!mapSub.empty()) {
+        it = mapSub.find(key);
+        if (it != mapSub.end()) {
+            return it->second;
+        }
     }
     return TableEntry(-99, -99);
 }
@@ -62,17 +73,8 @@ void SymbolTable::enterSubroutine() {
 
 //erases subroutine symbols and decrements the subLv
 void SymbolTable::exitSubroutine() {
-    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
-    while (it != map.end()) {
-        if ((*it).first.first == subLv) {
-            break;
-        }
-        it++;
-    }
-    map.erase(it, map.end());
- 
+    mapSub.clear(); //BE CAREFUL THAT YOU DONT CLEAR IT BEFORE YOU NEED IT
     subLv--;
-    subLength = 0; //BE CAREFUL THAT YOU DONT ERASE IT BEFORE YOU NEED IT
 }
 
 
@@ -87,16 +89,22 @@ void SymbolTable::setSubLv(int lv) {
 }
 
 int SymbolTable::getNumEntries() {
-    return (int) map.size();
+    return (int) (map.size() + mapSub.size());
 }
 
 int SymbolTable::getSubLength() {
-    return subLength;
+    std::map<std::string, TableEntry>::iterator it = mapSub.begin();
+    int length = 0;
+    while (it != mapSub.end()) {
+        length += (*it).second.getLength();
+        it++;
+    }
+    return length;
 }
 
 int SymbolTable::getCurrLoc() {
     return getTotalLength();
-    /*if (subLv == 0) {
+    /*if (subLv == 0) { // wrong
         return (int) map.size();
     }
     else {
@@ -104,21 +112,34 @@ int SymbolTable::getCurrLoc() {
     }*/
 }
 
-std::pair<std::pair<int, std::string>, TableEntry> SymbolTable::getEntryAtIndex(int i) {
-    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
+//may lead to bad results but only for printing purposes
+std::pair<std::string, TableEntry> SymbolTable::getEntryAtIndex(int i) {
+    std::map<std::string, TableEntry>::iterator it;
+    if (i < map.size()) {
+        it = map.begin();
+    }
+    else {
+        i -= map.size();
+        it = mapSub.begin();
+    }
     for (int j = 0; j < i; j++)
         it++;
     return *(it);
+    
 }
 
 int SymbolTable::getTotalLength() {
     int length = 0;
 
-    std::map<std::pair<int, std::string>, TableEntry>::iterator it = map.begin();
+    std::map<std::string, TableEntry>::iterator it = map.begin();
     while (it != map.end()) {
         length += (*it).second.getLength();
         it++;
     }
-
+    it = mapSub.begin();
+    while (it != mapSub.end()) {
+        length += (*it).second.getLength();
+        it++;
+    }
     return length;
 }
