@@ -220,7 +220,7 @@ void Parser::createStmt(int type, std::string instr) {
                             //vars can be pulled from anywhere
                             loc = symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation();
                         }
-                        if (loc != -1 && loc != -99 /*from symboltable*/) {
+                        if (loc >= 0) {
                             toDoBuf->getStmt(i)->setLoc(loc);
                         }
                         else {
