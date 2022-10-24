@@ -42,6 +42,24 @@ int main() {
     Debug::test("test_inputs/13SimpleGoSub_GoSubLabel_Return", "output.txt", "test_outputs/13SimpleGoSub_GoSubLabel_Return.pout");
     Debug::test("test_inputs/14ScalarEasy", "output.txt", "test_outputs/14ScalarEasy.pout");
     Debug::test("test_inputs/15ScalarHard", "output.txt", "test_outputs/15ScalarHard.pout");
+    Debug::test("test_inputs/16ScalarEasy", "output.txt", "test_outputs/16ScalarEasy.pout");
+    Debug::test("test_inputs/17ScalarHard", "output.txt", "test_outputs/17ScalarHard.pout");
+    Debug::test("test_inputs/18ScalarHardest", "output.txt", "test_outputs/18ScalarHardest.pout");
+    Debug::test("test_inputs/19ArrayEasy", "output.txt", "test_outputs/19ArrayEasy.pout");
+    Debug::test("test_inputs/20ArrayHard", "output.txt", "test_outputs/20ArrayHard.pout");
+    Debug::test("test_inputs/21ArrayEasy", "output.txt", "test_outputs/21ArrayEasy.pout");
+    Debug::test("test_inputs/22ArrayHard", "output.txt", "test_outputs/22ArrayHard.pout");
+    Debug::test("test_inputs/23ArrayHardest", "output.txt", "test_outputs/23ArrayHardest.pout");
+    Debug::test("test_inputs/24JumpZero", "output.txt", "test_outputs/24JumpZero.pout");
+    Debug::test("test_inputs/25JumpNZero", "output.txt", "test_outputs/25JumpNZero.pout");
+    Debug::test("test_inputs/26Recurse", "output.txt", "test_outputs/26Recurse.pout");
+    Debug::test("test_inputs/27DotProd", "output.txt", "test_outputs/27DotProd.pout");
+    Debug::test("test_inputs/99Sample", "output.txt", "test_outputs/99Sample.pout");
+    Debug::test("test_inputs/Err1StmtAfterEnd", "output.txt", "test_outputs/Err1StmtAfterEnd.pout");
+    Debug::test("test_inputs/Err2NoEnd", "output.txt", "test_outputs/Err2NoEnd.pout");
+    Debug::test("test_inputs/Err3DoubleDefScalar", "output.txt", "test_outputs/Err3DoubleDefScalar.pout");
+    Debug::test("test_inputs/Err4DoubleDefArr", "output.txt", "test_outputs/Err4DoubleDefArr.pout");
+    Debug::test("test_inputs/Err5DoubleDefLabel", "output.txt", "test_outputs/Err5DoubleDefLabel.pout");
 
 
     Debug::score();
