@@ -5,7 +5,7 @@
 
 class Pusharr : public StmtVar {
 public:
-	Pusharr(std::string var);
+	Pusharr(std::string var, int depth);
 	virtual void action();
 };
 

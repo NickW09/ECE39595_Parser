@@ -135,27 +135,35 @@ void Parser::createStmt(int type, std::string instr) {
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
             }
             else if (inst == "pushscal") {              //TODO - NEED to change the classes to allow subroutine depth as well
-                stmt = new Pushscal(var);
+                StmtVar* stmtVar = new Pushscal(var, symTable->getSubLv());
+                stmt = stmtVar;
+                toDoBuf->push(stmtVar);
             }
             else if (inst == "pusharr") {                  //TODO
-                stmt = new Pusharr(var);
+                StmtVar* stmtVar = new Pusharr(var, symTable->getSubLv());
+                stmt = stmtVar;
+                toDoBuf->push(stmtVar);
             }
             else if (inst == "popscal") {                  //TODO
-                stmt = new Popscal(var);
+                StmtVar* stmtVar = new Popscal(var, symTable->getSubLv());
+                stmt = stmtVar;
+                toDoBuf->push(stmtVar);
             }
             else if (inst == "poparr") {                      //TODO
-                stmt = new Poparr(var);
+                StmtVar* stmtVar = new Poparr(var, symTable->getSubLv());
+                stmt = stmtVar;
+                toDoBuf->push(stmtVar);
             }
             else if (inst == "prints") {
+                //technically int param
                 stmt = new Prints(strBuf->getSize());
                 strBuf->push(var);
-                //technically int param
             }
             break;
         case (LABEL_PARAM):
             label = readWrite->getLabel();
             if (inst == "label") {            
-                //symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
+                //old: symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
                 symTable->push(label, TableEntry(instrBuf->getSize(), 0));
             }
             else if (inst == "gosublabel") {  
