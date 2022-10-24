@@ -5,7 +5,7 @@
 
 class Poparr : public StmtVar {
 public:
-	Poparr(std::string var, int depth);
+	Poparr(std::string var, int depth, int loc);
 	virtual void action();
 };
 

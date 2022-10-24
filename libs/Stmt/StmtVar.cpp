@@ -1,9 +1,11 @@
 #include "StmtVar.h"
 
 
-StmtVar::StmtVar() {
+StmtVar::StmtVar(std::string _var, int _depth, int _loc) {
 	instr = "Var";
-	isStmtLab = false;
+	loc = _loc;
+	var = _var;
+	depth = _depth;
 }
 
 //toStrings out instruction, may be overrided if needed

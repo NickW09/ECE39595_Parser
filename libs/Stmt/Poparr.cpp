@@ -1,11 +1,9 @@
 #include "Poparr.h"
 
 
-Poparr::Poparr(std::string _var, int _depth) {
+Poparr::Poparr(std::string _var, int _depth, int _loc) : StmtVar(_var, _depth, _loc) {
 	instr = "PopArray";
 	opcode = 0x00000031;
-	var = _var;
-	depth = _depth;
 }
 
 void Poparr::action() {

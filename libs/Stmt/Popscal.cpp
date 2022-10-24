@@ -1,10 +1,8 @@
 #include "Popscal.h"
 
-Popscal::Popscal(std::string _var, int _depth) {
+Popscal::Popscal(std::string _var, int _depth, int _loc) : StmtVar(_var, _depth, _loc) {
 	instr = "PopScalar";
 	opcode = 0x00000030;
-	var = _var;
-	depth = _depth;
 }
 
 void Popscal::action() {

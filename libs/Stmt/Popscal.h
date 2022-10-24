@@ -5,7 +5,7 @@
 
 class Popscal : public StmtVar {
 public:
-	Popscal(std::string var, int depth);
+	Popscal(std::string var, int depth, int loc);
 	virtual void action();
 };
 

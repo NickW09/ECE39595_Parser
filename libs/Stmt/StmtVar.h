@@ -1,13 +1,16 @@
 #ifndef STMTVAR_H_
 #define STMTVAR_H_
 #include <iostream>
-#include "StmtToDo.h"
+#include "Stmt.h"
 
-class StmtVar : public StmtToDo {
+class StmtVar : public Stmt {
 public:
-	StmtVar();
+	StmtVar(std::string var, int _depth, int _loc);
 	virtual std::string toString();
 protected:
+	int loc;
+	std::string var;
+	int depth;
 };
 
 #endif /* STMTVAR_H_ */

@@ -5,7 +5,7 @@
 
 class Pushscal : public StmtVar {
 public:
-	Pushscal(std::string var, int depth);
+	Pushscal(std::string var, int depth, int loc);
 	virtual void action();
 };
 

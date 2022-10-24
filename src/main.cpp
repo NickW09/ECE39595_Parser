@@ -26,6 +26,8 @@ int main() {
     // ------------------- Virtual Machine Code ----------------------
 
     // -------------------------- Testing ----------------------------
+    
+    
     Debug::test("test_inputs/0StartExit", "output.txt", "test_outputs/0StartExit.pout");
     Debug::test("test_inputs/1PushI", "output.txt", "test_outputs/1PushI.pout");
     Debug::test("test_inputs/2PrintTOS", "output.txt", "test_outputs/2PrintTOS.pout");
@@ -60,7 +62,7 @@ int main() {
     Debug::test("test_inputs/Err3DoubleDefScalar", "output.txt", "test_outputs/Err3DoubleDefScalar.pout");
     Debug::test("test_inputs/Err4DoubleDefArr", "output.txt", "test_outputs/Err4DoubleDefArr.pout");
     Debug::test("test_inputs/Err5DoubleDefLabel", "output.txt", "test_outputs/Err5DoubleDefLabel.pout");
-
+    
 
     Debug::score();
 }

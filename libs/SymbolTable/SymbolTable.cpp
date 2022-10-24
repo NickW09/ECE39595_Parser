@@ -95,7 +95,13 @@ int SymbolTable::getSubLength() {
 }
 
 int SymbolTable::getCurrLoc() {
-    return (int) map.size();
+    return getTotalLength();
+    /*if (subLv == 0) {
+        return (int) map.size();
+    }
+    else {
+        return subLength;
+    }*/
 }
 
 std::pair<std::pair<int, std::string>, TableEntry> SymbolTable::getEntryAtIndex(int i) {

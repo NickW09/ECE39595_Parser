@@ -111,6 +111,7 @@ void Parser::createStmt(int type, std::string instr) {
     int integer;
     std::string var;
     std::string label;
+    int loc;
     //TableEntry te;
 
     switch (type) {
@@ -130,35 +131,40 @@ void Parser::createStmt(int type, std::string instr) {
             break;
         case (VAR_PARAM):
             var = readWrite->getVariable();
+            loc = -1;
             if (inst == "declscal") {           
                 //is this instr buffer loc instead?
                 symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
-            }
-            else if (inst == "pushscal") {              //TODO - NEED to change the classes to allow subroutine depth as well
-                StmtVar* stmtVar = new Pushscal(var, symTable->getSubLv());
-                stmt = stmtVar;
-                toDoBuf->push(stmtVar);
-            }
-            else if (inst == "pusharr") {                  //TODO
-                StmtVar* stmtVar = new Pusharr(var, symTable->getSubLv());
-                stmt = stmtVar;
-                toDoBuf->push(stmtVar);
-            }
-            else if (inst == "popscal") {                  //TODO
-                StmtVar* stmtVar = new Popscal(var, symTable->getSubLv());
-                stmt = stmtVar;
-                toDoBuf->push(stmtVar);
-            }
-            else if (inst == "poparr") {                      //TODO
-                StmtVar* stmtVar = new Poparr(var, symTable->getSubLv());
-                stmt = stmtVar;
-                toDoBuf->push(stmtVar);
             }
             else if (inst == "prints") {
                 //technically int param
                 stmt = new Prints(strBuf->getSize());
                 strBuf->push(var);
             }
+            else {
+                //stmtvars can be evaled immediately since vars are always declared bf use
+                loc = symTable->getData(var).getLocation();
+                if (loc >= 0) {
+                    if (inst == "pushscal") {              //TODO - MANY CHANGES, SO CHECK FOR VALIDITY AND DELETE TODOSTMT
+                        stmt = new Pushscal(var, symTable->getSubLv(), loc);
+                    }
+                    else if (inst == "pusharr") {                  //TODO
+                        stmt = new Pusharr(var, symTable->getSubLv(), loc);
+                    }
+                    else if (inst == "popscal") {                  //TODO
+                        stmt = new Popscal(var, symTable->getSubLv(), loc);
+                    }
+                    else if (inst == "poparr") {                      //TODO
+                        stmt = new Poparr(var, symTable->getSubLv(), loc);
+                    }
+                }
+                else {
+                    errFlag = 1;
+                }
+                
+
+            }
+            
             break;
         case (LABEL_PARAM):
             label = readWrite->getLabel();
@@ -210,6 +216,8 @@ void Parser::createStmt(int type, std::string instr) {
                 stmt = new Return();
                 gosublabel->setLength(symTable->getSubLength());
                 
+                printSymTable();
+
                 for (int i = 0; i < toDoBuf->getSize(); i++) {
                     if (toDoBuf->getStmt(i)->getDepth() == 1) {
                         int loc = -1;
