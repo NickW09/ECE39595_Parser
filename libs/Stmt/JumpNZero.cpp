@@ -1,7 +1,7 @@
 #include "JumpNZero.h"
 
 JumpNZero::JumpNZero(std::string _lab, int _depth) {
-	instr = "OP_JUMPNZERO";
+	instr = "JumpNZero";
 	opcode = 0x00000012;
 	lab = _lab;
 	depth = _depth;

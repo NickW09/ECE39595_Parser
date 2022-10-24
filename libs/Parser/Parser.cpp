@@ -148,13 +148,13 @@ void Parser::createStmt(int type, std::string instr) {
                     if (inst == "pushscal") {              //TODO - MANY CHANGES, SO CHECK FOR VALIDITY AND DELETE TODOSTMT
                         stmt = new Pushscal(var, symTable->getSubLv(), loc);
                     }
-                    else if (inst == "pusharr") {                  //TODO
+                    else if (inst == "pusharr") {                  
                         stmt = new Pusharr(var, symTable->getSubLv(), loc);
                     }
-                    else if (inst == "popscal") {                  //TODO
+                    else if (inst == "popscal") {                  
                         stmt = new Popscal(var, symTable->getSubLv(), loc);
                     }
-                    else if (inst == "poparr") {                      //TODO
+                    else if (inst == "poparr") {                      
                         stmt = new Poparr(var, symTable->getSubLv(), loc);
                     }
                 }
