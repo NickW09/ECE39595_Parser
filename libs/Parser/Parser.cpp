@@ -208,7 +208,8 @@ void Parser::createStmt(int type, std::string instr) {
                 toDoBuf->push(stmtLab);
             }
             else if (inst == "gosub") {     
-                StmtLab* stmtLab = new GoSub(label, symTable->getSubLv());
+                //gosubs always pull labels from main and so check in depth 0 symTable
+                StmtLab* stmtLab = new GoSub(label, 0);
                 stmt = stmtLab;
                 toDoBuf->push(stmtLab);
             }
@@ -239,8 +240,8 @@ void Parser::createStmt(int type, std::string instr) {
                             //labels can only pulled from within the subroutine
                             loc = symTable->getDataFromSub(toDoBuf->getStmt(i)->getVar()).getLocation();
                         else {
-                            //vars can be pulled from anywhere
-                            loc = symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation();
+                            //vars are no longer set here.
+                            //need to clean up toDoTable and delete isStmtLab
                         }
                         if (loc >= 0) {
                             toDoBuf->getStmt(i)->setLoc(loc);
