@@ -20,6 +20,7 @@ public:
     std::string getLabel(); //DONE
     bool getError();
     void writeLine(std::string); 
+    void writeOut(std::string);
 
 private:
     ReadWrite(const char* inputfile); //DONE
@@ -35,6 +36,7 @@ private:
     static ReadWrite* readwrite; //DONE
     std::ifstream readFile; //DONE
     std::ofstream writeFile; //DONE
+    std::ofstream writeOutFile; //DONE
 };
 
 #endif /* READWRITE_H_ */

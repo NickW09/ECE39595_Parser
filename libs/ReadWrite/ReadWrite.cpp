@@ -16,6 +16,7 @@ ReadWrite* ReadWrite::getInstance(const char* inputfile){
 ReadWrite::~ReadWrite(){
     readFile.close();
     writeFile.close();
+    writeOutFile.close();
     readwrite = nullptr;
 }
 
@@ -34,9 +35,15 @@ void ReadWrite::updateInstruction() {
     //std::cout << instruction << std::endl;
 }
 
-//Write to output file
+//Write to debug file
 void ReadWrite::writeLine(std::string str){
     writeFile << str << "\n";
+    std::cout << str << std::endl;
+}
+
+//Write to output file
+void ReadWrite::writeOut(std::string str) {
+    writeOutFile << str << "\n";
     std::cout << str << std::endl;
 }
 
@@ -114,19 +121,18 @@ ReadWrite* ReadWrite::readwrite = nullptr;
 //Constructor
 ReadWrite::ReadWrite(const char* inputfile){
     readFile.open(inputfile); //Open input file
-    std::string output = inputfile;
-    std::string signature = ".pout";
-    std::string out = output + signature;
-    std::cout<< out << std::endl;
-    writeFile.open(out); //Open output file
+    std::string outputfile = inputfile;
+    std::string signature_debug = ".pout";
+    std::string signature_output = ".out";
+    std::string debug = outputfile + signature_debug;
+    std::string output = outputfile + signature_output;
+    std::cout<< debug << std::endl;
+    writeFile.open(debug); //Open debug file
+    writeOutFile.open(output); //Open output file
     endOfFile = false;
     errorFlag = false;
     if (!readFile || readFile.eof()) { //Check if input file opened properly
         std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
-        errorFlag = true;
-    }
-    if (!writeFile) {
-        std::cout << "Error: " << out << " Does Not Exist." << std::endl;
         errorFlag = true;
     }
 }

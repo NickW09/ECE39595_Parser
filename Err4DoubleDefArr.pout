@@ -1,8 +1,1 @@
-Start 3
-PushI 4
-PushI 2
-PopArray 0
-PushI 2
-PushArray 0
-PrintTOS
-Exit
+error: attempting to add variable with name A twice
