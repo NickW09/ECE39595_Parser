@@ -7,7 +7,7 @@
 class ReadWrite {
 
 public:
-    static ReadWrite* getInstance(const char* inputfile, const char* outputfile); //DONE
+    static ReadWrite* getInstance(const char* inputfile); //DONE
     ~ReadWrite(); //DONE
     std::string getInstruction(); //DONE
     std::string getParam1(); //DONE
@@ -19,11 +19,10 @@ public:
     int getIntVar(std::string& var); //DONE
     std::string getLabel(); //DONE
     bool getError();
-    
-    void writeLine(std::string); //in-progress  
+    void writeLine(std::string); 
 
 private:
-    ReadWrite(const char* inputfile, const char* outputfile); //DONE
+    ReadWrite(const char* inputfile); //DONE
     std::string instruction;//DONE
     std::string param1; //DONE
     std::string param2; //DONE

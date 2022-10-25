@@ -4,9 +4,9 @@
 
 // Checks if ReadWrite object has been defined or not, if not, it
 // gets defined.
-ReadWrite* ReadWrite::getInstance(const char* inputfile, const char* outputfile){
+ReadWrite* ReadWrite::getInstance(const char* inputfile){
     if(readwrite == nullptr){
-        readwrite = new ReadWrite(inputfile, outputfile);
+        readwrite = new ReadWrite(inputfile);
     }
     return readwrite;
 }
@@ -112,9 +112,11 @@ ReadWrite* ReadWrite::readwrite = nullptr;
 
 
 //Constructor
-ReadWrite::ReadWrite(const char* inputfile, const char* outputfile){
+ReadWrite::ReadWrite(const char* inputfile){
     readFile.open(inputfile); //Open input file
-    writeFile.open(outputfile); //Open output file
+    std::string output = inputfile;
+    std::string signature = ".pout";
+    writeFile.open(output + signature); //Open output file
     endOfFile = false;
     errorFlag = false;
     if (!readFile || readFile.eof()) { //Check if input file opened properly
