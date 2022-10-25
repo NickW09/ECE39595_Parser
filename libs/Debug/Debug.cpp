@@ -8,17 +8,17 @@ void Debug::test(const char* input, const char* output, const char* output_compa
     std::cout << "----------------------------------------" << std::endl;
     std::cout << "Test #" << numTests << std::endl;
     numTests++;
-    startParser(input, output);
+    startParser(input);
     compareOutput(output, output_compare);
     std::cout << "----------------------------------------" << std::endl;
 }
 
-void Debug::startParser(const char* input, const char* output) {
+void Debug::startParser(const char* input) {
     InstructionBuffer* instrBuf = InstructionBuffer::getInstance();
     SymbolTable* symTable = SymbolTable::getInstance();
     StringBuffer* strBuf = StringBuffer::getInstance();
     ToDoBuffer* toDoBuf = ToDoBuffer::getInstance();
-    Parser* parser = Parser::getInstance(input, output, instrBuf, symTable, strBuf, toDoBuf);
+    Parser* parser = Parser::getInstance(input, instrBuf, symTable, strBuf, toDoBuf);
     int error = parser->beginParser(); 
     parser->~Parser();
     instrBuf->~InstructionBuffer();

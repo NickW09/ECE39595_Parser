@@ -21,7 +21,7 @@ public:
 private:
 	static int numTests;
 	static int numCorrectTests;
-	static void startParser(const char* input, const char* output);
+	static void startParser(const char* input);
 	static void compareOutput(const char* output, const char* output_compare);
 	static std::string deleteSpaces(char* str);
 };
