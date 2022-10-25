@@ -153,7 +153,13 @@ void Parser::createStmt(int type, std::string instr) {
             loc = -1;
             if (inst == "declscal") {           
                 //is this instr buffer loc instead?
-                symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
+                if (!symTable->checkForVar(var)) {
+                    symTable->push(var, TableEntry(symTable->getCurrLoc(), 1));
+                }
+                else {
+                    error = 1;
+                    readWrite->writeLine("error: attempting to add variable with name " + var + " twice");
+                }
             }
             else if (inst == "prints") {
                 //technically int param
@@ -188,11 +194,22 @@ void Parser::createStmt(int type, std::string instr) {
         case (LABEL_PARAM):
             label = readWrite->getLabel();
             if (inst == "label") {            
-                //old: symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
-                symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
+                if (!symTable->checkForLabel(var)) {
+                    symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
+                }
+                else {
+                    error = 1;
+                    readWrite->writeLine("error: attempting to add label with name " + var + " twice");
+                }
             }
             else if (inst == "gosublabel") {  
-                symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
+                if (!symTable->checkForLabel(var)) {
+                    symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
+                }
+                else {
+                    error = 1;
+                    readWrite->writeLine("error: attempting to add label with name " + var + " twice");
+                }
                 gosublabel = new GoSubLabel(label);
                 stmt = gosublabel;
                 symTable->enterSubroutine();

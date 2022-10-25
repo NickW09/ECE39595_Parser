@@ -76,13 +76,18 @@ int SymbolTable::checkForVar(std::string key) {
             return 1;
         }
     }
-    if (subLv == 0) {
+    if (subLv == 1) {
         if (getDataFromSub(key).getLength() >= 0) {
             return 1;
         }
     }
     
     return 0;
+}
+
+int SymbolTable::checkForLabel(std::string key) {
+
+    return getData(key).getLength() >= 0;
 }
 
 

@@ -15,6 +15,7 @@ public:
     TableEntry getData(std::string key);        //DONE
     TableEntry getDataFromSub(std::string key); //DONE
     int checkForVar(std::string key);           //DONE
+    int checkForLabel(std::string key);           //DONE
     void push(std::string str, TableEntry te);  //DONE
     void pushLabel(std::string str, TableEntry te);  //DONE
     void enterSubroutine();                     //DONE
