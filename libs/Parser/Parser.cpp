@@ -139,15 +139,13 @@ void Parser::createStmt(int type, std::string instr) {
         case (INT_VAR_PARAM):
             integer = readWrite->getIntVar(var);
             if (inst == "declarr") {            
-                //is this instr buffer loc instead?
-                if (!symTable->checkFor(var)) {
+                if (!symTable->checkForVar(var)) {
                     symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
                 }
                 else {
                     error = 1;
-                    readWrite->writeLine("error: you already declared "+var);
+                    readWrite->writeLine("error: attempting to add variable with name "+var+" twice");
                 }
-                
             }
             break;
         case (VAR_PARAM):
@@ -166,7 +164,7 @@ void Parser::createStmt(int type, std::string instr) {
                 //stmtvars can be evaled immediately since vars are always declared bf use
                 loc = symTable->getData(var).getLocation();
                 if (loc >= 0) {
-                    if (inst == "pushscal") {              //TODO - MANY CHANGES, SO CHECK FOR VALIDITY AND DELETE TODOSTMT
+                    if (inst == "pushscal") {              
                         stmt = new Pushscal(var, symTable->getSubLv(), loc);
                     }
                     else if (inst == "pusharr") {                  
@@ -191,10 +189,10 @@ void Parser::createStmt(int type, std::string instr) {
             label = readWrite->getLabel();
             if (inst == "label") {            
                 //old: symTable->push(label, TableEntry(symTable->getCurrLoc(), instrBuf->getSize() + 1));
-                symTable->push(label, TableEntry(instrBuf->getSize(), 0));
+                symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
             }
             else if (inst == "gosublabel") {  
-                symTable->push(label, TableEntry(instrBuf->getSize(), 0));
+                symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
                 gosublabel = new GoSubLabel(label);
                 stmt = gosublabel;
                 symTable->enterSubroutine();
@@ -245,7 +243,7 @@ void Parser::createStmt(int type, std::string instr) {
                         int loc = -1;
                         if(toDoBuf->getStmt(i)->getIsStmtLab())
                             //labels can only pulled from within the subroutine
-                            loc = symTable->getDataFromSub(toDoBuf->getStmt(i)->getVar()).getLocation();
+                            loc = symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation();
                         else {
                             //vars are no longer set here.
                             //need to clean up toDoTable and delete isStmtLab

@@ -35,7 +35,10 @@ void SymbolTable::push(std::string str, TableEntry te) {
     else {
         mapSub.insert(std::pair<std::string, TableEntry>(str, te));
     }
-    
+}
+
+void SymbolTable::pushLabel(std::string str, TableEntry te) {
+    map.insert(std::pair<std::string, TableEntry>(str, te));
 }
 
 //returns table entry at last key match
@@ -67,17 +70,22 @@ TableEntry SymbolTable::getDataFromSub(std::string key) {
     return TableEntry(-99, -99);
 }
 
-int SymbolTable::checkFor(std::string key) {
-    return 0;
-    /*std::map<std::string, TableEntry>::iterator it;
-    if (!mapSub.empty()) {
-        it = mapSub.find(key);
-        if (it != mapSub.end()) {
-            return it->second;
+int SymbolTable::checkForVar(std::string key) {
+    if (subLv == 0) {
+        if (getData(key).getLength() >= 0) {
+            return 1;
         }
     }
-    return TableEntry(-99, -99);*/
+    if (subLv == 0) {
+        if (getDataFromSub(key).getLength() >= 0) {
+            return 1;
+        }
+    }
+    
+    return 0;
 }
+
+
 
 void SymbolTable::enterSubroutine() {
     subLv++;

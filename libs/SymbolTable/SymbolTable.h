@@ -14,8 +14,9 @@ public:
     static SymbolTable* getInstance();          //DONE
     TableEntry getData(std::string key);        //DONE
     TableEntry getDataFromSub(std::string key); //DONE
-    int checkFor(std::string key);
+    int checkForVar(std::string key);           //DONE
     void push(std::string str, TableEntry te);  //DONE
+    void pushLabel(std::string str, TableEntry te);  //DONE
     void enterSubroutine();                     //DONE
     void exitSubroutine();                      //DONE
     int getSubLv();                             //DONE
