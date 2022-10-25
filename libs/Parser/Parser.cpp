@@ -194,21 +194,21 @@ void Parser::createStmt(int type, std::string instr) {
         case (LABEL_PARAM):
             label = readWrite->getLabel();
             if (inst == "label") {            
-                if (!symTable->checkForLabel(var)) {
+                if (!symTable->checkForLabel(label)) {
                     symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
                 }
                 else {
                     error = 1;
-                    readWrite->writeLine("error: attempting to add label with name " + var + " twice");
+                    readWrite->writeLine("error: attempting to add label with name " + label + " twice");
                 }
             }
             else if (inst == "gosublabel") {  
-                if (!symTable->checkForLabel(var)) {
+                if (!symTable->checkForLabel(label)) {
                     symTable->pushLabel(label, TableEntry(instrBuf->getSize(), 0));
                 }
                 else {
                     error = 1;
-                    readWrite->writeLine("error: attempting to add label with name " + var + " twice");
+                    readWrite->writeLine("error: attempting to add label with name " + label + " twice");
                 }
                 gosublabel = new GoSubLabel(label);
                 stmt = gosublabel;
@@ -249,7 +249,7 @@ void Parser::createStmt(int type, std::string instr) {
             else if (inst == "exit") {      
                 stmt = new Exit();
             }
-            else if (inst == "return") {    //FILLS IN INFO; TODO
+            else if (inst == "return") { 
                 stmt = new Return();
                 gosublabel->setLength(symTable->getSubLength());
                 
@@ -259,7 +259,7 @@ void Parser::createStmt(int type, std::string instr) {
                     if (toDoBuf->getStmt(i)->getDepth() == 1) {
                         int loc = -1;
                         if(toDoBuf->getStmt(i)->getIsStmtLab())
-                            //labels can only pulled from within the subroutine
+                            //labels can only pulled from main routine
                             loc = symTable->getData(toDoBuf->getStmt(i)->getVar()).getLocation();
                         else {
                             //vars are no longer set here.
@@ -269,7 +269,9 @@ void Parser::createStmt(int type, std::string instr) {
                             toDoBuf->getStmt(i)->setLoc(loc);
                         }
                         else {
-                            errFlag = 1;
+                            error = 1;
+                            //Do we need?
+                            readWrite->writeLine("error: cannot find symbol in symbol table");
                         }
                         //remove pointer from toDoBuf so it is not updated again
                         toDoBuf->remove(i);
@@ -308,7 +310,7 @@ void Parser::createStmt(int type, std::string instr) {
             }
             break;
 
-        case (END):         //FILLS IN INFO
+        case (END): 
             endDetected = 1;
             start->setLength(symTable->getTotalLength());
             for (int i = 0; i < toDoBuf->getSize(); i++) {

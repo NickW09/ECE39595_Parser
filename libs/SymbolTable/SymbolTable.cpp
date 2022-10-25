@@ -144,7 +144,7 @@ std::pair<std::string, TableEntry> SymbolTable::getEntryAtIndex(int i) {
         it = map.begin();
     }
     else {
-        i -= map.size();
+        i -= (int) map.size();
         it = mapSub.begin();
     }
     for (int j = 0; j < i; j++)
