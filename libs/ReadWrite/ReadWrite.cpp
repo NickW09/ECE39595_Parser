@@ -116,11 +116,17 @@ ReadWrite::ReadWrite(const char* inputfile){
     readFile.open(inputfile); //Open input file
     std::string output = inputfile;
     std::string signature = ".pout";
-    writeFile.open(output + signature); //Open output file
+    std::string out = output + signature;
+    std::cout<< out << std::endl;
+    writeFile.open(out); //Open output file
     endOfFile = false;
     errorFlag = false;
     if (!readFile || readFile.eof()) { //Check if input file opened properly
         std::cout << "Error: " << inputfile << " Does Not Exist." << std::endl;
+        errorFlag = true;
+    }
+    if (!writeFile) {
+        std::cout << "Error: " << out << " Does Not Exist." << std::endl;
         errorFlag = true;
     }
 }
