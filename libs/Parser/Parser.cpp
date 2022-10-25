@@ -12,6 +12,8 @@ Parser::Parser(const char* inputFileName, const char* outputFileName, Instructio
     start = nullptr;
     gosublabel = nullptr;
     error = 0;
+    startDetected = 0;
+    endDetected = 0;
 }
 
 Parser::~Parser() {
@@ -29,14 +31,18 @@ Parser* Parser::getInstance(const char* inputFileName, const char* outputFileNam
 
 //Starts the parsing
 int Parser::beginParser(){
-    std::cout << "Parser Running..." << std::endl;
 
-    //readWrite->updateInstruction(); //Grab initial instruction
     std::string instr;// = readWrite->getInstruction();
     bool end = false;
     while (!(readWrite->getEOF() || readWrite->getError())) { //checking if end of file reached
         readWrite->updateInstruction();
         instr = readWrite->getInstruction();
+        
+        //If end statement detected and next instruction is not empty
+        if (endDetected == 1 && !instr.empty()) {
+            readWrite->writeLine("error: code encountered after an end statement");
+            error = 1;
+        }
         if (!instr.empty()) {
             if (end) {
                 return 1;
@@ -49,12 +55,19 @@ int Parser::beginParser(){
             end = type == END;
         }
     }
-
-    std::cout << "EOF Reached. Parsing Complete." << std::endl;
     
+    //End statement must have been detected
+    if (!endDetected) {
+        readWrite->writeLine("error: no end statement in program");
+        error = 1;
+    }
+    
+    if (error) {
+        return 1;
+    }
+
     std::cout << std::endl;
     printSymTable();
-
     std::cout << std::endl;
     printStringBuf();
     printInstrBuf();
@@ -91,6 +104,7 @@ int Parser::determineType(std::string instr)
     //END
     else if (instr == "end") {
         type = END;
+
     }
     //UNSURRORTED
     else {
@@ -268,6 +282,7 @@ void Parser::createStmt(int type, std::string instr) {
             break;
 
         case (END):         //FILLS IN INFO
+            endDetected = 1;
             start->setLength(symTable->getTotalLength());
             for (int i = 0; i < toDoBuf->getSize(); i++) {
                 if (toDoBuf->getStmt(i)->getDepth() == 0) { //should this allow depth of 0 or 1?

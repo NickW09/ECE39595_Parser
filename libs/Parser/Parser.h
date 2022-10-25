@@ -64,6 +64,8 @@ private:
     ToDoBuffer* toDoBuf;
     ReadWrite* readWrite;
     bool error;
+    bool startDetected;
+    bool endDetected;
     Start* start;
     GoSubLabel* gosublabel;
 };

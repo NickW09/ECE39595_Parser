@@ -29,9 +29,9 @@ void ReadWrite::updateInstruction() {
         readLine(line);
     }
     else {
-        std::cout << "EOF detected." << std::endl;
+        //std::cout << "EOF detected." << std::endl;
     }
-    std::cout << instruction << std::endl;
+    //std::cout << instruction << std::endl;
 }
 
 //Write to output file
@@ -134,7 +134,7 @@ std::string ReadWrite::grabLine() {
         delete[] line_char;
     }
     else {
-        std::cout << "End of File (EOF)." << std::endl;
+        //std::cout << "End of File (EOF)." << std::endl;
         endOfFile = true;
     }
     return line;

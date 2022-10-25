@@ -6,7 +6,7 @@ int Debug::numCorrectTests = 0;
 //Input: Input file to parse |
 void Debug::test(const char* input, const char* output, const char* output_compare) {
     std::cout << "----------------------------------------" << std::endl;
-    std::cout << numTests << std::endl;
+    std::cout << "Test #" << numTests << std::endl;
     numTests++;
     startParser(input, output);
     compareOutput(output, output_compare);
