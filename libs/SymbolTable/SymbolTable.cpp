@@ -67,6 +67,18 @@ TableEntry SymbolTable::getDataFromSub(std::string key) {
     return TableEntry(-99, -99);
 }
 
+int SymbolTable::checkFor(std::string key) {
+    return 0;
+    /*std::map<std::string, TableEntry>::iterator it;
+    if (!mapSub.empty()) {
+        it = mapSub.find(key);
+        if (it != mapSub.end()) {
+            return it->second;
+        }
+    }
+    return TableEntry(-99, -99);*/
+}
+
 void SymbolTable::enterSubroutine() {
     subLv++;
 }

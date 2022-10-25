@@ -3,12 +3,12 @@
 Parser* Parser::parser = nullptr; 
 
 //Constructor
-Parser::Parser(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf) {
+Parser::Parser(const char* inputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf) {
     instrBuf = _instrBuf; //Set instructionBuffer
     symTable = _symTable; //Set symbolTable
     strBuf = _strBuf; //Set stringBuffer
     toDoBuf = _todoBuf;
-    readWrite = ReadWrite::getInstance(inputFileName, outputFileName); //give ReadWriteParser the input and output files
+    readWrite = ReadWrite::getInstance(inputFileName); //give ReadWriteParser the input and output files
     start = nullptr;
     gosublabel = nullptr;
     error = 0;
@@ -22,9 +22,9 @@ Parser::~Parser() {
 }
 
 //Singelton 
-Parser* Parser::getInstance(const char* inputFileName, const char* outputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf){
+Parser* Parser::getInstance(const char* inputFileName, InstructionBuffer* _instrBuf, SymbolTable* _symTable, StringBuffer* _strBuf, ToDoBuffer* _todoBuf){
     if(parser == nullptr) {
-        parser = new Parser(inputFileName, outputFileName, _instrBuf, _symTable, _strBuf, _todoBuf); // makes unique instantiation
+        parser = new Parser(inputFileName, _instrBuf, _symTable, _strBuf, _todoBuf); // makes unique instantiation
     }
     return parser; // return singleton
 }
@@ -109,7 +109,7 @@ int Parser::determineType(std::string instr)
     //UNSURRORTED
     else {
         type = ERROR;
-        printf("Unsupported Instruction. Parser terminated.");
+        std::cout << "Unsupported Instruction. Parser terminated." << std::endl;
     }
 
     return type;
@@ -140,7 +140,14 @@ void Parser::createStmt(int type, std::string instr) {
             integer = readWrite->getIntVar(var);
             if (inst == "declarr") {            
                 //is this instr buffer loc instead?
-                symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
+                if (!symTable->checkFor(var)) {
+                    symTable->push(var, TableEntry(symTable->getCurrLoc(), integer));
+                }
+                else {
+                    error = 1;
+                    readWrite->writeLine("error: you already declared "+var);
+                }
+                
             }
             break;
         case (VAR_PARAM):
@@ -249,6 +256,10 @@ void Parser::createStmt(int type, std::string instr) {
                         else {
                             errFlag = 1;
                         }
+                        //remove pointer from toDoBuf so it is not updated again
+                        toDoBuf->remove(i);
+                        //shift back the loop one step since elements will all shift left
+                        i--;
                     }
                 }
                 symTable->exitSubroutine();
