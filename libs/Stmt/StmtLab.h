@@ -14,6 +14,7 @@ public:
 	virtual std::string toString();
 	virtual std::string toString2();
 	virtual std::string toString3();
+	virtual int getData();
 protected:
 	std::string lab;
 	int depth; //subroutine depth

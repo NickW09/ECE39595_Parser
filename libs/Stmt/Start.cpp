@@ -17,3 +17,7 @@ void Start::setLength(int _length) {
 std::string Start::toString() {
 	return instr + " " + std::to_string(length);
 }
+
+int Start::getData() {
+	return length;
+}

@@ -66,9 +66,11 @@ int Parser::beginParser(){
         return 1;
     }
 
-    std::cout << std::endl;
+    writeOut();
+
+    /*std::cout << std::endl;
     printSymTable();
-    std::cout << std::endl;
+    std::cout << std::endl;*/
     printStringBuf();
     printInstrBuf();
 
@@ -253,7 +255,7 @@ void Parser::createStmt(int type, std::string instr) {
                 stmt = new Return();
                 gosublabel->setLength(symTable->getSubLength());
                 
-                printSymTable();
+                //printSymTable();
 
                 for (int i = 0; i < toDoBuf->getSize(); i++) {
                     if (toDoBuf->getStmt(i)->getDepth() == 1) {
@@ -351,5 +353,17 @@ void Parser::printSymTable() {
         
         std::cout << "(" + symChunk.first + "): (" + std::to_string(symChunk.second.getLocation()) + 
             ", " + std::to_string(symChunk.second.getLength()) + ")" << std::endl;
+    }
+}
+
+void Parser::writeOut() {
+    readWrite->writeOut(std::to_string(instrBuf->getSize()));
+    for (int i = 0; i < instrBuf->getSize(); i++) {
+        readWrite->writeOut(std::to_string(instrBuf->getStmt(i)->getOp()));
+        readWrite->writeOut(std::to_string(instrBuf->getStmt(i)->getData()));
+    }
+    readWrite->writeOut(std::to_string(strBuf->getSize()));
+    for (int i = 0; i < strBuf->getSize(); i++) {
+        readWrite->writeOut(strBuf->get(i));
     }
 }

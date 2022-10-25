@@ -13,3 +13,7 @@ std::string StmtVar::toString() {
 	//return instr + " " + var + ", (" + std::to_string(loc) + ")";
 	return instr + " "  + std::to_string(loc);
 }
+
+int StmtVar::getData() {
+	return loc;
+}

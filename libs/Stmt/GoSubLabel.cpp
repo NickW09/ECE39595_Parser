@@ -19,3 +19,7 @@ std::string GoSubLabel::toString() {
 void GoSubLabel::setLength(int _len) {
 	len = _len;
 }
+
+int GoSubLabel::getData() {
+	return len;
+}

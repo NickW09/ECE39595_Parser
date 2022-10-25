@@ -7,6 +7,7 @@ class StmtVar : public Stmt {
 public:
 	StmtVar(std::string var, int _depth, int _loc);
 	virtual std::string toString();
+	virtual int getData();
 protected:
 	int loc;
 	std::string var;

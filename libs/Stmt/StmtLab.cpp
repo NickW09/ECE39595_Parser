@@ -44,3 +44,7 @@ std::string StmtLab::toString2() {
 std::string StmtLab::toString3() {
 	return instr + " " + std::to_string(loc);
 }
+
+int StmtLab::getData() {
+	return loc;
+}

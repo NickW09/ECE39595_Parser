@@ -9,6 +9,7 @@ public:
 	virtual void action();
 	virtual std::string toString();
 	void setLength(int _length);
+	virtual int getData();
 private:
 	int length;
 };

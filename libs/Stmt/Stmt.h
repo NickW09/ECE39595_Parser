@@ -9,7 +9,8 @@ public:
     virtual void action() = 0;
     virtual void print();
     virtual std::string toString() = 0;
-
+    virtual uint32_t getOp();
+    virtual int getData();
 protected:
     uint32_t opcode;
     std::string instr; // word representing the name of the instruction to be toStringed

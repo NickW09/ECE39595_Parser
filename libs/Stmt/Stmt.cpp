@@ -9,3 +9,11 @@ Stmt::Stmt() {
 void Stmt::print() {
 	std::cout << toString() << std::endl;
 }
+
+uint32_t Stmt::getOp() {
+	return opcode;
+}
+
+int Stmt::getData() {
+	return 0;
+}

@@ -58,6 +58,7 @@ private:
     void printStringBuf();
     void printInstrBuf();
     void printSymTable();
+    void writeOut();
     InstructionBuffer* instrBuf;
     SymbolTable* symTable;
     StringBuffer* strBuf;

@@ -9,3 +9,7 @@ StmtInt::StmtInt() {
 std::string StmtInt::toString() {
 	return instr + " " + std::to_string(num);
 }
+
+int StmtInt::getData() {
+	return num;
+}

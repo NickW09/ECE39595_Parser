@@ -7,6 +7,7 @@ class StmtInt : public Stmt {
 public:
 	StmtInt();
 	virtual std::string toString();
+	virtual int getData();
 protected:
 	int num;
 };
